@@ -8,26 +8,22 @@ Ember CLI, é uma interface de linha de comando do Ember, fornece uma estrutura 
 Isso permite que os desenvolvedores Ember se concentrem na construção de aplicativos, em vez de criar estruturas para executar.
 No terminal, digite `ember -help` isso mostra todos os comandos disponíveis no Ember CLI. Para obter mais informações sobre um comando específico, digite `ember help <command-name>`.
 
-## Creating a New App
+## Criando uma nova Aplicação
 
-To create a new project using Ember CLI, use the `new` command. In preparation
-for the tutorial in the next section, you can make an app called `super-rentals`.
+Para criar um novo projeto usando o Ember CLI, use o comando `new`. Já pensando na próxima seção, você pode criar um aplicativo chamado `super-rentals`.
 
 ```shell
 ember new super-rentals
 ```
-
-A new project will be created inside your current directory. You can now go to
-your `super-rentals` project directory and start working on it.
+Um novo projeto será criado dentro do seu diretório atual. Agora você pode ir ao seu diretório do projeto `super-rentals` e começar a trabalhar nele.
 
 ```shell
 cd super-rentals
 ```
 
-## Directory Structure
+## Estrutura de pastas e arquivos
 
-The `new` command generates a project structure with the following files and
-directories:
+O comando `new` cria um projeto com essa estrutura de pastas e arquivos:
 
 ```text
 |--app
@@ -45,31 +41,26 @@ README.md
 testem.js
 ```
 
-Let's take a look at the folders and files Ember CLI generates.
+Vamos dar uma olhada nas pastas e arquivos que o Ember CLI gerou.
 
-**app**: This is where folders and files for models, components, routes,
-templates and styles are stored. The majority of your coding on an Ember
-project happens in this folder.
+**app**: É onde são salvas as pastas e arquivos para models, components, routes, templates e styles na sua aplicação.
 
-**config**: The config directory contains the `environment.js` where you can
-configure settings for your app.
+**config**: Esse diretório contém `environment.js` onde você pode definir configurações para sua aplicação.
 
-**node_modules / package.json**: This directory and file are from npm.
-npm is the package manager for Node.js. Ember is built with Node and uses a
-variety of Node.js modules for operation. The `package.json` file maintains the
-list of current npm dependencies for the app.  Any Ember CLI
-addons you install will also show up here. Packages listed in `package.json`
-are installed in the node_modules directory.
+**node_modules / package.json**: Essa pasta e arquivo são do npm. Npm é um gerenciador de pacotes para Node.js.
+Ember é construído com Node e usa uma variedade de módulos Node.js para executar. O arquivo `package.json` contém a lista de dependências npm para seu aplicativo. Qualquer Ember CLI Addons que você instale também aparecerá neste arquivo. Os pacotes listados no `package.json` estão instalados na pasta `node_modules`.
 
-**public**: This directory contains assets such as images and fonts.
 
-**vendor**: This directory is where front-end dependencies (such as JavaScript
-or CSS) that are not managed by Bower go.
 
-**tests / testem.js**: Automated tests for our app go in the `tests` folder,
-and Ember CLI's test runner **testem** is configured in `testem.js`.
+**public**: Essa pasta contém recursos como imagens e fontes.
 
-**ember-cli-build.js**: This file describes how Ember CLI should build our app.
+**vendor**: Essa pasta é onde são salvas as dependências front-end (como JavaScript ou CSS) que não são gerenciados pelo Bower.
+
+**tests**: Todos os testes automatizados como `unit`, `integrations` e `acceptance` são salvos nesta pasta.
+
+**testem.js**: Ember CLI roda os testes com **testem** configurado em `testem.js`, ele funciona integrado com **QUnit** e **Mocha**.
+
+**ember-cli-build.js**: Esse arquivo configura como Ember CLI deve construir sua aplicação.
 
 ## ES6 Modules
 
