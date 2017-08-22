@@ -4,11 +4,12 @@ Se você ficar com dúvida em qualquer ponto durante o tutorial, sinta-se à von
 
 Você vai precisar instalar a última versão do `ember-cli` seguindo o [Guia Inicial](../../getting-started/quick-start/#toc_install-ember) na seção "Instalando Ember".
 
-Ember CLI, é uma interface de linha de comando do Ember, fornece uma estrutura de projeto padrão, um conjunto de ferramentas de desenvolvimento e um sistema de complemento.
-Isso permite que os desenvolvedores Ember se concentrem na construção de aplicativos, em vez de criar estruturas para executar.
+A ferramenta de linha de comando do Ember CLI possui inúmeras opções úteis para criar novos projetos, executar testes e diversos conjuntos ferramentas de desenvolvimento.
+Isso permite que os desenvolvedores Ember se concentrem na construção do aplicativo, em vez de criar estruturas para executa-lo.
+
 No terminal, digite `ember -help` isso mostra todos os comandos disponíveis no Ember CLI. Para obter mais informações sobre um comando específico, digite `ember help <command-name>`.
 
-## Criando uma nova Aplicação
+## Criando um novo aplicativo
 
 Para criar um novo projeto usando o Ember CLI, use o comando `new`. Já pensando na próxima seção, você pode criar um aplicativo chamado `super-rentals`.
 
@@ -23,7 +24,7 @@ cd super-rentals
 
 ## Estrutura de pastas e arquivos
 
-O comando `new` cria um projeto com essa estrutura de pastas e arquivos:
+O comando `new` cria um projeto padrão com essa estrutura de pastas e arquivos:
 
 ```text
 |--app
@@ -43,24 +44,22 @@ testem.js
 
 Vamos dar uma olhada nas pastas e arquivos que o Ember CLI gerou.
 
-**app**: É onde são salvas as pastas e arquivos para models, components, routes, templates e styles na sua aplicação.
+**app**: É a principal pasta do projeto, é onde fica os `models`, `components`, `routes`, `templates` e `styles`. Basicamente é nesta pasta que todo o código do seu aplicativo vai ficar.
 
-**config**: Esse diretório contém `environment.js` onde você pode definir configurações para sua aplicação.
+**config**: Essa pasta contém os arquivos de configurações para nosso aplicativo, como `environment.js`.
 
 **node_modules / package.json**: Essa pasta e arquivo são do npm. Npm é um gerenciador de pacotes para Node.js.
-Ember é construído com Node e usa uma variedade de módulos Node.js para executar. O arquivo `package.json` contém a lista de dependências npm para seu aplicativo. Qualquer Ember CLI Addons que você instale também aparecerá neste arquivo. Os pacotes listados no `package.json` estão instalados na pasta `node_modules`.
+Ember é construído com Node e usa diversos pacotes **Node.js** para executar. O arquivo `package.json` contém a lista de dependências de pacotes necessários para seu aplicativo. Qualquer **Ember CLI Addons** que você instale também aparecerá neste arquivo. Os pacotes listados no `package.json` estão instalados na pasta `node_modules`.
 
+**public**: Essa pasta é onde você vai salvar imagens, svg, css ou outro recurso estático do seu aplicativo.
 
+**vendor**: Você pode salvar nesta pasta dependências não gerenciadas pelo **Bower** como JavaScript e CSS de terceiros.
 
-**public**: Essa pasta contém recursos como imagens e fontes.
+**tests**: Todos os testes automatizados como `units`, `integrations` e `acceptances` são salvos nesta pasta.
 
-**vendor**: Essa pasta é onde são salvas as dependências front-end (como JavaScript ou CSS) que não são gerenciados pelo Bower.
+**testem.js**: Ember CLI executa os testes com **testem**, as configurações são salva em `testem.js`. Testem funciona integrado com **QUnit** e **Mocha**.
 
-**tests**: Todos os testes automatizados como `unit`, `integrations` e `acceptance` são salvos nesta pasta.
-
-**testem.js**: Ember CLI roda os testes com **testem** configurado em `testem.js`, ele funciona integrado com **QUnit** e **Mocha**.
-
-**ember-cli-build.js**: Esse arquivo contém configurações de como Ember CLI deve construir sua aplicação.
+**ember-cli-build.js**: Contém todas as configurações necessárias de como Ember CLI deve construir seu aplicativo.
 
 ## ES6 Modules
 
@@ -82,19 +81,14 @@ export default Router;
 ```
 
 Ember CLI usa módulos ECMAScript 2015 (ES2015 conhecido como ES6) para organizar o código do aplicativo.
-Por exemplo, a linha `import Ember from 'ember';` da a você acesso completo a biblioteca do Ember.js como a variável `Ember`. A linha `import config from './config/environment';` da a você acesso as configuração do nosso aplicativo como a variável `config`. `const` é uma maneira de declarar uma variável de somente leitura para garantir que ela não seja acidentalmente reatribuída em outro local. No final do arquivo, `export default Router;` torna a variável `Router` definida neste arquivo disponível para outros arquivos do aplicativo.
+Por exemplo, a linha `import Ember from 'ember';` da a você acesso completo a biblioteca do Ember.js. A linha `import config from './config/environment';` da a você acesso as configuração do seu aplicativo. `const` é uma maneira de declarar uma variável de somente leitura para garantir que ela não será acidentalmente reatribuída em outro local. No final do arquivo, `export default Router;` torna a variável `Router` definida neste arquivo disponível para outros arquivos.
 
 ## Servidor de desenvolvimento
 
-Uma vez que temos um novo projeto, podemos confirmar que tudo está funcionando iniciando o servidor de desenvolvimento do Ember:
+Uma vez que temos um novo projeto, podemos verificar se tudo está funcionando iniciando o servidor de desenvolvimento do Ember:
 
 ```shell
 ember server
-```
-ou:
-
-```shell
-ember s
 ```
 Se você acessar [`http://localhost:4200`](http://localhost:4200), você verá a tela de boas-vindas padrão.
 Quando você editar o arquivo `app/templates/application.hbs`, esse conteúdo será substituído.
