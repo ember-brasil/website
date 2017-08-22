@@ -84,31 +84,28 @@ export default Router;
 Ember CLI usa módulos ECMAScript 2015 (ES2015 conhecido como ES6) para organizar o código do aplicativo.
 Por exemplo, a linha `import Ember from 'ember';` da a você acesso completo a biblioteca do Ember.js como a variável `Ember`. A linha `import config from './config/environment';` da a você acesso as configuração do nosso aplicativo como a variável `config`. `const` é uma maneira de declarar uma variável de somente leitura para garantir que ela não seja acidentalmente reatribuída em outro local. No final do arquivo, `export default Router;` torna a variável `Router` definida neste arquivo disponível para outros arquivos do aplicativo.
 
-## The Development Server
+## Servidor de desenvolvimento
 
-Once we have a new project in place, we can confirm everything is working by
-starting the Ember development server:
+Uma vez que temos um novo projeto, podemos confirmar que tudo está funcionando iniciando o servidor de desenvolvimento do Ember:
 
 ```shell
 ember server
 ```
-
-or, for short:
+ou:
 
 ```shell
 ember s
 ```
-
-If we navigate to [`http://localhost:4200`](http://localhost:4200), we'll see the default welcome screen.
-When we edit the `app/templates/application.hbs` file, we'll replace that content with our own.
+Se você acessar [`http://localhost:4200`](http://localhost:4200), você verá a tela de boas-vindas padrão.
+Quando você editar o arquivo `app/templates/application.hbs`, esse conteúdo será substituído.
 
 ![default welcome screen](../../images/ember-cli/default-welcome-page.png)
 
-The first thing we want to do in our new project is to remove the welcome screen.
-We do this by simply opening up the application template file located at `app/templates/application.hbs`.
+A primeira coisa que queremos fazer em nosso novo projeto é remover a tela de boas-vindas.
+Você pode fazer isso abrindo o arquivo de template localizado em `app/templates/application.hbs`.
 
-Once open, remove the component labeled `{{welcome-page}}`.
-The application should now be a completely blank canvas to build our application on.
+Uma vez aberto, remova o componente chamado `{{welcome-page}}`.
+O aplicativo agora deve ter uma tela completamente em branco, pronto para iniciarmos nosso aplicativo.
 
 ```app/templates/application.hbs{-1,-2,-3}
 {{!-- The following component displays Ember's default welcome message. --}}
@@ -116,5 +113,4 @@ The application should now be a completely blank canvas to build our application
 {{!-- Feel free to remove this! --}}
 
 {{outlet}}
-
 ```
