@@ -1,3 +1,5 @@
+## Projeto não oficial do Ember
+
 ## Ember Guides Source
 
 [![Build Status](https://travis-ci.org/emberjs/guides.svg?branch=master)](https://travis-ci.org/emberjs/guides)
