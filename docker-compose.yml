@@ -1,0 +1,13 @@
+version: '2'
+services:
+  web:
+    image: aureliosaraiva/ember-guides:alpha
+    container_name: ember-guides
+    entrypoint: /var/app/docker_entrypoint.sh
+    restart: always
+    working_dir: /var/app
+    volumes:
+      - .:/var/app
+      - ~/.bash_history:/root/.bash_history
+    ports:
+      - "3000:3000"

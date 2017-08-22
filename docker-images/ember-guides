@@ -1,0 +1,22 @@
+# sudo docker build -t "aureliosaraiva/ember-guides:alpha" -f docker-images/ember-guides .
+# sudo docker push aureliosaraiva/ember-guides:alpha
+
+FROM ruby:2.3.4
+
+# install postgres native client
+RUN apt-get update && apt-get install -qq -y libpq-dev ruby-all-dev build-essential libffi-dev libssl-dev libcurl4-openssl-dev \
+                      --fix-missing --no-install-recommends
+
+# Install Node 6 with NPM
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install -y nodejs
+
+RUN rm -rf /var/lib/apt/lists/*
+
+#keeps bundler update
+RUN gem install bundler -v 1.15.1
+RUN gem install middleman
+# install gems on machine
+COPY Gemfile ./Gemfile
+COPY Gemfile.lock ./Gemfile.lock
+RUN bundle install
