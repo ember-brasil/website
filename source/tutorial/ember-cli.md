@@ -60,12 +60,11 @@ Ember é construído com Node e usa uma variedade de módulos Node.js para execu
 
 **testem.js**: Ember CLI roda os testes com **testem** configurado em `testem.js`, ele funciona integrado com **QUnit** e **Mocha**.
 
-**ember-cli-build.js**: Esse arquivo configura como Ember CLI deve construir sua aplicação.
+**ember-cli-build.js**: Esse arquivo contém configurações de como Ember CLI deve construir sua aplicação.
 
 ## ES6 Modules
 
-If you take a look at `app/router.js`, you'll notice some syntax that may be
-unfamiliar to you.
+Se você olhar `app/router.js`, pode se que você não esteja familiarizado com algumas sintaxes.
 
 ```app/router.js
 import Ember from 'ember';
@@ -82,16 +81,8 @@ Router.map(function() {
 export default Router;
 ```
 
-Ember CLI uses ECMAScript 2015 (ES2015 for short or previously known as ES6) modules to organize application
-code.
-For example, the line `import Ember from 'ember';` gives us access to the actual
-Ember.js library as the variable `Ember`. And the `import config from
-'./config/environment';` line gives us access to our app's configuration data
-as the variable `config`. `const` is a way to declare a read-only variable to make
-sure it is not accidentally reassigned elsewhere. At the end of the file,
-`export default Router;` makes the `Router` variable defined in this file available
-to other parts of the app.
-
+Ember CLI usa módulos ECMAScript 2015 (ES2015 conhecido como ES6) para organizar o código do aplicativo.
+Por exemplo, a linha `import Ember from 'ember';` da a você acesso completo a biblioteca do Ember.js como a variável `Ember`. A linha `import config from './config/environment';` da a você acesso as configuração do nosso aplicativo como a variável `config`. `const` é uma maneira de declarar uma variável de somente leitura para garantir que ela não seja acidentalmente reatribuída em outro local. No final do arquivo, `export default Router;` torna a variável `Router` definida neste arquivo disponível para outros arquivos do aplicativo.
 
 ## The Development Server
 
