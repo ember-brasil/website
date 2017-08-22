@@ -1,46 +1,48 @@
-To show the basic setup of an Ember application, we'll walk through building an app for a property rental site called Super Rentals. We'll start with a homepage, an about page and a contact page.
+Mostramos o básico da configuração de um aplicatovo Ember, agora vamos construir um aplicativo para um site de aluguel de imóveis chamado **Super Rentals**. Começaremos criando uma página inicial, uma página sobre e outra de contato.
 
-Here's a look at what we want to build before we get started.
+Antes de começarmos, aqui está a aparência final do nosso aplicativo.
 
 ![super rentals homepage screenshot](../../images/service/style-super-rentals-maps.png)
 
-Let's work through what we want to do on the home page. We want our application to:
+Queremos que nosso aplicativo faça:
 
-* Show rentals on the home page
-* Link to information about the company
-* Link to contact information
-* List the available rentals
-* Filter the list of rentals by city
-* Show more details for a selected rental
+* Deve mostrar os imóveis para alugar
+* Deve ter um link para informações sobre a empresa
+* Deve ter um link para informações de contato
+* Deve listar os imóveis disponíveis
+* Deve filtrar imóveis por cidade
+* Deve mostrar mais detalhes de um imóvel selecionado
 
-For the remainder of this page, we'll give you an introduction to testing in Ember and get you set up to add tests as we implement pieces of our app. On subsequent tutorial pages, the final sections of each page will be devoted to adding a test for the feature you just implemented. These sections aren't required for a working application and you may move on with the tutorial without writing them.
+O restante desta página, dará a você uma introdução aos testes de aceitação do Ember. Você vai precisar configurar esses testes à medida que seu aplicativo é implementado. Nas próximas páginas deste tutorial, terá seções dedicadas a adicionar um teste para cada recurso novo que você implementou. Essas seções não são necessárias para funcionar seu aplicativo e você pode optar pular essas etapas.
 
-At this point, you can continue to the [next page](../routes-and-templates/) or read more about Ember testing below.
+A partir deste ponto, você pode continuar na [próxima página](../routes-and-templates/) ou continuar lendo sobre testes Ember abaixo.
 
-### Testing Our Application As We Go
+### Testando seu aplicativo a médida que implementamos
 
-We can represent the goals above as [Ember acceptance tests](../../testing/acceptance/). Acceptance tests interact with our app like an actual person would, but are automated, helping ensure that our app doesn't break in the future.
+Podemos representar os objetivos acima com [Teste de aceitação do Ember](../../testing/acceptance/). Os testes de aceitação interagem com o nosso aplicativo como uma pessoa real, mas é automatizado, ajudando a garantir que nosso aplicativo não quebre no futuro.
 
-When we create a new Ember Project using Ember CLI, it uses the [`QUnit`](https://qunitjs.com/) JavaScript test framework to define and run tests.
+Quando criamos um novo Projeto Ember usando o Ember CLI, ele cria uma estrutura de teste JavaScript [`QUnit`](https://qunitjs.com/) para definir e executar testes.
 
-We'll start by using Ember CLI to generate a new acceptance test:
+
+Começaremos usando o Ember CLI para criar um novo teste de aceitação:
 
 ```shell
 ember g acceptance-test list-rentals
 ```
 
-The command will generate the following output, showing that it created a single file called `tests/acceptance/list-rentals-test.js`.
+O comando acima terá o seguinte resultado, mostrando que ele criou um único arquivo chamado `tests/acceptance/list-rentals-test.js`.
 
 ```shell
 installing acceptance-test
   create tests/acceptance/list-rentals-test.js
 ```
+Ao abrir esse arquivo você verá um código inicial que tentará acessar a rota `list-rental` e testar se ela foi carregada. O código inicial foi criado para nos ajudar a criar nosso primeiro teste de aceitação.
 
-Opening that file will reveal some initial code that will try to go to the `list-rentals` route and verify that the route is loaded. The initial code is there to help us build our first acceptance test.
 
-Since we haven't added any functionality to our application yet, we'll use this first test to get started on running tests in our app.
+Como ainda não implementamos nenhuma funcionalidade em nosso aplicativo, usaremos este primeiro teste para começar a executar testes em nosso aplicativo.
 
-To do that, replace occurrences of `/list-rentals` in the generated test with `/`. The test will start our app at the base url, `http://localhost:4200/`, and then do a basic check that the page has finished loading and that the url is what we want it to be.
+Para fazer isso, substitua as ocorrências de `/list-rentals` no teste gerado para `/`. O teste iniciará o nosso aplicativo na url base, `http://localhost:4200/` e, em seguida, fazer uma verificação de que a página foi carregar e que o URL seja a que queremos que seja.
+
 
 ```/tests/acceptance/list-rentals-test.js{-6,+7,-8,+9,-12,+13}
 import { test } from 'qunit';
@@ -60,23 +62,30 @@ test('visiting /', function(assert) {
 });
 ```
 
-A few of things to note in this simple test:
+Algumas observações sobre este teste:
 
-* Acceptance tests are setup by calling the function `moduleForAcceptance`. This function ensures that your Ember application is started and shut down between each test.
-* QUnit passes in an object called an [`assert`](https://api.qunitjs.com/assert/) to each test function. An `assert` has functions, such as `equal()`, that allow your test to check for conditions within the test environment. A test must have one passing assert to be successful.
-* Ember acceptance tests use a set of test helper functions, such as the `visit`, `andThen`, and `currentURL` functions used above. We'll discuss those functions in more detail later in the tutorial.
+* Os testes de aceitação são configurados chamando a função `moduleForAcceptance`. Esta função garante que seu aplicativo Ember seja iniciado e encerrado durante cada teste.
 
-Now run your test suite with the CLI command, `ember test --server`.
+* QUnit passa um objeto chamado [`assert`](https://api.qunitjs.com/assert/) em cada função de teste. Um `assert` possui funções, como `equal()`, que permitem que seu teste verifique se algumas condições foram atendidas. Um teste deve ter um significado válido para ser bem-sucedido.
 
-By default, when you run `ember test --server`, Ember CLI runs the [Testem test runner](https://github.com/testem/testem), which runs Qunit in Chrome and [PhantomJS](http://phantomjs.org/).
+* Os testes de aceitação do Ember usam um conjunto de funções auxiliares de teste, como as funções `visit`, `eThen`, e `currentURL` usadas acima. Vamos discutir essas funções com mais detalhes mais adiante no tutorial.
 
-Our launched Chrome web browser now shows 10 successful tests. If you toggle the box labeled "Hide passed tests", you should see our successful acceptance test, along with 9 passing ESLint tests. Ember tests each file you create for syntax issues (known as "linting") using [ESLint](http://eslint.org/).
+Agora, execute seu conjunto de testes:
+
+```shell
+ember test --server
+```
+
+Por padrão, quando você executa `ember test -server`, o Ember CLI executa o [Testem test runner](https://github.com/testem/testem), que executa Qunit no Chrome e [PhantomJS](http://phantomjs.org/).
+
+
+O Google Chrome será aberto automaticamente mostrando 10 testes bem-sucedidos. Se você selecionar a opção "Hide passed tests", você verá somente os teste de aceitação bem-sucedido, juntamente com 9 testes ESLint passando. O Ember testa problemas de sintaxe (conhecido como "linting") para cada arquivo usando [ESLint](http://eslint.org/).
 
 ![Initial Tests Screenshot](../../images/acceptance-test/initial-tests.png)
 
-### Adding Your Application Goals as Acceptance Tests
+### Adicionando testes de aceitação
 
-As mentioned before, our initial test just made sure everything was running properly. Now let's replace that test with the list of tasks we want our app to handle (described up above).
+Conforme mencionado anteriormente, o nosso teste inicial garantiu que tudo funcionasse corretamente. Agora vamos substituir esse teste pela lista de tarefas que queremos que nosso aplicativo manipule.
 
 ```/tests/acceptance/list-rentals-test.js{+6,+7,+8,+9,+10,+11,+12,+13,+14,+15,+16,+17,+18,+19,+20,+21,+22,-23,-24,-25,-26,-27,-28,-29}
 import { test } from 'qunit';
@@ -110,8 +119,9 @@ test('visiting /', function(assert) {
 });
 ```
 
-Running `ember test --server` will now show 7 failing tests (out of 15). Each of the 6 tests we setup above will fail, plus one ESLint test will fail saying, `assert is defined but never used`. The tests above fail because QUnit requires at least one check for a specific condition (known as an `assert`).
+A execução do `ember test --server` agora mostrará que 7 testes de falharam. Cada um dos 6 testes que configuramos acima falhará, mais um teste de ESLint falhará dizendo: `assert is defined but never used`. Os testes acima falharam porque QUnit requer pelo menos uma verificação para cada condição (conhecida como `assert`).
 
-As we continue through this tutorial, we'll use these acceptance tests as our checklist. Once all the tests are passing, we'll have accomplished our high level goals.
+À medida que avançamos neste tutorial, usaremos esses testes de aceitação como nossa lista de verificação. Uma vez que todos os testes estão passando, teremos cumprido nossos objetivos de alto nível.
+
 
 ![Initial Tests Screenshot](../../images/acceptance-test/acceptance-test.png)
