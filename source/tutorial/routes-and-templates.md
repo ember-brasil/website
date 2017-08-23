@@ -176,7 +176,13 @@ Voltaremos a esta página para adicionar as propriedades reais do aluguéis.
 </div>
 ```
 
-## An Index Route
+## Página index
+
+Com nossas três routes no local, estamos prontos para adicionar uma rota de índice, que irá lidar com solicitações para o URI de raiz (`/`) do nosso site.
+Gostaríamos de fazer a página de aluguel na página principal do nosso aplicativo e já criamos uma rota.
+Portanto, queremos que nossa rota de índice simplesmente encaminhe para a rota de "aluguel" que já criamos.
+
+Usando o mesmo processo que fizemos para nossas páginas sobre e contato, primeiro geraremos uma nova rota chamada `index`.
 
 With our three routes in place, we are ready to add an index route, which will handle requests to the root URI (`/`) of our site.
 We'd like to make the rentals page the main page of our application, and we've already created a route.
