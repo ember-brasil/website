@@ -178,23 +178,17 @@ Voltaremos a esta página para adicionar as propriedades reais do aluguéis.
 
 ## Página index
 
-Com nossas três routes no local, estamos prontos para adicionar uma rota de índice, que irá lidar com solicitações para o URI de raiz (`/`) do nosso site.
-Gostaríamos de fazer a página de aluguel na página principal do nosso aplicativo e já criamos uma rota.
-Portanto, queremos que nossa rota de índice simplesmente encaminhe para a rota de "aluguel" que já criamos.
+Com nossas três routes criada, estamos prontos para adicionar uma route de index, que irá lidar com solicitações para o URI (`/`) do nosso site.
+Gostaríamos de fazer a página de aluguel na página principal do nosso aplicativo e já criamos uma route.
+Portanto, queremos que nossa route index simplesmente redirecione nosso cliente para a route `rentals` que já criamos.
 
-Usando o mesmo processo que fizemos para nossas páginas sobre e contato, primeiro geraremos uma nova rota chamada `index`.
+Usando o mesmo processo que fizemos anteriormente, primeiro devemos criar uma nova route chamada `index`.
 
-With our three routes in place, we are ready to add an index route, which will handle requests to the root URI (`/`) of our site.
-We'd like to make the rentals page the main page of our application, and we've already created a route.
-Therefore, we want our index route to simply forward to the `rentals` route we've already created.
-
-Using the same process we did for our about and contact pages, we will first generate a new route called `index`.
 
 ```shell
 ember g route index
 ```
-
-We can see the now familiar output for the route generator:
+Esse é o resultado do comando para você olhar e se familiarizar:
 
 ```shell
 installing route
@@ -204,26 +198,22 @@ installing route-test
   create tests/unit/routes/index-test.js
 ```
 
-Unlike the other route handlers we've made so far, the `index` route is special:
-it does NOT require an entry in the router's mapping.
-We'll learn more about why the entry isn't required later on when we look at [nested routes](../subroutes) in Ember.
+Ao contrário dos outros manipuladores de routes que fizemos até agora, a route `index` é especial:
+**NÃO** requer uma entrada no mapeamento do roteador.
+Vamos aprender mais sobre por que a entrada não é necessária mais tarde quando olharmos para [nested routes](../ subroutes) do Ember.
 
-All we want to do when a user visits the root (`/`) URL is transition to `/rentals`.
-To do this we will add code to our index route handler by implementing a route lifecycle hook,
-called `beforeModel`.
+Tudo o que queremos fazer quando um usuário visita nossa URL (`/`) é redireciona-lo para `/rentals`.
+Para fazer isso, adicionaremos um código ao nosso manipulador de route `index`, implementando um hook de ciclo de vida da route, chamado `beforeModel`.
 
-Each route handler has a set of "lifecycle hooks", which are functions that are invoked at specific times during the loading of a page.
-The [`beforeModel`](http://emberjs.com/api/classes/Ember.Route.html#method_beforeModel)
-hook gets executed before the data gets fetched from the model hook, and before the page is rendered.
-See [the next section](../model-hook) for an explanation of the model hook.
+Cada manipulador de route possui um conjunto de "lifecycle hooks", que são funções invocadas em momentos específicos durante o carregamento de uma página.
+O hook [`beforeModel`](http://emberjs.com/api/classes/Ember.Route.html#method_beforeModel) é executado antes que os dados sejam obtidos pelo hook `model` e antes que a página seja renderizada.
+Veja [a próxima seção](../ model-hook) para obter uma explicação do hook `model`.
 
-In our index route handler, we'll call the [`replaceWith`](http://emberjs.com/api/classes/Ember.Route.html#method_replaceWith) function.
-The `replaceWith` function is similar to the route's `transitionTo` function,
-the difference being that `replaceWith` will replace the current URL in the browser's history,
-while `transitionTo` will add to the history.
-Since we want our `rentals` route to serve as our home page, we will use the `replaceWith` function.
+Em nosso manipulador de route `index`, chamaremos a função [`replaceWith`](http://emberjs.com/api/classes/Ember.Route.html#method_replaceWith).
+A função `replaceWith` é semelhante à função` transitionTo` da rota, sendo a diferença que `replaceWith` substituirá o URL atual no histórico do navegador, enquanto` transitionTo` irá adicionar ao histórico.
+Como queremos que nossa route de "rentals" seja nossa página inicial, usaremos a função `replaceWith`.
 
-In our index route handler, we add the `replaceWith` invocation to `beforeModel`.
+Em nosso manipulador de route `index`, vamos chamar `replaceWith` em `beforeModel`.
 
 ```app/routes/index.js{+4,+5,+6}
 import Ember from 'ember';
