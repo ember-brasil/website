@@ -1,29 +1,24 @@
-For Super Rentals, we want to arrive at a home page which displays a list of rentals.
-From there, we should be able to visit an about page and our contact page.
+No nosso aplicativo Super Rentals, queremos acessar a página inicial e exibir a lista de imóveis para alugar.
+A partir daí, precisamos conseguir visitar uma página sobre a empresa e outra com informações de contato.
 
-## An About Route
+## Página Sobre
 
-Let's start by building our "about" page.
+Vamos começar construíndo nossa página "sobre".
 
-In Ember, when we want to make a new page that can be visited using a URL,
-we need to generate a "route" using Ember CLI. For a quick overview of how
-Ember structures things, see [our diagram on the Core Concepts page](../../getting-started/core-concepts/).
+Em Ember, quando queremos fazer uma nova página, precisamos criar uma `route` usando o Ember CLI. Para uma visão geral rápida de como o Ember estrutura as coisas, veja [nosso diagrama na página de conceitos básicos](../../ começando / core-concepts /).
 
-Let's use Ember's route generator to start our `about` route.
+Vamos usar Ember CLI para criar nossa "route" `about`.
+
 
 ```shell
 ember generate route about
 ```
 
-or for short,
+_**Note**: Running `ember help generate` will list a number of other Ember resources you can create as well ..._
 
-```shell
-ember g route about
-```
+_**Observação**: executando `ember help generate` listará diversos recursos que você pode utilizar, você também pode criar os seus futuramente._
 
-_Note: Running `ember help generate` will list a number of other Ember resources you can create as well ..._
-
-And here's what our generator prints out:
+Após executar o comando, esse será o resultado:
 
 ```shell
 installing route
@@ -35,15 +30,13 @@ installing route-test
   create tests/unit/routes/about-test.js
 ```
 
-An Ember route is built with three parts:
+Uma Ember `route` é construída com três partes:
 
-1. An entry in the Ember router (`/app/router.js`), which maps between our route name and a specific URI
-2. A route handler file, which sets up what should happen when that route is loaded _`(app/routes/about.js)`_
-3. A route template, which is where we display the actual content for the page _`(app/templates/about.hbs)`_
+1. Uma entrada no Ember `Router` (`/app/router.js`), que mapeia nosso o nome da route a uma URL
+2. Um arquivo de manipulador de route, que configura o que deve acontecer quando essa route é carregada _`(app/routes/about.js)`_
+3. Um template da route, onde é exibido o conteúdo da página _`(app/templates/about.hbs)`_
 
-If we open `/app/router.js`, we'll see a new line of code for the **about** route, calling
-`this.route('about')` in the `Router.map` function. That new line of code tells the Ember router
-to run our `/app/routes/about.js` file when a visitor navigates to `/about`.
+Se você abrir `/app/router.js`, verá uma nova linha de código para a route **about**, chamanda `this.route('about')` na função `Router.map`. Essa nova linha de código diz ao roteador Ember para executar o nosso arquivo `/app/routes/about.js` quando um visitante acessa `/about`.
 
 ```app/router.js{+10}
 import Ember from 'ember';
@@ -61,9 +54,7 @@ Router.map(function() {
 export default Router;
 ```
 
-Because we only plan to display static content on our about page, we won't adjust the `/app/routes/about.js`
-route handler file right now. Instead, let's open our `/app/templates/about.hbs` template file and add some info about
-Super Rentals:
+Como a página sobre a empresa vai ter um conteúdo estático, não vamos ajustar o arquivo de manipulador de route `/app/routes/about.js` agora. Em vez disso, vamos abrir nosso arquivo de template `/app/templates/about.hbs` e adicionar algumas informações sobre Super Rentals:
 
 ```app/templates/about.hbs
 <div class="jumbo">
@@ -77,22 +68,22 @@ Super Rentals:
 </div>
 ```
 
-Now run `ember server` (or `ember serve`, or even `ember s` for short) on your command line to start
-the Ember development server and then go to [`http://localhost:4200/about`](http://localhost:4200/about) to
-see our new page in action!
+Agora, execute `ember server` (ou` ember serve`, ou mesmo `ember s` para abreviar) em seu terminal para iniciar o servidor de desenvolvimento Ember e acesse [`http://localhost:4200/about`](http://localhost:4200/about) para ver nossa nova página em ação!
 
-## A Contact Route
+## Página de contato
 
-Now let's create another route with contact details for the company.
-Once again, we'll start by generating a route:
+Agora vamos criar outra route com informações de contato.
+Mais uma vez, começaremos gerando uma route:
+
 
 ```shell
 ember g route contact
 ```
 
-Here again, we add a new `contact` route in `app/router.js` and generate a route handler in `app/routes/contact.js`.
+Mais uma vez, adicionamos uma nova route em `app/router.js` e criamos um manipulador de route em `app/routes/contact.js`.
 
-In the route template `/app/templates/contact.hbs`, let's add our contact details:
+No template da route `/app/templates/contact.hbs`, vamos adicionar informações de contato:
+
 
 ```app/templates/contact.hbs
 <div class="jumbo">
@@ -112,16 +103,14 @@ In the route template `/app/templates/contact.hbs`, let's add our contact detail
 </div>
 ```
 
-Now when we go to [`http://localhost:4200/contact`](http://localhost:4200/contact), we'll see our contact page.
+Agora, quando você acessar [`http://localhost:4200/contact`](http://localhost:4200/contact), será exibido a página de contato.
 
-## Navigating with Links and the {{link-to}} Helper
+## Navegando entre links com Helper {{link-to}}
 
-Moving around our site is a bit of a pain right now, so let's make that easier.
-We'll put a link to the contact page on the about page, and a corresponding link to the about
-page on the contact page.
+Navegar entre os links se tornou uma dor agora, então vamos facilitar isso.
+Vamos colocar um link para a página de contato para a página sobre, e um link correspondente para a página sobre na página de contato.
 
-To do that, we'll use a [`{{link-to}}`](../../templates/links/) helper that Ember provides
-that makes it easy to link between our routes.  Let's adjust our `about.hbs` file:
+Para fazer isso, usaremos um Ember Helper [`{{link-to}}`](../../ templates/links/) que facilita a navegação entre nossas páginas. Vamos ajustar o nosso arquivo `about.hbs`:
 
 ```app/templates/about.hbs{+9,+10,+11}
 <div class="jumbo">
@@ -138,13 +127,12 @@ that makes it easy to link between our routes.  Let's adjust our `about.hbs` fil
 </div>
 ```
 
-In this case, we're telling the `{{link-to}}` helper the name of the route we want to link to: `contact`.
-When we look at our about page at [`http://localhost:4200/about`](http://localhost:4200/about), we now have
-a working link to our contact page:
+Neste caso, estamos dizendo para o Helper `{{link-to}}` que queremos criar um link para a route: `contact`.
+Quando olhamos para a nossa página sobre [`http://localhost:4200/about`](http://localhost:4200/about), agora temos um link funcionando para nossa página de contato:
 
 ![super rentals about page screenshot](../../images/routes-and-templates/ember-super-rentals-about.png)
 
-Now, we'll add our corresponding link to the contact page so we can move back and forth between `about` and `contact`:
+Agora, vamos adicionar um link correspondente à página de contatos, para que possamos navegar entre `about` e` contact`:
 
 ```app/templates/contact.hbs{+15,+16,+17}
 <div class="jumbo">
@@ -167,16 +155,15 @@ Now, we'll add our corresponding link to the contact page so we can move back an
 </div>
 ```
 
-## A Rentals Route
-In addition to our `about` and `contact` pages, we want to show a list of rentals that
-our visitors can look through. So let's add a third route and call it `rentals`:
+## Página de aluguéis
+
+Além das nossas páginas `about` e `contact`, queremos listar os aluguéis que nossos clientes. Então, vamos adicionar uma terceira route e chamá-la de `rentals`:
 
 ```shell
 ember g route rentals
 ```
-
-And then let's update our new template (`/app/templates/rentals.hbs`) with some initial content.
-We'll come back to this page in a bit to add in the actual rental properties.
+E então vamos atualizar nosso novo template (`/app/templates/rentals.hbs`) com algum conteúdo inicial.
+Voltaremos a esta página para adicionar as propriedades reais do aluguéis.
 
 ```app/templates/rentals.hbs
 <div class="jumbo">
@@ -364,4 +351,3 @@ In the screen recording below, we run the tests, deselect "Hide passed tests", a
 revealing the 3 tests we got passing.
 
 ![passing navigation tests](../../images/routes-and-templates/ember-route-tests.gif)
-
