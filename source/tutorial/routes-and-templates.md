@@ -14,8 +14,6 @@ Vamos usar Ember CLI para criar nossa "route" `about`.
 ember generate route about
 ```
 
-_**Note**: Running `ember help generate` will list a number of other Ember resources you can create as well ..._
-
 _**Observação**: executando `ember help generate` listará diversos recursos que você pode utilizar, você também pode criar os seus futuramente._
 
 Após executar o comando, esse será o resultado:
@@ -225,15 +223,15 @@ export default Ember.Route.extend({
 });
 ```
 
-Now visiting the root route at `/` will result in the `/rentals` URL loading.
+Agora, vamos acessar a route `/` e ver que ela vai redirecionar para `/rentals`.
 
-## Adding a Banner with Navigation
+## Criando uma barra de navegação
 
-In addition to adding individual links to each route of our app, we'd like to
-add a common header across the top of our page to display our app's title and its navigation bar.
 
-To show something on every page, we can use the application template (which we edited earlier).
-Let's open it again (`/app/templates/application.hbs`) and replace its contents with the following:
+Queremos agora criar uma barra de navegação que tenha o nome do nosso aplicativo e os links para nossas páginas internas.
+
+Para mostrar a mesma barra em cada página, vamos usar o template `/app/templates/application.hbs`.
+Vamos edita-lo novamente substituindo seu conteúdo por este:
 
 ```app/templates/application.hbs
 <div class="container">
@@ -257,14 +255,12 @@ Let's open it again (`/app/templates/application.hbs`) and replace its contents 
   </div>
 </div>
 ```
+Muito do código acima já conhecemos, mas o `{{outlet}}` dentro de `<div class="body">` é novo.
+O Helper `{{outlet}}` diz para o Ember onde o conteúdo das nossas routes (como `about` ou `contact`) deve ser mostrado.
 
-We've seen most of this before, but the `{{outlet}}` beneath `<div class="body">` is new.
-The `{{outlet}}` helper tells Ember where content for our current route (such as `about`
-or `contact`) should be shown.
+A partir deste ponto, devemos conseguir navegar entre as páginas `about`,` contact`, e `rentals`.
 
-At this point, we should be able to navigate between our `about`, `contact`, and `rentals` pages.
-
-From here you can move on to the [next page](../model-hook/) or dive into testing the new functionality we just added.
+Você pode agora optar seguir na [próxima página](../model-hook/) ou fazer os testes de aceitação das páginas que acabamos de criar.
 
 ## Implementing Acceptance Tests
 
