@@ -262,18 +262,16 @@ A partir deste ponto, devemos conseguir navegar entre as páginas `about`,` cont
 
 Você pode agora optar seguir na [próxima página](../model-hook/) ou fazer os testes de aceitação das páginas que acabamos de criar.
 
-## Implementing Acceptance Tests
+## Implementando testes de aceitação
 
-Now that we have various pages in our application, let's walk through how to build tests for them.
 
-As mentioned earlier on the [Planning the Application page](../acceptance-test/),
-an Ember acceptance test automates interacting with our app in a similar way to a visitor.
+Agora que temos várias páginas em nosso aplicativo, vamos ver como criar testes para elas.
 
-If you open the acceptance test we created (`/tests/acceptance/list-rentals-test.js`), you'll see our
-goals, which include the ability to navigate to an `about` page and a `contact` page. Let's start there.
+Como mencionado anteriormente na página [Planejando seu aplicativo](.../aceitação-teste/), um teste de aceitação do Ember automatiza a interação com o nosso aplicativo simulando uma navegação de um usuário real.
 
-First, we want to test that visiting `/` properly redirects to `/rentals`. We'll use the Ember `visit` helper
-and then make sure our current URL is `/rentals` once the redirect occurs.
+Se você abrir o teste de aceitação que criamos (`/tests/acceptance/list-rentals-test.js`), você verá nossos objetivos, que incluem conseguir acessar as páginas `about` e `contact`. Vamos começar por lá.
+
+Primeiro, queremos testar que ao acessar `/` nosso aplicativo seja redirecionado corretamente para `/rentals`. Usaremos o Helper `visit` do Ember e, em seguida, verificamos se nossa URL atual é `/rentals`.
 
 ```/tests/acceptance/list-rentals-test.js{+2,+3,+4,+5}
 test('should show rentals as the home page', function (assert) {
@@ -284,14 +282,14 @@ test('should show rentals as the home page', function (assert) {
 });
 ```
 
-Now run the tests by typing `ember test --server` in the command line (or `ember t -s` for short).
+Agora, execute os testes digitando `ember test --server` no terminal (ou `ember t -s`).
 
-Instead of 7 failures there should now be 6 (5 acceptance failures and 1 ESLint).
-You can also run our specific test by selecting the entry called "Acceptance | list rentals"
-in the drop down input labeled "Module" on the test UI.
+Em vez de 7 falhas, agora deve ter 6 (5 falhas de aceitação e 1 ESLint).
+Você também pode executar o nosso teste específico, selecionando o teste chamado "Acceptance | list rentals" no campo de seleção "Module" na UI de teste.
 
-You can also toggle "Hide passed tests" to show your passing test case along with the tests that are still
-failing (because we haven't yet built them).
+Você também marcar a opção "Hide passed tests" para mostrar o caso de teste de aprovação, juntamente com os testes que ainda estão falhando (porque ainda não os construímos).
+
+You can also toggle "Hide passed tests" to show your passing test case along with the tests that are still failing (because we haven't yet built them).
 
 ![6_fail](../../images/routes-and-templates/routes-and-templates.gif)
 
