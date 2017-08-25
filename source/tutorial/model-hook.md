@@ -1,4 +1,4 @@
-Agora, vamos adicionar uma lista de aluguéis disponíveis para a página de aluguéis que acabamos de criar.
+Agora, vamos adicionar uma lista de aluguéis disponíveis para a página inicial que acabamos de criar.
 
 Ember mantém os dados para uma página em um objeto chamado `model`.
 Para manter as coisas simples em primeiro lugar, vamos preencher o `model` com informações fixas para construir a listagem de aluguéis.
