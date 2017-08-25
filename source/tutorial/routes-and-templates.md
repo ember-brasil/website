@@ -287,27 +287,26 @@ Agora, execute os testes digitando `ember test --server` no terminal (ou `ember 
 Em vez de 7 falhas, agora deve ter 6 (5 falhas de aceitação e 1 ESLint).
 Você também pode executar o nosso teste específico, selecionando o teste chamado "Acceptance | list rentals" no campo de seleção "Module" na UI de teste.
 
-Você também marcar a opção "Hide passed tests" para mostrar o caso de teste de aprovação, juntamente com os testes que ainda estão falhando (porque ainda não os construímos).
+Você também pode marcar a opção "Hide passed tests" para mostrar os testes aprovados, juntamente com os testes que ainda estão falhando (porque ainda não os construímos).
 
-You can also toggle "Hide passed tests" to show your passing test case along with the tests that are still failing (because we haven't yet built them).
 
 ![6_fail](../../images/routes-and-templates/routes-and-templates.gif)
 
-### Ember's test helpers
+### Helpers de testes do Ember
 
-Ember provides a variety of acceptance test helpers to make common tasks easier,
-such as visiting routes, filling in fields, clicking on links/buttons, and waiting for pages to display.
+Ember fornece uma variedade de helpers de teste de aceitação para tornar as tarefas comuns mais fáceis, como visitar links, preenchendo campos, clicando em links/botões e esperando que as páginas sejam exibidas.
 
-Some of the helpers we'll use commonly are:
+Esses são os helpers que usaremos com mais frequencia:
 
-* [`visit`](http://emberjs.com/api/classes/Ember.Test.html#method_visit) - loads a given URL
-* [`click`](http://emberjs.com/api/classes/Ember.Test.html#method_click) - pretends to be a user clicking on a specific part of the screen
-* [`andThen`](../../testing/acceptance/#toc_wait-helpers) - waits for our previous commands to run before executing our function.
-  In our test below, we want to wait for our page to load after `click` is called so that we can double-check that the new page has loaded
-* [`currentURL`](http://emberjs.com/api/classes/Ember.Test.html#method_currentURL) - returns the URL of the page we're currently on
+* [`visit`](http://emberjs.com/api/classes/Ember.Test.html#method_visit) - visita um link do nosso aplicativo
+* [`click`](http://emberjs.com/api/classes/Ember.Test.html#method_click) - clica em um link/botão simulando um usuário
+* [`andThen`](../../testing/acceptance/#toc_wait-helpers) - espera que nossa página tenha terminando de carregar para fazer as verificações. No nosso teste abaixo, por exemplo, queremos aguardar após um `click` e verificar se a página correta foi carregada
+* [`currentURL`](http://emberjs.com/api/classes/Ember.Test.html#method_currentURL) - retorna a URL atual do nosso aplicativo
 
-### Test visiting our About and Contact pages
-Now let's add code that simulates a visitor arriving on our homepage, clicking one of our links and then visiting a new page.
+### Testar uma visita na página de contatos e sobre
+
+Agora vamos adicionar um código que simula um visitante que chega na nossa página inicial, clicando em um de nossos links e depois visitando uma nova página.
+
 
 ```/tests/acceptance/list-rentals-test.js{+2,+3,+4,+5,+6,+10,+11,+12,+13,+14}
 test('should link to information about the company.', function (assert) {
@@ -326,18 +325,17 @@ test('should link to contact information', function (assert) {
   });
 });
 ```
+Nos testes acima, estamos usando [`assert.equal()`](https://api.qunitjs.com/assert/equal). `assert.equal()` verifica se dois itens (nosso primeiro e segundo argumentos) são iguais. Se não são iguais, nosso teste falhará.
 
-In the tests above, we're using [`assert.equal()`](https://api.qunitjs.com/assert/equal). `assert.equal()` checks
-to see if two items (our first and second arguments) equal each other.  If they don't, our test will fail.
-The third optional argument allows us to provide a nicer message which we'll be shown if this test fails.
+O terceiro argumento opcional nos permite fornecer uma mensagem melhor, que será mostrada quando esse teste falhar.
 
-In our tests, we also call two helpers (`visit` and `click`) one after another. Although Ember does a number
-of things when we make those calls, Ember hides those complexities by giving us these [asynchronous test helpers](../../testing/acceptance/#toc_asynchronous-helpers).
+Nos nossos testes, também chamamos dois helpers (`visit` e `click`) um após o outro. Embora o Ember faça uma série de coisas quando fazemos essas chamadas, o Ember esconde essas complexidades, dando-nos estes [asynchronous test helpers](../../testing/acceptance/#toc_asynchronous-helpers).
 
-If you left `ember test` running, it should have automatically updated to show the three tests related to
-navigating have now passed.
+Se você deixou o `ember test` em execução, ele deve ter atualizado automaticamente para mostrar que os três testes relacionados à navegação já passaram.
 
 In the screen recording below, we run the tests, deselect "Hide passed tests", and set the module to our acceptance test,
 revealing the 3 tests we got passing.
+
+No screenshot abaixo, executamos os testes, desmarque "Hide passed tests" e selecione o module para nosso testes de aceitação, temos agora 3 testes passando e 3 testes falhando.
 
 ![passing navigation tests](../../images/routes-and-templates/ember-route-tests.gif)
