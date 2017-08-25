@@ -99,16 +99,19 @@ A partir da variável `rental` em cada etapa, criamos uma listagem com as inform
 
 Você pode passar para a [próxima página](../install-addons/) para continuar implementando novos recursos ou continuar e implementar os testes de aceitação.
 
-### Acceptance Testing the Rental List
+### Implementando testes de aceitação
 
-To check that rentals are listed with an automated test, we will create a test to visit the index route and check that the results show 3 listings.
+Para verificar se os aluguéis estão listados com um teste de aceitação, criaremos um teste para visitar a página inicial e verificaremos se está mostrando 3 aluguéis.
 
-In `app/templates/rentals.hbs`, we wrapped each rental display in an `article` element, and gave it a class called `listing`.
-We will use the listing class to find out how many rentals are shown on the page.
+Em `app/templates /rentals.hbs`, envolvemos cada exibição de aluguel em um elemento`article`, cada um com uma classe chamada `listing`.
 
-To find the elements that have a class called `listing`, we'll use a test helper called [find](http://emberjs.com/api/classes/Ember.Test.html#method_find).
-The `find` function returns the elements that match the given [CSS selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors).
-In this case it will return an array of all the elements with a class called `listing`.
+Usaremos a classe `listing` para descobrir quantos aluguéis estão sendo mostrado na página.
+
+Para encontrar os elementos que têm uma classe chamada `listing`, usaremos um helper de teste chamado [find](http://emberjs.com/api/classes/Ember.Test.html#method_find).
+
+O helper `find` retorna os elementos que correspondem ao determinado [CSS selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors).
+Nesse caso, retornará uma array com todos os elementos que tenham uma classe chamada `listing`.
+
 
 ```/tests/acceptance/list-rentals-test.js{+2,+3,+4,+5}
 test('should list available rentals.', function (assert) {
@@ -118,10 +121,9 @@ test('should list available rentals.', function (assert) {
   });
 });
 ```
+Execute os testes novamente usando o comando `ember t -s`, e desmarque a opção "Hide passed tests" para mostrar seu novo teste de aprovação.
 
-Run the tests again using the command `ember t -s`, and toggle "Hide passed tests" to show your new passing test.
-
-Now we are listing rentals, and and verifying it with an acceptance test.
-This leaves us with 2 remaining acceptance test failures (and 1 eslint failure):
+Agora, estamos listando os aluguéis e verificando isso com um teste de aceitação.
+Isso nos deixa apenas 2 testes de aceitação com falhas (e 1 falha eslint):
 
 ![list rentals test passing](../../images/model-hook/model-hook.png)
