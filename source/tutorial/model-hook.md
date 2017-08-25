@@ -10,7 +10,7 @@ Essa será nossa página inicial quando terminarmos:
 ![super rentals homepage with rentals list](../../images/model-hook/super-rentals-index-with-list.png)
 
 Em Ember, os manipuladores de routes são responsáveis por carregar o template com os dados na página.
-Carrega os dados em uma função chamada [`model`](http://emberjs.com/api/classes/Ember.Route.html#method_model).
+Ele carrega os dados em uma função chamada [`model`](http://emberjs.com/api/classes/Ember.Route.html#method_model).
 A função `model` atua como **hook**, o que significa que o Ember vai chamá-lo para nós durante diferentes etapas de execução em nosso aplicativo.
 A função `model` que adicionamos ao nosso manipulador de routes `rentals` será chamada quando um usuário visitar a URL `http://localhost:4200` ou `http://localhost:4200/rentals`.
 
