@@ -93,12 +93,11 @@ Este helper nos deixará percorrer todos os items do nosso array de alugueís em
   </article>
 {{/each}}
 ```
+Neste template, fazemos um loop em cada objeto.
+Em cada iteração, o objeto atual é armazenado em uma variável chamada `rental`.
+A partir da variável `rental` em cada etapa, criamos uma listagem com as informações sobre o imovel.
 
-In this template, we loop through each object.
-On each iteration, the current object gets stored in a variable called `rental`.
-From the rental variable in each step, we create a listing with information about the property.
-
-You may move onto the [next page](../installing-addons/) to keep implementing new features, or continue reading on testing the app you've created.
+Você pode passar para a [próxima página](../install-addons/) para continuar implementando novos recursos ou continuar e implementar os testes de aceitação.
 
 ### Acceptance Testing the Rental List
 
