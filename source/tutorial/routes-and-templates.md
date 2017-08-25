@@ -5,7 +5,7 @@ A partir daí, precisamos conseguir visitar uma página sobre a empresa e outra 
 
 Vamos começar construíndo nossa página "sobre".
 
-Em Ember, quando queremos fazer uma nova página, precisamos criar uma `route` usando o Ember CLI. Para uma visão geral rápida de como o Ember estrutura as coisas, veja [nosso diagrama na página de conceitos básicos](../../ começando / core-concepts /).
+Em Ember, quando queremos fazer uma nova página, precisamos criar uma `route` usando o Ember CLI. Para uma visão geral rápida de como o Ember estrutura as coisas, veja [nosso diagrama na página de conceitos básicos](../../começando/core-concepts/).
 
 Vamos usar Ember CLI para criar nossa "route" `about`.
 
