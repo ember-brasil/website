@@ -1,12 +1,11 @@
-Now, let's add a list of available rentals to the rentals page we've just created.
+Agora, vamos adicionar uma lista de aluguéis disponíveis para a página de aluguéis que acabamos de criar.
 
-Ember keeps data for a page in an object called a `model`.
-To keep things simple at first,
-we'll populate the model for our rental listing page to use a hard-coded array of JavaScript objects.
-Later, we'll switch to using [Ember Data](https://github.com/emberjs/data),
-a library for robustly managing data in our app.
+Ember mantém os dados para uma página em um objeto chamado `model`.
+Para manter as coisas simples em primeiro lugar, vamos preencher o `model` com informações fixas para construir a listagem de aluguéis.
 
-Here's what our homepage will look like when we're done:
+Mais tarde vamos voltar e alterar esses dados para usar [Ember Data](https://github.com/emberjs/data), uma biblioteca robusta para manipular os dados em nosso aplicativo.
+
+Essa será nossa página inicial quando terminarmos:
 
 ![super rentals homepage with rentals list](../../images/model-hook/super-rentals-index-with-list.png)
 
