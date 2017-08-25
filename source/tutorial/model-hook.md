@@ -54,16 +54,14 @@ export default Ember.Route.extend({
   }
 });
 ```
+Observe que, aqui, estamos usando a sintaxe de definição do método de abreviaturas ES6: `model()` é o mesmo que escrever `model: function ()`.
 
-Note that here, we are using the ES6 shorthand method definition syntax: `model()` is the same as writing `model: function()`.
+Ember usará o objeto model retornado acima e salvá-lo como um atributo chamado `model`, disponível para o template de aluguel que geramos com nossa route em [Routes and Templates](../routes-and-templates/#toc_a-rentals-route).
 
-Ember will use the model object returned above and save it as an attribute called `model`,
-available to the rentals template we generated with our route in [Routes and Templates](../routes-and-templates/#toc_a-rentals-route).
-
-Now, let's switch over to our rentals page template.
-We can use the model attribute to display our list of rentals.
-Here, we'll use another common Handlebars helper called [`{{each}}`](../../templates/displaying-a-list-of-items/).
-This helper will let us loop through each of the rental objects in our model:
+Agora, vamos alterar nosso template da página de aluguel.
+Podemos usar o atributo do model para exibir nossa lista de aluguel.
+Aqui, usaremos um outro Helper do Handlebars chamado [`{{each}}`](../../templates/displaying-a-list-of-items/).
+Este helper nos deixará percorrer todos os items do nosso array de alugueís em nosso tempate:
 
 ```app/templates/rentals.hbs{+12,+13,+14,+15,+16,+17,+18,+19,+20,+21,+22,+23,+24,+25,+26,+27,+28,+29}
 <div class="jumbo">
