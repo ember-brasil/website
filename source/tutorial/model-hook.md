@@ -9,12 +9,12 @@ Essa será nossa página inicial quando terminarmos:
 
 ![super rentals homepage with rentals list](../../images/model-hook/super-rentals-index-with-list.png)
 
-In Ember, route handlers are responsible for loading the model with data for the page.
-It loads the data in a function called [`model`](http://emberjs.com/api/classes/Ember.Route.html#method_model).
-The `model` function acts as a **hook**, meaning that Ember will call it for us during different times in our app.
-The model function we've added to our `rentals` route handler will be called when a user navigates to the rentals route via root URL `http://localhost:4200`, or via `http://localhost:4200/rentals`.
+Em Ember, os manipuladores de routes são responsáveis por carregar o template com os dados na página.
+Carrega os dados em uma função chamada [`model`](http://emberjs.com/api/classes/Ember.Route.html#method_model).
+A função `model` atua como **hook**, o que significa que o Ember vai chamá-lo para nós durante diferentes etapas de execução em nosso aplicativo.
+A função `model` que adicionamos ao nosso manipulador de routes `rentals` será chamada quando um usuário visitar a URL `http://localhost:4200` ou `http://localhost:4200/rentals`.
 
-Let's open `app/routes/rentals.js` and return an array of rental objects from the `model` function:
+Vamos abrir `app/routes/rentals.js` e retornar uma série de objetos de aluguel na função` model`:
 
 ```app/routes/rentals.js{+4,+5,+6,+7,+8,+9,+10,+11,+12,+13,+14,+15,+16,+17,+18,+19,+20,+21,+22,+23,+24,+25,+26,+27,+28,+29,+30,+31,+32,+33,+34,+35}
 import Ember from 'ember';
