@@ -24,10 +24,7 @@ Execute o seguinte comando para instalar o complemento:
 ```shell
 ember install ember-cli-tutorial-style
 ```
-
-Since Ember addons are npm packages, `ember install` installs them in the `node_modules` directory, and makes an entry
-in `package.json`. Be sure to restart your server after the addon has installed successfully. Restarting the server will
-incorporate the new CSS and refreshing the browser window will give you this:
+Uma vez que os addons do Ember são pacotes npm, `ember install` instala-os no diretório `node_modules` e faz uma entrada em `package.json`. Certifique-se de reiniciar seu servidor após o complemento ter sido instalado com sucesso. Ao reiniciar o servidor será incorporado o novo CSS e ao atualizar a janela do navegador lhe dará isso:
 
 ![super rentals styled homepage](../../images/installing-addons/styled-super-rentals-basic.png)
 
