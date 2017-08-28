@@ -7,18 +7,19 @@ Para nosso aplicativo **Super Rentals**, aproveitaremos dois addons: [ember-cli-
 
 ### ember-cli-tutorial-style
 
-Instead of having you copy/paste in CSS to style Super Rentals, we've created an addon called [ember-cli-tutorial-style](https://github.com/ember-learn/ember-cli-tutorial-style) that instantly adds CSS to the tutorial.
-The addon works by generating a file called `ember-tutorial.css` and putting that file in the super-rentals `vendor` directory.
+Em vez de ter você copiar/colar o CSS para o estilo Super Rentals, criamos um addon chamado [ember-cli-tutorial-style](https://github.com/ember-learn/ember-cli-tutorial-style ) que adiciona instantaneamente CSS ao tutorial.
 
-The [`vendor` directory](../../addons-and-dependencies/managing-dependencies/#toc_other-assets) in Ember is a special directory where you can include content that gets compiled into your application.
-When Ember CLI builds our app from our source code, it copies `ember-tutorial.css` into a file called `vendor.css`.
+O addon funciona gerando um arquivo chamado `ember-tutorial.css` e colocando esse arquivo no diretório super-rentals `vendor`.
 
-As Ember CLI runs, it takes the `ember-tutorial` CSS file and puts it in a file called `vendor.css`.
-The `vendor.css` file is referenced in `app/index.html`, making the styles available at runtime.
+O diretório [`vendor`](.../../ addons-and-dependencies/manage-dependencies/#toc_other-assets) no Ember é um diretório especial onde você pode incluir o conteúdo que é compilado em seu aplicativo.
+Quando o Ember CLI cria nosso aplicativo a partir do nosso código-fonte, ele copia `ember-tutorial.css` em um arquivo chamado `vendor.css`.
 
-We can make additional style tweaks to `vendor/ember-tutorial.css`, and the changes will take effect whenever we restart the app.
+À medida que o Ember CLI é executado, ele leva o arquivo CSS `ember-tutorial` e coloca-o em um arquivo chamado `vendor.css`.
+O arquivo `vendor.css` é referenciado em `app/index.html`, tornando os estilos disponíveis em tempo de execução.
 
-Run the following command to install the addon:
+Podemos fazer ajustes de estilo adicionais para `vendor/ember-tutorial.css`, e as mudanças terão efeito sempre que reiniciarmos o aplicativo.
+
+Execute o seguinte comando para instalar o complemento:
 
 ```shell
 ember install ember-cli-tutorial-style
