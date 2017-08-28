@@ -1,16 +1,14 @@
-As a user looks through our list of rentals, they may want to have some interactive options to help them make a decision.
-Let's add the ability to toggle the size of the image for each rental.
-To do this, we'll use a component.
+À medida que um usuário navega em nossa lista de aluguéis, eles podem querer ter algumas opções interativas para ajudá-los a tomar uma decisão.
+Para fazer isso, usaremos um componente.
 
-Let's generate a `rental-listing` component that will manage the behavior for each of our rentals.
-A dash is required in every component name to avoid conflicting with a possible HTML element,
-so `rental-listing` is acceptable but `rental` isn't.
+Vamos criar um componente de `rental-listing` que gerenciará o comportamento de cada um dos nossos aluguéis.
+É necessário um traço em cada nome do componente para evitar conflitos com um possível elemento HTML, de modo que `rental-listing` é aceitável, mas o `rental` não é.
 
 ```shell
 ember g component rental-listing
 ```
 
-Ember CLI will then generate a handful of files for our component:
+Ember CLI irá então gerar diversos arquivos para o nosso componente:
 
 
 ```shell
@@ -21,13 +19,13 @@ installing component-test
   create tests/integration/components/rental-listing-test.js
 ```
 
-A component consists of two parts:
+Um componente consiste em duas partes:
 
-* A template that defines how it will look (`app/templates/components/rental-listing.hbs`)
-* A JavaScript source file (`app/components/rental-listing.js`) that defines how it will behave.
+* Um arquivo de template que define como ele vai ser ser visualmente (`app/templates/components/rental-listing.hbs`).
+* Um arquivo de JavaScript (`app/components/rental-listing.js`) que define como ele vai se comportar.
 
-Our new `rental-listing` component will manage how a user sees and interacts with a rental.
-To start, let's move the rental display details for a single rental from the `rentals.hbs` template into `rental-listing.hbs` and add the image field:
+Nosso novo componente `rental-listing` gerenciará como um usuário vê e interage com um aluguel.
+Para começar, vamos mover os detalhes de exibição do aluguel para um único de aluguel em `rentals.hbs` para` rental-listing.hbs` e já vamos adicionar a TAG de imagem:
 
 ```app/templates/components/rental-listing.hbs{-1,+2,+3,+4,+5,+6,+7,+8,+9,+10,+11,+12,+13,+14,+15,+16,+17}
 {{yield}}
@@ -49,8 +47,7 @@ To start, let's move the rental display details for a single rental from the `re
 </article>
 ```
 
-Now in our `rentals.hbs` template, let's replace the old HTML markup within our `{{#each}}` loop
-with our new `rental-listing` component:
+Agora, no nosso template `rentals.hbs`, substituamos a marcação HTML antiga do loop `{{#each}}` com nosso novo componente `rental-listing`:
 
 ```app/templates/rentals.hbs{+12,+13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29}
 <div class="jumbo">
