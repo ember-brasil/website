@@ -30,12 +30,12 @@ Uma vez que os addons do Ember são pacotes npm, `ember install` instala-os no d
 
 ### ember-cli-mirage
 
-[Mirage](http://www.ember-cli-mirage.com/) is a client HTTP stubbing library often used for Ember acceptance testing.
-For the case of this tutorial, we'll use mirage as our source of data rather than a traditional backend server.
-Mirage will allow us to create fake data to work with while developing our app and mimic an API.
-The data and endpoints we setup here will come into play later in the tutorial, when we use Ember Data to make server requests.
+[Mirage](http://www.ember-cli-mirage.com/) é uma biblioteca de client HTTP que normalmente é usada para teste de aceitação do Ember.
+Para o caso deste tutorial, usaremos o **mirage** como nossa fonte de dados em vez de um servidor backend tradicional.
+Mirage nos permitirá criar dados falsos para trabalhar com o desenvolvimento de nosso aplicativo e imitar uma API.
+Os dados e os endpoints que configuramos aqui entrarão em jogo mais tarde no tutorial, quando usarmos o Ember Data para fazer solicitações do servidor.
 
-Install the Mirage addon as follows:
+Instale o complemento mirage da seguinte maneira:
 
 ```shell
 ember install ember-cli-mirage
