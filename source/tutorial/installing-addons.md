@@ -1,9 +1,9 @@
-Ember has a rich ecosystem of addons that can be easily added to projects.
-Addons provide a wide range of functionality to projects, often saving time and letting you focus on your project.
+Ember possui um rico ecossistema de addons (plugins) que pode ser facilmente instalados em seus projetos.
+Os addons fornecem uma ampla gama de funcionalidades para projetos, muitas vezes economizando tempo e permitindo que você se concentre em seu projeto.
 
-To browse addons, visit the [Ember Observer](https://emberobserver.com/) website.  It catalogs and categorizes Ember addons that have been published to NPM and assigns them a score based on a variety of criteria.
+Para procurar addons, visite o site [Ember Observer](https://emberobserver.com/). Ele cataloga e categoriza os addons do Ember que foram publicados no NPM e atribui-lhes uma pontuação baseada em uma variedade de critérios.
 
-For Super Rentals, we'll take advantage of two addons: [ember-cli-tutorial-style](https://github.com/toddjordan/ember-cli-tutorial-style) and [ember-cli-mirage](http://www.ember-cli-mirage.com/).
+Para nosso aplicativo **Super Rentals**, aproveitaremos dois addons: [ember-cli-tutorial-style](https://github.com/toddjordan/ember-cli-tutorial-style) e [ember-cli-mirage]( Http://www.ember-cli-mirage.com/).
 
 ### ember-cli-tutorial-style
 
