@@ -11,6 +11,8 @@ script: bundle exec rspec spec && bundle exec middleman build --verbose
 deploy:
   skip_cleanup: true
   provider: pages
+  repo: ember-brasil/ember-brasil.github.io
+  target_branch: master
   github_token: $GITHUB_TOKEN
   local_dir: ./build
   on:
