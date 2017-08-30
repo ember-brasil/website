@@ -11,9 +11,6 @@ The source for the Ember.js Guides.
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Translations
-
-Please see [TRANSLATIONS.md](TRANSLATIONS.md).
 
 ## Project layout
 
