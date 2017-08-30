@@ -61,6 +61,15 @@ configure :build do
 end
 
 ###
+# Deploy
+###
+activate :deploy do |deploy|
+  deploy.method = :git
+  deploy.branch = 'github-page'
+  deploy.build_before = false
+end
+
+###
 # Pages
 ###
 page '404.html', directory_index: false

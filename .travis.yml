@@ -1,10 +1,15 @@
 language: ruby
 sudo: false
 rvm:
-- 1.9.3
+- 2.3.4
 addons:
   apt:
     packages:
     - aspell-pt-br
 cache: bundler
 script: bundle exec rspec spec && bundle exec middleman build --verbose
+deploy:
+  skip_cleanup: true
+  script: bundle exec middleman deploy
+  on:
+    branch: master
