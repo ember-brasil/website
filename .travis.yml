@@ -10,6 +10,6 @@ cache: bundler
 script: bundle exec rspec spec && bundle exec middleman build --verbose
 deploy:
   skip_cleanup: true
-  script: bundle exec rake publish
+  script: bundle exec middleman deploy
   on:
     branch: master
