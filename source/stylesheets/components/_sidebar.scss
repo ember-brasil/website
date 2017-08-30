@@ -1,7 +1,6 @@
 .sidebar {
   padding-top: $small-spacing;
   background-color: $sidebar-background-color;
-  border-bottom: $base-border;
   position: relative;
   z-index: 1;
 
@@ -18,9 +17,5 @@
       background-color: $sidebar-background-color;
       z-index: -1;
     }
-  }
-
-  .select2 {
-    margin-bottom: 1em;
   }
 }

@@ -63,7 +63,6 @@ label[for="toc-toggle"] {
 }
 
 .toc-container {
-  border-top: $base-border;
   overflow: hidden;
   display: none;
 
@@ -78,7 +77,7 @@ label[for="toc-toggle"] {
       display: block !important;
     }
   }
-  
+
   a {
     text-decoration: none;
   }
