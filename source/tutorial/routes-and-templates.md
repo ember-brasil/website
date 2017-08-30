@@ -5,7 +5,7 @@ A partir daí, precisamos conseguir visitar uma página sobre a empresa e outra 
 
 Vamos começar construíndo nossa página "sobre".
 
-Em Ember, quando queremos fazer uma nova página, precisamos criar uma `route` usando o Ember CLI. Para uma visão geral rápida de como o Ember estrutura as coisas, veja [nosso diagrama na página de conceitos básicos](../../começando/core-concepts/).
+Em Ember, quando queremos fazer uma nova página, precisamos criar uma `route` usando o Ember CLI. Para uma visão geral rápida de como o Ember estrutura as coisas, veja [nosso diagrama na página de conceitos básicos](../../getting-started/core-concepts/).
 
 Vamos usar Ember CLI para criar nossa "route" `about`.
 
@@ -108,7 +108,7 @@ Agora, quando você acessar [`http://localhost:4200/contact`](http://localhost:4
 Navegar entre os links se tornou uma dor agora, então vamos facilitar isso.
 Vamos colocar um link para a página de contato para a página sobre, e um link correspondente para a página sobre na página de contato.
 
-Para fazer isso, usaremos um Ember Helper [`{{link-to}}`](../../ templates/links/) que facilita a navegação entre nossas páginas. Vamos ajustar o nosso arquivo `about.hbs`:
+Para fazer isso, usaremos um Ember Helper [`{{link-to}}`](../../templates/links/) que facilita a navegação entre nossas páginas. Vamos ajustar o nosso arquivo `about.hbs`:
 
 ```app/templates/about.hbs{+9,+10,+11}
 <div class="jumbo">
@@ -198,14 +198,14 @@ installing route-test
 
 Ao contrário dos outros manipuladores de routes que fizemos até agora, a route `index` é especial:
 **NÃO** requer uma entrada no mapeamento do roteador.
-Vamos aprender mais sobre por que a entrada não é necessária mais tarde quando olharmos para [nested routes](../ subroutes) do Ember.
+Vamos aprender mais sobre por que a entrada não é necessária mais tarde quando olharmos para [nested routes](../subroutes) do Ember.
 
 Tudo o que queremos fazer quando um usuário visita nossa URL (`/`) é redireciona-lo para `/rentals`.
 Para fazer isso, adicionaremos um código ao nosso manipulador de route `index`, implementando um hook de ciclo de vida da route, chamado `beforeModel`.
 
 Cada manipulador de route possui um conjunto de "lifecycle hooks", que são funções invocadas em momentos específicos durante o carregamento de uma página.
 O hook [`beforeModel`](http://emberjs.com/api/classes/Ember.Route.html#method_beforeModel) é executado antes que os dados sejam obtidos pelo hook `model` e antes que a página seja renderizada.
-Veja [a próxima seção](../ model-hook) para obter uma explicação do hook `model`.
+Veja [a próxima seção](../model-hook) para obter uma explicação do hook `model`.
 
 Em nosso manipulador de route `index`, chamaremos a função [`replaceWith`](http://emberjs.com/api/classes/Ember.Route.html#method_replaceWith).
 A função `replaceWith` é semelhante à função` transitionTo` da rota, sendo a diferença que `replaceWith` substituirá o URL atual no histórico do navegador, enquanto` transitionTo` irá adicionar ao histórico.
@@ -267,7 +267,7 @@ Você pode agora optar seguir na [próxima página](../model-hook/) ou fazer os 
 
 Agora que temos várias páginas em nosso aplicativo, vamos ver como criar testes para elas.
 
-Como mencionado anteriormente na página [Planejando seu aplicativo](.../aceitação-teste/), um teste de aceitação do Ember automatiza a interação com o nosso aplicativo simulando uma navegação de um usuário real.
+Como mencionado anteriormente na página [Planejando seu aplicativo](../acceptance-test/), um teste de aceitação do Ember automatiza a interação com o nosso aplicativo simulando uma navegação de um usuário real.
 
 Se você abrir o teste de aceitação que criamos (`/tests/acceptance/list-rentals-test.js`), você verá nossos objetivos, que incluem conseguir acessar as páginas `about` e `contact`. Vamos começar por lá.
 

@@ -11,7 +11,7 @@ Em vez de ter você copiar/colar o CSS para o estilo Super Rentals, criamos um a
 
 O addon funciona gerando um arquivo chamado `ember-tutorial.css` e colocando esse arquivo no diretório super-rentals `vendor`.
 
-O diretório [`vendor`](.../../ addons-and-dependencies/manage-dependencies/#toc_other-assets) no Ember é um diretório especial onde você pode incluir o conteúdo que é compilado em seu aplicativo.
+O diretório [`vendor`](../../addons-and-dependencies/managing-dependencies/#toc_other-assets) no Ember é um diretório especial onde você pode incluir o conteúdo que é compilado em seu aplicativo.
 Quando o Ember CLI cria nosso aplicativo a partir do nosso código-fonte, ele copia `ember-tutorial.css` em um arquivo chamado `vendor.css`.
 
 À medida que o Ember CLI é executado, ele leva o arquivo CSS `ember-tutorial` e coloca-o em um arquivo chamado `vendor.css`.
@@ -92,14 +92,14 @@ export default function() {
 
   /*
     Config (with defaults).
-    
+
     Note: these only affect routes defined *after* them!
   */
-  
+
   // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
   // this.namespace = '';    // make this `/api`, for example, if your API is namespaced
   // this.timing = 400;      // delay for each request, automatically set to 0 during testing
-  
+
   /*
     Shorthand cheatsheet:
 
@@ -108,7 +108,7 @@ export default function() {
     this.get('/posts/:id');
     this.put('/posts/:id'); // or this.patch
     this.del('/posts/:id');
-    
+
     http://www.ember-cli-mirage.com/docs/v0.3.x/shorthands/
   */
 }
@@ -122,7 +122,7 @@ Sem essa mudança, a navegação na URL `/rentals` em nosso aplicativo entraria 
 
 Para que isso funcione, precisamos que nosso aplicativo faça as requisições para o namespace `/api`.
 Para fazer isso, precisamos criar um `adapter` no nosso aplicativo.
-Um [Adapter](../../models/customizing-adaptadores) é um objeto do [Ember Data](../../models) usado para determinar como nos comunicamos com nosso backend.
+Um [Adapter](../../models/customizing-adapters) é um objeto do [Ember Data](../../models) usado para determinar como nos comunicamos com nosso backend.
 Vamos abordar o Ember Data mais detalhadamente mais adiante neste tutorial.
 Por enquanto, vamos criar um adapter para nosso aplicativo:
 
@@ -142,4 +142,3 @@ export default DS.JSONAPIAdapter.extend({
 Se você estiver executando `ember serve` em outro terminal, reinicie o servidor para incluir mirage em sua compilação.
 
 Note que neste ponto do tutorial, os dados ainda são fornecidos pelo arquivo `app/routes/rentals.js`. Usaremos os dados do Mirage que configuramos aqui na próxima seção chamada [Using Ember Data](../ember-data/).
-

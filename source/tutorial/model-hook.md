@@ -56,7 +56,7 @@ export default Ember.Route.extend({
 ```
 Observe que, aqui, estamos usando a sintaxe de definição do método de abreviaturas ES6: `model()` é o mesmo que escrever `model: function ()`.
 
-Ember usará o objeto model retornado acima e salvá-lo como um atributo chamado `model`, disponível para o template de aluguel que geramos com nossa route em [Routes and Templates](../routes-and-templates/#toc_a-rentals-route).
+Ember usará o objeto model retornado acima e salvá-lo como um atributo chamado `model`, disponível para o template de aluguel que geramos com nossa route em [Routes and Templates](../routes-and-templates/#toc_p-gina-de-alugu-is).
 
 Agora, vamos alterar nosso template da página de aluguel.
 Podemos usar o atributo do model para exibir nossa lista de aluguel.
@@ -97,7 +97,7 @@ Neste template, fazemos um loop em cada objeto.
 Em cada iteração, o objeto atual é armazenado em uma variável chamada `rental`.
 A partir da variável `rental` em cada etapa, criamos uma listagem com as informações sobre o imovel.
 
-Você pode passar para a [próxima página](../install-addons/) para continuar implementando novos recursos ou continuar e implementar os testes de aceitação.
+Você pode passar para a [próxima página](../installing-addons/) para continuar implementando novos recursos ou continuar e implementar os testes de aceitação.
 
 ### Implementando testes de aceitação
 
