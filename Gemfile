@@ -19,7 +19,6 @@ gem "middleman-toc", :git => "https://github.com/ember-learn/middleman-toc", :br
 gem "normalize-scss"
 gem "bourbon"
 gem "neat"
-gem 'middleman-deploy'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-js-md5"
