@@ -13,15 +13,6 @@ GIT
     middleman-toc (0.1.0)
       middleman-core (~> 3.0)
 
-GIT
-  remote: https://github.com/mwils/middleman-spellcheck.git
-  revision: 9edeaa3d7ef793f2eded94eacd3fb48d3b64a3de
-  branch: class
-  specs:
-    middleman-spellcheck (0.8.0)
-      middleman-core (~> 3.2)
-      nokogiri
-
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -118,6 +109,9 @@ GEM
       rack (>= 1.4.5, < 2.0)
       thor (>= 0.15.2, < 2.0)
       tilt (~> 1.4.1, < 2.0)
+    middleman-spellcheck (0.9.2)
+      middleman-core (~> 3.2)
+      nokogiri
     middleman-sprockets (3.4.2)
       middleman-core (>= 3.3)
       sprockets (~> 2.12.1)
@@ -226,7 +220,7 @@ DEPENDENCIES
   listen
   middleman (~> 3.0)
   middleman-alias
-  middleman-spellcheck!
+  middleman-spellcheck
   middleman-toc!
   neat
   normalize-scss
@@ -244,4 +238,4 @@ DEPENDENCIES
   wdm (>= 0.1.0)
 
 BUNDLED WITH
-   1.15.1
+   1.15.3
