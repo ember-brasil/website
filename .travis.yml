@@ -8,3 +8,8 @@ addons:
     - aspell-pt-br
 cache: bundler
 script: bundle exec rspec spec && bundle exec middleman build --verbose
+deploy:
+  skip_cleanup: true
+  script: bundle exec rake publish
+  on:
+    branch: master

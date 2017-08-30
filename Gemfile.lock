@@ -109,6 +109,8 @@ GEM
       rack (>= 1.4.5, < 2.0)
       thor (>= 0.15.2, < 2.0)
       tilt (~> 1.4.1, < 2.0)
+    middleman-gh-pages (0.3.1)
+      rake (> 0.9.3)
     middleman-spellcheck (0.9.2)
       middleman-core (~> 3.2)
       nokogiri
@@ -220,6 +222,7 @@ DEPENDENCIES
   listen
   middleman (~> 3.0)
   middleman-alias
+  middleman-gh-pages
   middleman-spellcheck
   middleman-toc!
   neat
