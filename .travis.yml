@@ -10,7 +10,8 @@ cache: bundler
 script: bundle exec rspec spec && bundle exec middleman build --verbose
 deploy:
   skip_cleanup: true
-  provider: script
-  script: bundle exec middleman deploy
+  provider: pages
+  github_token: $GITHUB_TOKEN
+  local_dir: ./build
   on:
     branch: master
