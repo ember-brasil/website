@@ -66,7 +66,7 @@ end
 activate :deploy do |deploy|
   deploy.method = :git
   deploy.branch = 'github-page'
-  deploy.build_before = true
+  deploy.build_before = false
 end
 
 ###
