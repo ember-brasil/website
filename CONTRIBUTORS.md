@@ -1,5 +1,5 @@
 # Contribuições :wolf: :zap:
-[![All Contributors](https://img.shields.io/badge/all_contributors-26-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 > Quer ver seu nome aqui também? [Junte-se a nós](CONTRIBUTING.md)!
 
@@ -23,8 +23,6 @@
 * Evangelismo do Projeto (talks)
 -->
 
-<!-- Contributors START
 Aurélio Saraiva https://github.com/aureliosaraiva :loudspeaker: :eyes:
 
-Contributors END -->
 
