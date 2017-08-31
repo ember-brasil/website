@@ -1,75 +1,31 @@
-## Projeto não oficial do Ember
+[![Build Status](https://travis-ci.org/ember-brasil/ember-guides.svg?branch=master)](https://travis-ci.org/ember-brasil/ember-guides)
 
-## Ember Guides Source
+## Projeto de tradução da documentação do Ember
+> Projeto não oficial
 
-[![Build Status](https://travis-ci.org/ember-brasil/ember-guides.svg?branch=master)](https://travis-ci.org/emberjs/guides)
+Quer falar sobre o projeto? Estamos no Telegram. [Aqui](https://t.me/EmberBR).
+<hr>
 
-The source for the Ember.js Guides.
+> Esta é uma tradução em Português do [Ember Guides](http://guides.emberjs.com). 
 
-## Contributing
+## Fique por dentro
 
-Please see [CONTRIBUTING.md](CONTRIBUTING.md).
+A corrente tradução é iniciada por [Aurélio Saraiva](http://github.com/aureliosaraiva). A tradução é em caráter voluntário e tem como único objetivo disponibilizar à comunidade o conteúdo em português.
+
+> Você concorda que:
+
+* Ao contribuir com as traduções, você estará de acordo com a divulgação livre do conteúdo traduzido por você no GitHub. 
+* O conteúdo __não__ pode ser disponibilizado fora deste ambiente sob qualquer forma, incluíndo sua venda/redistribuição.
+* Todos os direitos são reservados ao Comunidade Ember.
+
+## Entendi! Quero contribuir com a tradução, como eu faço?
+
+Se você sabe inglês ou leu alguma parte já traduzida e achou algum erro, nós queremos nos juntar a você!
+
+* [Aqui um guia incrível de como você pode nos ajudar](CONTRIBUTING.md)
+* [Dúvidas com o projeto? Estamos no Telegram](https://t.me/EmberBR)
+
+> "Comece de onde você está. Use o que você tiver. Faça o que você puder" – Arthur Ashe
 
 
-## Project layout
-
-The Guides' content is in the `source` folder. The left nav bar is produced from
-`data/pages.yml`. `lib` contains Middleman plugins, and `spec` contains tests
-for those plugins.
-
-## Dependencies
-
-The Guides are built with Middleman, which runs on Ruby 1.9.3 or newer
-(2.0.0 recommended).
-
-Mac users should install Ruby using rbenv to avoid changing their OS dependencies:
-
-```
-brew install rbenv
-```
-
-Follow the [rbenv installation instructions](https://github.com/rbenv/rbenv) to install the Ruby version specified [here](.ruby-version), then go through the init steps, set a global version, and restart the terminal. If `gem env home` shows rbenv in the path, your installation was successful. You should not have to sudo install any gems.
-
-Once you have installed Ruby, you will need bundler and Middleman:
-
-```
-gem install bundler middleman
-```
-
-During build, Middleman will require Aspell to look for misspellings. On Macs, it can be installed via Homebrew:
-
-``` sh
-brew install aspell --with-lang-en
-```
-
-On Windows, you can download an [installer](http://aspell.net/win32/), but unfortunately it is unmaintained. On Linux, you can install with your distribution's package manager. On all platforms, you can also [build the most recent version from source](http://aspell.net/man-html/Installing.html).
-
-Some Mac users may also need to install openSSL, which will be indicated in an error during the bundle command. See [Troubleshooting.md](TROUBLESHOOTING.md).
-
-## Developing with the Guides
-
-To get started:
-
-``` sh
-git clone git://github.com/emberjs/guides.git
-cd guides
-bundle
-bundle exec middleman
-```
-
-Then visit [http://localhost:4567/](http://localhost:4567/).
-
-If you run into problems, check [Troubleshooting.md](TROUBLESHOOTING.md).
-
-### Spellchecking
-
-If you have a false hit during spellchecking, you can add the word to `/data/spelling-exceptions.txt`.
-Words are line separated and case insensitive.
-
-# Maintainers
-
-See [MAINTAINERS.md](MAINTAINERS.md).
-
-# Releasing
-
-See https://github.com/emberjs/guides.emberjs.com.
+See https://github.com/ember-brasil/ember-brasil.github.io.
