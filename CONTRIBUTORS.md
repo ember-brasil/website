@@ -23,6 +23,6 @@
 * Evangelismo do Projeto (talks)
 -->
 
-Aurélio Saraiva https://github.com/aureliosaraiva :loudspeaker: :eyes:
+Aurélio Saraiva https://github.com/aureliosaraiva
 
 
