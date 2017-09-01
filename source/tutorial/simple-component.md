@@ -180,19 +180,18 @@ Quando clicamos novamente na imagem ampliada, ela volta ao normal.
 
 Agora você pode avançar para [próxima página](../hbs-helper/) para o próximo recurso ou continuar aqui para testar o que você acabou de fazer.
 
-### An Integration Test
+### Teste de integração
 
-Ember components are commonly tested with [component integration tests](../../testing/testing-components/).
-Component integration tests verify the behavior of a component within the context of Ember's rendering engine.
-When running in an integration test, the component goes through its regular [render lifecycle](../../components/the-component-lifecycle/),
-and has access to dependent objects, loaded through Ember's resolver.
+Os componentes no Ember são comumente testados com [component integration tests](../../testing/testing-components/).
+Os testes de integração de componentes verificam o comportamento de um componente no contexto de renderização no Ember.
+Quando executado em um teste de integração, o componente passa pelo [render lifecycle](../../components/the-component-lifecycle/) que tem acesso a objetos dependentes, carregados através do resolvedor do Ember.
 
-Our component integration test will test two different behaviors:
+Nosso teste de integração de componentes testará dois comportamentos diferentes:
 
-* The component should show details about the rental
-* The component should toggle the existence of a wide class on click, to expand and shrink the photo of the rental.
+* O componente deve mostrar detalhes sobre o aluguel
+* O componente deve alternar a existência de uma classe `wide` e clicar, para expandir e diminuir a imagem do aluguel. 
 
-Let's update the default test to contain the scenarios we want to verify:
+Vamos atualizar o teste padrão para conter os cenários que queremos verificar:
 
 ```tests/integration/components/rental-listing-test.js{+3,+9,+10,+11,+12,+13,+14,+15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33}
 import { moduleForComponent, test } from 'ember-qunit';
