@@ -81,20 +81,19 @@ Agora, no nosso template `rentals.hbs`, substituamos a marcação HTML antiga do
   </article>
 {{/each}}
 ```
-Here we invoke the `rental-listing` component by name, and assign each `rentalUnit` as the `rental` attribute of the component.
+Aqui, invocamos o componente `rental-listing` e atribuímos cada `rentalUnit` como o um atributo `rental` do componente.
 
-Our app should behave now as before, with the addition of an image for each rental item.
+Nosso aplicativo deve se comportar agora como antes, com a adição de uma imagem para cada item de aluguel.
 
 ![App with component and images](../../images/simple-component/app-with-images.png)
 
-## Hiding and Showing an Image
+## Escondendo e mostrando a imagem
 
-Now we can add functionality that will show the image of a rental when requested by the user.
+Agora, podemos adicionar funcionalidades que msotra a imagem de um aluguel quando solicitado pelo usuário.
 
-Let's use the `{{if}}` helper to show our current rental image larger only when `isWide` is set to true, by setting the element class name to `wide`.
-We'll also add some text to indicate that the image can be clicked on,
-and wrap both with an anchor element,
-giving it the `image` class name so that our test can find it.
+Vamos usar o helper `{{if}}` para mostrar nossa imagem de aluguel atual maior somente quando `isWide` estiver definido como verdadeiro, definindo o nome da classe do elemento para` wide`.
+Também adicionaremos algum texto para indicar que a imagem pode ser clicada, e envolver os dois com um elemento de anchor, dando-lhe o nome da classe `image` para que nosso teste possa encontrá-lo.
+
 
 ```app/templates/components/rental-listing.hbs{+2,+4,+5}
 <article class="listing">
@@ -117,9 +116,8 @@ giving it the `image` class name so that our test can find it.
   </div>
 </article>
 ```
-
-The value of `isWide` comes from our component's JavaScript file, in this case `rental-listing.js`.
-Since we want the image to be smaller at first, we will set the property to start as `false`:
+O valor de `isWide` vem do arquivo JavaScript do nosso componente, neste caso `rental-listing.js`.
+Como queremos que a imagem seja menor no início, definiremos a propriedade para começar como `false`:
 
 ```app/components/rental-listing.js{+4}
 import Ember from 'ember';
@@ -129,8 +127,8 @@ export default Ember.Component.extend({
 });
 ```
 
-To allow the user to widen the image, we will need to add an action that toggles the value of `isWide`.
-Let's call this action `toggleImageSize`
+Para permitir que o usuário aumente a imagem, precisamos adicionar uma ação que altere o valor de `isWide`.
+Vamos chamar essa ação `toggleImageSize`.
 
 ```app/templates/components/rental-listing.hbs{-2,+3}
 <article class="listing">
@@ -154,14 +152,13 @@ Let's call this action `toggleImageSize`
   </div>
 </article>
 ```
+Ao clicar no elemento anchor, a ação será enviada para o componente.
+Ember entrará no hash `actions` e chamará a função `toggleImageSize`.
 
-Clicking the anchor element will send the action to the component.
-Ember will then go into the `actions` hash and call the `toggleImageSize` function.
+Uma [actions hash](../../templates/actions/) é um objeto de componente que contém funções.
+Essas funções são chamadas quando o usuário interage com a interface do usuário, como clicar.
 
-An [actions hash](../../templates/actions/) is an object in the component that contains functions.
-These functions are called when the user interacts with the UI, such as clicking.
-
-Let's create the `toggleImageSize` function and toggle the `isWide` property on our component:
+Vamos criar a função `toggleImageSize` e alternar a propriedade `isWide` em nosso componente:
 
 ```app/components/rental-listing.js{-4,+5,+6,+7,+8,+9,+10}
 import Ember from 'ember';
