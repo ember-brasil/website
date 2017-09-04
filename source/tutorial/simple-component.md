@@ -228,13 +228,11 @@ test('it renders', function(assert) {
   assert.equal(this.$().text().trim(), 'template block text');
 });
 ```
-Para o teste, passamos o componente de um objeto falso que possui todas as propriedades que nosso modelo de aluguel tem.
-Daremos à variável o nome `rental`, e em cada teste definiremos` rental` para o nosso escopo local, representado pelo objeto `this`.
-O modelo de renderização pode acessar valores no escopo local.
 
-For the test we'll pass the component a fake object that has all the properties that our rental model has.
-We'll give the variable the name `rental`, and in each test we'll set `rental` to our local scope, represented by the `this` object.
-The render template can access values in local scope.
+Para fazer o teste, passamos para o componente de um objeto falso que possui todas as propriedades que nosso `model` de aluguel tem.
+Daremos à variável o nome `rental`, e em cada teste definiremos `rental` para o nosso escopo local, representado pelo objeto `this`.
+Podemos acessar informações através do escopo local `this`.
+
 
 ```tests/integration/components/rental-listing-test.js{+5,+6,+7,+8,+9,+10,+11,+12,+19,+23}
 import { moduleForComponent, test } from 'ember-qunit';
@@ -263,12 +261,8 @@ test('should toggle wide class on click', function(assert) {
 });
 ```
 Agora vamos renderizar nosso componente usando a função `render`.
-A função `render` nos permite passar uma string de modelo, para que possamos declarar o componente da mesma maneira que fazemos em nossos modelos.
-Como estabelecemos a variável `rentalObj` para o nosso escopo local, podemos acessá-lo como parte de nossa cadeia de renderização.
-
-Now let's render our component using the `render` function.
-The `render` function allows us to pass a template string, so that we can declare the component in the same way we do in our templates.
-Since we set the `rentalObj` variable to our local scope, we can access it as part of our render string.
+A função `render` nos permite passar uma string como template, para que possamos declarar o componente da mesma maneira que fazemos em nossos templates.
+Como estabelecemos a variável `rentalObj` para o nosso escopo local, podemos acessá-la como parte de nossa renderização.
 
 ```tests/integration/components/rental-listing-test.js{+20,+25}
 import { moduleForComponent, test } from 'ember-qunit';
@@ -298,13 +292,9 @@ test('should toggle wide class on click', function(assert) {
   this.render(hbs`{{rental-listing rental=rentalObj}}`);
 });
 ```
-Finalmente, vamos adicionar nossas ações e afirmações.
+Finalmente, vamos adicionar nossas ações e `asserts`.
 
-No primeiro teste, queremos verificar o resultado do componente, então apenas afirmamos que o título e o texto do proprietário combinam o que fornecemos no "aluguel" falso.
-
-Finally, let's add our actions and assertions.
-
-In the first test, we just want to verify the output of the component, so we just assert that the title and owner text match what we provided in the fake `rental`.
+No primeiro teste, queremos verificar o resultado do componente, então vamos verificar se o título e o nome do proprietário são iguais ao do objetivo `rental` fake.
 
 ```tests/integration/components/rental-listing-test.js{+4,+5}
 test('should display rental details', function(assert) {
@@ -314,15 +304,10 @@ test('should display rental details', function(assert) {
   assert.equal(this.$('.listing .owner').text().trim(), 'Owner: test-owner', 'Owner: test-owner');
 });
 ```
-No segundo teste, verificamos que clicar na imagem alterna o tamanho.
-Afirmaremos que o componente é inicializado sem o nome da classe `wide`.
-Clicando na imagem, adicionará a classe `wide` ao nosso elemento, e clicando nela uma segunda vez levará a classe` wide`.
-Observe que encontramos o elemento da imagem usando o seletor Cs '.image`.
-
-In the second test, we verify that clicking on the image toggles the size.
-We will assert that the component is initially rendered without the `wide` class name.
-Clicking the image will add the class `wide` to our element, and clicking it a second time will take the `wide` class away.
-Note that we find the image element using the CSS selector `.image`.
+No segundo teste, verificamos que ao clicar na imagem mostra uma imagem ampliada.
+Vamos verificar que o componente é inicializado sem o nome da classe `wide`.
+Clicando na imagem, deve adicionar a classe `wide` ao nosso elemento, e clicando nela pela segunda vez deve remover a classe `wide`.
+Observe que encontraremos o elemento da imagem usando o seletor CSS `.image`.
 
 ```tests/integration/components/rental-listing-test.js{+4,+5,+6,+7,+8}
 test('should toggle wide class on click', function(assert) {
@@ -336,8 +321,6 @@ test('should toggle wide class on click', function(assert) {
 });
 ```
 O teste final deve ser o seguinte:
-
-The final test should look as follows:
 
 ```tests/integration/components/rental-listing-test.js
 import { moduleForComponent, test } from 'ember-qunit';
@@ -374,10 +357,8 @@ test('should toggle wide class on click', function(assert) {
   assert.equal(this.$('.image.wide').length, 0, 'rendered small after second click');
 });
 ```
-Execute `ember t -s` para verificar se o nosso novo teste está passando.
-Para encontrar o novo teste, localize "Integração | Componente | listagem de aluguel" no campo "Módulo" da UI do teste.
 
-Run `ember t -s` to verify that our new test is passing.
-To find the new test, locate "Integration | Component | rental listing" in the "Module" field of the test UI.
+Execute `ember t -s` para verificar se o nosso novo teste está passando.
+Para encontrar o novo teste, localize "Integração | Componente | listagem de aluguel" no campo "Module" da UI do teste.
 
 ![simple_component_test](../../images/simple-component/simple-component-test.gif)
