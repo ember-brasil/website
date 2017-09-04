@@ -5,15 +5,15 @@
     - title: "Ember.js Guides"
       url: ""
 
-- title: "Getting Started"
-  url: 'getting-started'
+- title: "Começando"
+  url: 'comecando'
   pages:
-    - title: "Quick Start"
-      url: "quick-start"
-    - title: "Installing Ember"
+    - title: "Começo rápido"
+      url: "comeco-rapido"
+    - title: "Instalando Ember"
       url: "index"
-    - title: "Core Concepts"
-      url: "core-concepts"
+    - title: "Conceitos fundamentais"
+      url: "conceitos-fundamentais"
 
 - title: "Tutorial"
   url: 'tutorial'
