@@ -28,7 +28,7 @@ Para manter a tradução com o mesmo padrão elevado do original, precisamos de:
 8. Ao terminar sua parte da tradução, faça um `Pull Request`.
 9. Feito o `merge`, seu nome constará [nessa lista](CONTRIBUTORS.md) e seu trabalho estará contribuindo diretamente para nossa briosa comunidade. :star2: 
 
-**Obs**: Caso você seja iniciante e não está 100% confiante ainda, você pode olhar para as Issue que tem a tag **Bom para começar**, são issue mais simples que pode ajuda-lo a se familiarizar.
+**Obs**: Caso você seja iniciante e não está 100% confiante ainda, você pode olhar para as Issue que tem a tag **[Bom para começar](https://github.com/ember-brasil/website/issues?q=is%3Aopen+is%3Aissue+label%3A%22Bom+pra+come%C3%A7ar%22)**, são issue mais simples que pode ajuda-lo a se familiarizar.
 
 Obrigado por nos ajudar!
 
