@@ -1,19 +1,19 @@
 language: ruby
 sudo: false
 rvm:
-- 1.9.3
+- 2.3.4
 addons:
   apt:
     packages:
-    - aspell-en
+    - aspell-pt-br
 cache: bundler
 script: bundle exec rspec spec && bundle exec middleman build --verbose
 deploy:
   skip_cleanup: true
-  provider: script
-  script: ".travis/continuous-delivery.sh"
+  provider: pages
+  repo: ember-brasil/ember-brasil.github.io
+  target_branch: master
+  github_token: $GITHUB_TOKEN
+  local_dir: ./build
   on:
     branch: master
-env:
-  global:
-    secure: KVhVKajiNcZiuc3QOLBhyVD/nk4+TRVXIJpJ/eBL8kbEIhSb+rxDUij9T7+R5YVAW8L8pyq7vx6jXnKK/B9s+YOyD7XtgRHz50va+stgrVbsA6sdqpuuqWFm03KN54JnhpiZ4dRFtd4nI4I/awaVJyk+EkNNfAFdR4BEdV0eL1o=

@@ -12,9 +12,15 @@
       display: flex;
     }
   }
-  
+
   a {
     text-decoration: none;
+  }
+
+  .info {
+    text-align: center;
+    font-size: 12px;
+    width: 100%;
   }
 
   .footer-info {

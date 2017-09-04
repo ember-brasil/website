@@ -1,63 +1,33 @@
-# Contributing
+# Como contribuir
 
-The Ember Guides are maintained and updated by an all-volunteer group of Ember community members. We'd love to have you join our efforts! Here are a few ways you can help:
+Primeiro, **obrigado por querer contribuir com a tradução**. Seguindo os passos abaixo você, não só aumentará seu conhecimento sobre JavaScript, como ajudará com um conteúdo incrível para nossa comunidade. 
 
-* _Fixing problems_: If you find a problem on a particular page in the Guides, the most helpful thing you can do is open a pull request. If you're not sure how to fix it, open an issue.
-* _Contributing solicited content_: We try to make it easy for people to contribute to the Guides by tagging issues with [help wanted](https://github.com/emberjs/guides/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) when appropriate. The best way to get started contributing content is to pick up one of these issues.
-* _Contributing unsolicited content_: If you'd like to contribute content that you think is missing, please start by checking the issues page. There may already be a plan to add this content! If not, open an issue yourself so that you can get feedback before you start writing. Our core contributors may ask you to start off by writing a blog post on your topic instead of or before opening a pull request on the Guides. This helps us keep the Guides consistent and streamlined.
-* _Writing infrastructure code_: You can also help out with the Guides by improving the code for the app that is used to build the content. Issues related to writing infrastructure code have the label [infrastructure](https://github.com/emberjs/guides/issues?q=is%3Aopen+is%3Aissue+label%3A%22infrastructure%22).
+## Vantagens de contribuir com a tradução
 
-Please note that no attempt is made to update content, layout, or styles for older versions of the Guides. They are considered static and immutable, as it is too difficult to maintain content for every version ever released. Issues will only be fixed for future releases.
+* Ter seu nome junto da lista de contribuidores (**Vamos criar isso no site ainda**). :sparkles:
+* Aumentar sua frequência no _Contribution activity_ (**_Os recrutadores_ curtiram isso** :thumbsup:). 
+* Devolver à comunidade todo conhecimento que você adquiriu até aqui e contribuir com o _Open Source_. :two_hearts:
 
-## Style Guide
+## Do que precisamos
 
-Before you open a PR with anything but a minor fix, please familiarize yourself with this style guide so that we can ensure a high quality, consistent style of writing throughout the documentation.
+Para manter a tradução com o mesmo padrão elevado do original, precisamos de:
 
-- The **Guides** refers to the entire Ember Guides project. Here, _Guides_ is capitalized.
-- A **guide** is one page of the Guides, for example "Defining Your Routes". Here, _guide_ is lowercase.
-- A **section** is one of the top-level grouping of several guides, for example "Routing".
+* Pessoas dispostas a fazer as traduções da versão original para a versão em Português :blue_book: :closed_book: `=>` :green_book: :ledger:
+* Pessoas dispostas a revisar o conteúdo já traduzido, aumentando a coesão do texto e revisando erros de gramática. :stuck_out_tongue_winking_eye:
+* Entusiastas dispostos a ajudar na divulgação do projeto, seja dando um _star_ ou divulgando por outros canais :+1:
 
-Write in complete sentences. Use a friendly tone of voice. Use American English. Use gender-neutral pronouns - for example, "Is the user logged in? Are _they_ an admin user?" Use title case for all titles and headers. If English is not your native language and you aren't sure about any of these, don't hesitate to ask for help in your pull request!
+## Curtiu a ideia? Mãos a obra!
 
-Be as brief as possible, but don't sacrifice clarity for brevity. If a guide is more than a couple screens of scrolling, consider breaking it into multiple pages.
+1. Nosso processo é bem simples. Se você está acostumado com o GitHub flow, é praticamente o mesmo. Se não, [veja aqui](https://guides.github.com/introduction/flow/).
+2. Veja nosso [Issue Tracker](https://github.com/ember-brasil/website/issues/2), para ver quem está fazendo o quê, e quais partes precisam da sua ajuda. Após seguir o **passo 2**, seu nome constará lá também!
+3. Comente na Issue o projeto que você deseja contribuir. Algo como "quero fazer essa parte!".
+4. Faça um `fork` do projeto.
+5. Caso necessário, utilize o branch `master` como modelo para a tradução. 
+6. Por se tratar de um documento técnico, muitas palavras e frases se repetem e por vezes é difícil encontrar sua equivalência em português. Para evitar divergências, veja [este arquivo](WORDREFERENCE.md).
+7. Faça a tradução e revise-a com carinho :two_hearts:  -- seu nome constará na parte que você traduziu.
+8. Ao terminar sua parte da tradução, faça um `Pull Request`.
+9. Feito o `merge`, seu nome constará [nessa lista](CONTRIBUTORS.md) e seu trabalho estará contribuindo diretamente para nossa briosa comunidade. :star2: 
 
-Only change the **source English file**, which is the one without the locale before the `.md` extension. The translations are currently managed by CrowdIn, which will synchronize the necessary files.
+Obrigado por nos ajudar!
 
-The target audience of the Guides are developers whose skills range from beginner developer with perhaps some jQuery experience, to experienced Ember developer learning about a new feature. Be sure to write content that covers both of their needs: keep explanations thorough enough for the beginner, while including more advanced topics for the experienced developer.
-
-The Guides are primarily meant to cover the "Ember happy path", and are not intended to be comprehensive. Leave edge cases and rarely-used features to the API documentation. Start each guide and each section with the simplest, most commonly-used features, and progress to the more advanced and less commonly-used features.
-
-Each guide should thoroughly explain the feature it documents, and include links to the API documentation. Links to authoritative sources of information on background concepts are also encouraged: for example, the _Handlebars Basics_ guide appropriately links to http://handlebarsjs.com/. Do not link to other outside content like blog posts or meetup slides, as reviewing and updating this content is better suited for content aggregators.
-
-Liberally use examples in your writing. For example, the sentence "Templates can contain expressions in double curly braces" should be expanded to something like "Templates can contain expressions in double curly braces, such as \`&lt;h1&gt;Welcome {{user.name}}&lt;/h1&gt;\`" A short example is often more clear than a long explanation. In fact, it is often helpful to give two examples to make things even clearer.
-
-When writing prose:
-
-* Use a single space after periods.
-* Manually break lines:
-  * at the beginning of every new sentence;
-  * after the last comma in sentences over 120 characters; or
-  * after logical statements in sentences over 120 characters with no commas.
-
-In code samples:
-
-* Follow the [Ember Style Guide](https://github.com/emberjs/ember.js/blob/master/STYLEGUIDE.md).
-* Use double-quotes in templates, i.e., `<div class="awesome">{{foo-bar title="Tomster"}}</div>`.
-* Omit the boilerplate that Ember CLI generates, especially the `import Ember from 'ember'` at the top of every file.
-* In fenced code blocks, include the filename or language after the triple-backticks, like <code>&#96;&#96;&#96;routes/kittens.js</code> or <code>&#96;&#96;&#96;hbs</code>.
-* Write paths relative to the project root.
-
-When linking to API pages:
-
-* use code backticks as part of the link text, i.e., \[<code>&#96;store.push()&#96;</code>]
-(api link)
-* include parenthesis when linking to an API method, i.e., <code>&#96;store.push()&#96;</code>
-
-Write once, edit twice (at least!) before opening a PR. When you edit your own writing, ask yourself:
-
-* Am I using proper grammar and spelling?
-* Can I clarify or simplify any of my explanations or examples?
-* Have I included clear examples of everything I am documenting?
-* Did I include links where appropriate?
-
-You'll be amazed at how much better your writing gets as you edit and re-edit!
+Caso tenha alguma dúvida ou ideia relativas ao projeto, manda um ping no twitter [@aureliosaraiva](https://twitter.com/aureliosaraiva), Slack ou Telegram.
