@@ -32,7 +32,7 @@ Você pode usar o comando `ember new` para criar uma nova aplicação.
 ```sh
 ember new ember-quickstart
 ```
-ste comando irá criar um novo diretório chamado `ember-quickstart`
+Este comando irá criar um novo diretório chamado `ember-quickstart`
 e configurar uma nova aplicação Ember dentro dela. De cara, seu aplicativo irá incluir:
 
 * Um servidor para desenvolvimento.
@@ -148,7 +148,7 @@ Saiba mais com este [resumo das funcionalidades mais novas do JavaScript][es6-bu
 
 No método `model()` de uma rota, você retorna qualquer dado que queira tornar
 disponível para o template. Se precisar buscar dados assíncronamente, o
-método `model()` suporta qualquer biblioteca que use [Promises JavaScript][promises].
+método `model()` suporta qualquer biblioteca que use [JavaScript Promises][promises].
 
 [promises]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
@@ -226,8 +226,8 @@ Volte para o seu navegador e você verá que a interface parece idêntica.
 A única diferença é que agora nós componentizamos nossa lista em uma
 versão que é mais reutilizável e mais passível de manutenção.
 
-Você pode ver isso em ação se você criar uma nova rota que mostra
-uma lista diferente de `people`. Vamos deixar isso como um desafio para você:
+Você pode ver isso se você criar uma nova rota que mostra uma lista diferente de `people`.
+Vamos deixar isso como um desafio para você:
 tente criar uma route de `programmers` que mostra uma lista de programadores famosos.
 Re-usando o component `people-list`, você pode fazer isso com praticamente quase nenhum código.
 
@@ -306,7 +306,4 @@ Deploy][ember-deploy].
 
 Se você fizer o deploy da sua aplicação em um servidor web Apache, primeiro crie um novo virtual host para a aplicação.
 Para garantir que todas as rotas sejam tratadas pelo index.html,
-adicione a seguinte diretiva à configuração do virtual host da aplicação.
-```
-FallbackResource index.html
-```
+adicione a seguinte diretiva à configuração do virtual host da aplicação ```FallbackResource index.html```
