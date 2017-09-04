@@ -1,15 +1,15 @@
-Ember CLI by default uses [Babel.js](https://babeljs.io/) to allow you to use tomorrow's JavaScript, today.
 
-It will ensure that you can use the newest features in the language and know that they will be transformed to JavaScript that can run in every browser you support.
-That usually means generating ES5-compatible code that can work on any modern browser, back to Internet Explorer 9.
+O Ember CLI por padrão utiliza o [Babel.js](https://babeljs.io/) para permitir que você use o JavaScript de amanhã, hoje!
 
-But ES5 code is usually more verbose than the original Javascript, and over time, as browsers gain the ability to execute the new features in JavaScript and older browsers lose users, many users won't really want this verbose code as it increases their app's size and load times.
+Isso permitirá que você use os recursos mais recentes da linguagem e que eles sejam transformados para JavaScript podendo ser executados em todos os navegadores suportados.
+Isso significa, gerar código compatível com ES5 que pode funcionar em qualquer navegador moderno, de volta ao Internet Explorer 9.
 
-That is why Ember CLI exposes a way of configuring what browsers your app targets.
-It can figure out automatically what features are supported by the browsers you are targeting,
-and apply the minimum set of transformations possible to your code.
+Mas o código do ES5 normalmente é mais verboso do que o JavaScript original, e ao longo do tempo, como os navegadores ganham a habilidade de executar os novos recursos em Javascript e os navegadores mais antigos perdem usuários, muitos usuários realmente não querem esse código detalhado, pois aumenta o tamanho do aplicativo e o tempo de carregamento.
 
-If you open `config/targets.js`, you will find the following code:
+É por isso que o Ember CLI expõe uma maneira de configurar quais navegadores o seu aplicativo pode suportar.
+Assim, é possível descobrir automaticamente quais recursos são suportados pelos navegadores que você está suportando, e aplica o conjunto mínimo de transformações possíveis para o seu código.
+
+Se você abrir o `config/targets.js`, você encontrará o seguinte código:
 
 ```config/targets.js
 module.exports = {
@@ -22,8 +22,8 @@ module.exports = {
 };
 ```
 
-That default configuration matches the wider set of browsers that Ember.js itself supports.
-However, if your app does not need to support IE anymore, you can change it to:
+Essa configuração padrão corresponde ao conjunto mais amplo de navegadores que o próprio Ember.js suporta.
+No entanto, se o seu aplicativo não precisa mais suportar o IE, você pode alterá-lo para:
 
 ```config/targets.js
 module.exports = {
@@ -36,14 +36,13 @@ module.exports = {
 };
 ```
 
-You are left with browsers that have full support of ES2015 and ES2016.
-If you inspect the compiled code, you will see that some features are not compiled to ES5 code anymore, such as arrow functions.
+Desta forma, você fica com navegadores que possuem suporte total para o ES2015 e ES2016.
+Se você inspecionar o código compilado, verá que alguns recursos não são compilados no código ES5, como as arrow functions.
 
-This feature is backed by [Browserlist](https://github.com/ai/browserslist) and [Can I Use](http://caniuse.com/).
-These websites track usage stats of browsers, so you can use complex queries based on the user base of every browser.
+Este recurso é suportado por [Browserlist](https://github.com/ai/browserslist) e [Can I Use](http://caniuse.com/).
+Estes websites rastreiam as estatísticas de uso dos navegadores, assim você pode fazer consultas complexas baseadas na base dos usuários de cada navegador.
 
-If you want to target all browsers with more than a 4% market share in Canada,
-you'd have the following options:
+Se você quer suportar todos os navegadores com mais de 4% de participação do mercado do Canadá, você pode ter as seguintes opções:
 
 ```config/targets.js
 module.exports = {
@@ -53,10 +52,10 @@ module.exports = {
 };
 ```
 
-It is very important that you properly configure the targets of your app so you get the smallest and fastest code possible.
+É muito importante que você configure as opções da sua aplicação apropriadamente para que você obtenha uma aplicação mais rápida e menor possível.
 
-Build targets can also be leveraged in other ways.
+As opções de build também podem ser alavancados de outras maneiras.
 
-Some addons might conditionally include polyfills only if needed.
-Some linters may emit warnings when using features not yet fully supported in your targets.
-Some addons may even automatically prefix unsupported CSS properties.
+Alguns addons podem condicionalmente incluir polyfills somente se necessário.
+Alguns linters podem emitir avisos ao usar recursos ainda não totalmente suportados em seus destinos.
+Alguns addons podem até prefixar automaticamente propriedades CSS não suportadas.
