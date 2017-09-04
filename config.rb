@@ -65,6 +65,8 @@ end
 ###
 page '404.html', directory_index: false
 
+page 'guides*', layout: :guides
+
 # Don't build layouts standalone
 ignore '*_layout.erb'
 

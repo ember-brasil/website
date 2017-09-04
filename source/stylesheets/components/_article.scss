@@ -5,6 +5,10 @@ article {
     @include span-columns(8.5);
   }
 
+  &.fluid {
+    width: 100%;
+  }
+
   .edit-page {
     color: $brown;
     display: inline-block;
