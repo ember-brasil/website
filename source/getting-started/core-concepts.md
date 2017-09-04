@@ -1,61 +1,63 @@
-Before you start writing any Ember code, it's a good idea to get an overview of how an
-Ember application works.
+Antes de começar a escrever sua aplicação Ember, é muito importante ter uma visão geral de como funciona.
 
 ![ember core concepts](../../images/ember-core-concepts/ember-core-concepts.png)
 
-## Router and Route Handlers
-Imagine we are writing a web app for a site that lets users list their properties to rent. At any given time, we should be able to answer questions about the current state like _What rental are they looking at?_ and _Are they editing it?_ In Ember, the answer to these questions is determined by the URL.
-The URL can be set in a few ways:
+## Gerenciamento de Rotas (Router)
+Imagine que estamos escrevendo uma aplicação web para um site que permite o usuário listar seus imóveis para alugar.
+A qualquer momento, devemos ser capazes de responder a perguntas sobre o estado atual, como _que imóvel o usuário está visualizando?_ e _o usuário está editando o imóvel?_ Em Ember, a resposta dessas perguntas é determinada pela URL.
+A URL pode ser definida de algumas maneiras:
 
-* The user loads the app for the first time.
-* The user changes the URL manually, such as by clicking the back button or by editing the address bar.
-* The user clicks a link within the app.
-* Some other event in the app causes the URL to change.
 
-No matter how the URL gets set, the first thing that happens is that the Ember router maps the URL to a route handler.
+* O usuário carrega a aplicação pela primeira vez.
+* O usuário altera a URL manualmente, por exemplo clicando no botão voltar ou editando a barra de endereços.
+* O usuário clica em um botão ou link dentro da aplicação.
+* Algum outro evento na aplicação que faz mudar a URL.
 
-The route handler then typically does two things:
+Não importa como a URL foi definida, a primeira coisa que acontece é que o router do Ember mapeia a URL para um gerenciador de rotas.
 
-* It renders a template.
-* It loads a model that is then available to the template.
+O gerenciador de rotas normalmente faz duas coisas:
+
+* Ele renderiza um template.
+* Ele carrega um model que estará disponível no template.
 
 ## Templates
 
-Ember uses templates to organize the layout of HTML in an application.
+Ember usa templates para organizar o layout HTML da aplicação.
 
-Most templates in an Ember codebase are instantly familiar, and look like any
-fragment of HTML. For example:
+A maioria das templates em um projeto Ember são familiares e se parecem com qualquer fragmento de HTML. Por exemplo:
 
 ```handlebars
 <div>Hi, this is a valid Ember template!</div>
 ```
 
-Ember templates use the syntax of [Handlebars](http://handlebarsjs.com)
-templates. Anything that is valid Handlebars syntax is valid Ember syntax.
+Os templates Ember usam a sintaxe do [Handlebars](http://handlebarsjs.com).
+Toda sintaxe do Handlebars é aceita no Ember.
 
-Templates can also display properties provided to them from their context, which is either a component or a route's controller. For example:
+Templates também podem exibir as propriedades fornecidas a eles através de seu contexto, que podem ser tanto um component ou quanto um controller. Por exemplo:
 
 ```handlebars
 <div>Hi {{name}}, this is a valid Ember template!</div>
 ```
 
-Here, `{{name}}` is a property provided by the template's context.
+Aqui, `{{name}}` é uma propriedade proveniente do contexto do template.
 
-Besides properties, double curly braces (`{{}}`) may also contain
-helpers and components, which we'll discuss later.
+Além de propriedades, chaves duplas (`{{}}`) podem conter também
+helpers e components, que discutiremos mais tarde.
 
 ## Models
 
-Models represent persistent state.
+Models representam um estado persistente.
 
-For example, a property rentals application would want to save the details of a rental when a user publishes it, and so a rental would have a model defining its details, perhaps called the _rental_ model.
+Por exemplo, uma aplicação de aluguel de imóveis irá querer salvar os detalhes de uma locação quando um usuário publicá-lo e então uma locação teria um model definindo seus detalhes, talvez chamando o model de _rental_.
 
-A model typically persists information to a web server, although models can be configured to save to anywhere else, such as the browser's Local Storage.
+Um model normalmente persiste informações para um servidor web, apesar dos models poderem ser configurados para salvar em qualquer outro lugar, como no armazenamento local do navegador (Local Storage).
 
 ## Components
 
-While templates describe how a user interface looks, components control how the user interface _behaves_.
+Enquanto os templates descrevem a aparência de uma interface de usuário, os components controlam como a interface se _comporta_.
 
-Components consist of two parts: a template written in Handlebars, and a source file written in JavaScript that defines the component's behavior. For example, our property rental application might have a component for displaying all the rentals called `all-rentals`, and another component for displaying an individual rental called `rental-tile`. The `rental-tile` component might define a behavior that lets the user hide and show the image property of the rental.
+Componentes consistem em duas partes: um template escrito em Handlebars e um conjunto de código escrito em JavaScript que define o seu comportamento.
+Por exemplo, nossa aplicação de aluguel de imóveis pode ter um component para exibir todas as locações chamado de `all-rentals` e outro component para exibir uma locação individual chamado de `rental-tile`.
+O component `rental-tile` pode definir um comportamento que permite ao usuário ocultar e mostrar a imagem do imóvel.
 
-Let's see these core concepts in action by building a property rental application in the next lesson.
+Vamos ver estes conceitos básicos em ação através da construção de uma aplicação de aluguel de imóveis na próxima lição.
