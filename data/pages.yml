@@ -6,10 +6,10 @@
       url: ""
 
 - title: "Começando"
-  url: 'comecando'
+  url: 'getting-started'
   pages:
     - title: "Começo rápido"
-      url: "getting-started"
+      url: "quick-start"
     - title: "Instalando Ember"
       url: "index"
     - title: "Conceitos fundamentais"
