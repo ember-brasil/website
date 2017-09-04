@@ -23,7 +23,6 @@
 * Evangelismo do Projeto (talks)
 -->
 
-Aurélio Saraiva https://github.com/aureliosaraiva
-
-Danilo Vaz https://github.com/danilovaz
+1. Aurélio Saraiva https://github.com/aureliosaraiva
+2. Danilo Vaz https://github.com/danilovaz
 
