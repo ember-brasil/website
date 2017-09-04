@@ -1,14 +1,14 @@
-À medida que um usuário navega em nossa lista de aluguéis, eles podem querer ter algumas opções interativas para ajudá-los a tomar uma decisão.
-Para fazer isso, usaremos um componente.
+À medida que nosso usuário navega em nossa lista de imoveis para alugar, eles podem querer ter algumas opções para interagir com os imoveis.
+Para fazer isso, usaremos um component.
 
-Vamos criar um componente de `rental-listing` que gerenciará o comportamento de cada um dos nossos aluguéis.
-É necessário um traço em cada nome do componente para evitar conflitos com um possível elemento HTML, de modo que `rental-listing` é aceitável, mas o `rental` não é.
+Vamos criar um component `rental-listing` que terá cada imóvel disponível para alugar.
+É necessário um traço no nome do component para evitar conflitos com um possível elemento HTML, de modo que `rental-listing` é aceitável, mas o `rental` não é.
 
 ```shell
 ember g component rental-listing
 ```
 
-Ember CLI irá então gerar diversos arquivos para o nosso componente:
+Ember CLI irá então gerar diversos arquivos para o nosso component:
 
 
 ```shell
@@ -19,13 +19,13 @@ installing component-test
   create tests/integration/components/rental-listing-test.js
 ```
 
-Um componente consiste em duas partes:
+Um component é formado de duas partes:
 
-* Um arquivo de template que define como ele vai ser ser visualmente (`app/templates/components/rental-listing.hbs`).
+* Um arquivo de template que define como ele vai ser visualmente (`app/templates/components/rental-listing.hbs`).
 * Um arquivo de JavaScript (`app/components/rental-listing.js`) que define como ele vai se comportar.
 
-Nosso novo componente `rental-listing` gerenciará como um usuário vê e interage com um aluguel.
-Para começar, vamos mover os detalhes de exibição do aluguel para um único de aluguel em `rentals.hbs` para` rental-listing.hbs` e já vamos adicionar a TAG de imagem:
+Nosso novo component `rental-listing` vai listar nossos imoveis, definindo como será exibido para o usuário.
+Para começar, vamos mover parte do código (detalhes do imóvel) em `rentals.hbs` para nosso component em `rental-listing.hbs`. Vamos aproveitar essa edição para adicionar uma imagem.
 
 ```app/templates/components/rental-listing.hbs{-1,+2,+3,+4,+5,+6,+7,+8,+9,+10,+11,+12,+13,+14,+15,+16,+17}
 {{yield}}
@@ -47,7 +47,7 @@ Para começar, vamos mover os detalhes de exibição do aluguel para um único d
 </article>
 ```
 
-Agora, no nosso template `rentals.hbs`, substituamos a marcação HTML antiga do loop `{{#each}}` com nosso novo componente `rental-listing`:
+Agora, vamos editar nosso template `rentals.hbs` e substituir o detalhe do imóvel pela declaração do nosso component, dentro do `{{#each}}`.
 
 ```app/templates/rentals.hbs{+12,+13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29}
 <div class="jumbo">
@@ -81,19 +81,18 @@ Agora, no nosso template `rentals.hbs`, substituamos a marcação HTML antiga do
   </article>
 {{/each}}
 ```
-Aqui, invocamos o componente `rental-listing` e atribuímos cada `rentalUnit` como o um atributo `rental` do componente.
+Aqui, declaramos o component `rental-listing` e atribuímos `rentalUnit` como um atributo `rental` dentro do component.
 
-Nosso aplicativo deve se comportar agora como antes, com a adição de uma imagem para cada item de aluguel.
+Nossa aplicação deve se comportar agora como antes, porém agora terá uma imagem para cada imóvel.
 
 ![App with component and images](../../images/simple-component/app-with-images.png)
 
-## Escondendo e mostrando a imagem
+## Mostrar/Ocultar uma imagem
 
-Agora, podemos adicionar funcionalidades que msotra a imagem de um aluguel quando solicitado pelo usuário.
+Agora que temos um component para cada imóvel, vamos adicionar funcionalidade para mostrar/ocultar uma imagem ampliada do imóvel quando o usuário clicar em `View Larger`.
 
-Vamos usar o helper `{{if}}` para mostrar nossa imagem de aluguel atual maior somente quando `isWide` estiver definido como verdadeiro, definindo o nome da classe do elemento para` wide`.
-Também adicionaremos algum texto para indicar que a imagem pode ser clicada, e envolver os dois com um elemento de anchor, dando-lhe o nome da classe `image` para que nosso teste possa encontrá-lo.
-
+Usaremos o helper `{{if}}` para mostrar a imagem ampliada do imóvel somente quando a propriedade `isWide` for `true`, se `true` a classe `wide` é adicionada ao elemento.
+Vamos envolver a imagem e o texto em um elemento anchor com a classe `image` para que nosso teste possa encontra-lo mais tarde.
 
 ```app/templates/components/rental-listing.hbs{+2,+4,+5}
 <article class="listing">
@@ -116,8 +115,8 @@ Também adicionaremos algum texto para indicar que a imagem pode ser clicada, e 
   </div>
 </article>
 ```
-O valor de `isWide` vem do arquivo JavaScript do nosso componente, neste caso `rental-listing.js`.
-Como queremos que a imagem seja menor no início, definiremos a propriedade para começar como `false`:
+O valor de `isWide` deve ser definido no arquivo JavaScript do component em `app/component/rental-listing.js`.
+Queremos que a imagem ampliada do imóvel seja mostrada somente quando o usuário solicitar, para isso vamos definir a propriedade como `false`.
 
 ```app/components/rental-listing.js{+4}
 import Ember from 'ember';
@@ -126,9 +125,8 @@ export default Ember.Component.extend({
   isWide: false
 });
 ```
-
-Para permitir que o usuário aumente a imagem, precisamos adicionar uma ação que altere o valor de `isWide`.
-Vamos chamar essa ação `toggleImageSize`.
+Para que nosso usuário possa ampliar a imagem, precisamos criar uma `action` para trocar o valor da propriedade `isWide` e ampliar a imagem.
+Vamos chamar essa `action` de `toggleImageSize`.
 
 ```app/templates/components/rental-listing.hbs{-2,+3}
 <article class="listing">
@@ -152,13 +150,12 @@ Vamos chamar essa ação `toggleImageSize`.
   </div>
 </article>
 ```
-Ao clicar no elemento anchor, a ação será enviada para o componente.
-Ember entrará no hash `actions` e chamará a função `toggleImageSize`.
+Quando nosso usuário clicar no elemento anchor, a `action` executará a função chamada `toggleImageSize`.
 
-Uma [actions hash](../../templates/actions/) é um objeto de componente que contém funções.
+[Actions hash](../../templates/actions/) é um objeto de component que contém uma relação de funções.
 Essas funções são chamadas quando o usuário interage com a interface do usuário, como clicar.
 
-Vamos criar a função `toggleImageSize` e alternar a propriedade `isWide` em nosso componente:
+Vamos criar a função `toggleImageSize` e trocar o valor da propriedade `isWide` em nosso component:
 
 ```app/components/rental-listing.js{-4,+5,+6,+7,+8,+9,+10}
 import Ember from 'ember';
@@ -173,25 +170,25 @@ export default Ember.Component.extend({
   }
 });
 ```
-Agora, quando clicamos na imagem ou no link `View Larger` no nosso navegador, veremos a imagem amplicada.
-Quando clicamos novamente na imagem ampliada, ela volta ao normal.
+Agora, quando nosso usuário clicar na imagem ou no link `View Larger` a imagem do imóvel será ampliada.
+Quando o usuário clicar na imagem ampliada, ela voltará ao normal.
 
 ![rental listing with expand](../../images/simple-component/styled-rental-listings.png)
 
-Agora você pode avançar para [próxima página](../hbs-helper/) para o próximo recurso ou continuar aqui para testar o que você acabou de fazer.
+A partir desde ponto você pode avançar para a [próxima página](../hbs-helper/) ou você pode continuar e criar os testes do que foi feito.
 
 ### Teste de integração
 
-Os componentes no Ember são comumente testados com [component integration tests](../../testing/testing-components/).
-Os testes de integração de componentes verificam o comportamento de um componente no contexto de renderização no Ember.
-Quando executado em um teste de integração, o componente passa pelo [render lifecycle](../../components/the-component-lifecycle/) que tem acesso a objetos dependentes, carregados através do resolvedor do Ember.
+Os components em Ember são comumente testados com [component integration tests](../../testing/testing-components/).
+Os testes de integração de components verificam o comportamento de um components no contexto de renderização do Ember.
+Quando executado em um teste de integração, o component passa pelo [render lifecycle](../../components/the-component-lifecycle/) que tem acesso a objetos dependentes, carregados através do `Ember Resolver`.
 
-Nosso teste de integração de componentes testará dois comportamentos diferentes:
+Nosso teste de integração de components testará dois comportamentos diferentes:
 
-* O componente deve mostrar detalhes sobre o aluguel
-* O componente deve alternar a existência de uma classe `wide` e clicar, para expandir e diminuir a imagem do aluguel. 
+* O component deve mostrar detalhes do imóvel
+* O component deve adicionar a classe `wide` ao clicar, para mostrar/ocultar a imagem ampliada do imóvel.
 
-Vamos atualizar o teste padrão para conter os cenários que queremos verificar:
+Vamos editar o teste padrão para conter os cenários que queremos testar:
 
 ```tests/integration/components/rental-listing-test.js{+3,+9,+10,+11,+12,+13,+14,+15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33}
 import { moduleForComponent, test } from 'ember-qunit';
@@ -229,8 +226,8 @@ test('it renders', function(assert) {
 });
 ```
 
-Para fazer o teste, passamos para o componente de um objeto falso que possui todas as propriedades que nosso `model` de aluguel tem.
-Daremos à variável o nome `rental`, e em cada teste definiremos `rental` para o nosso escopo local, representado pelo objeto `this`.
+Para fazer o teste, passamos para o component de um objeto falso que possui todas as propriedades que nosso `model` de imoveis tem.
+Chamaremos à variável de `rental`, e em cada teste definiremos `rental` em nosso escopo local, representado pelo objeto `this`.
 Podemos acessar informações através do escopo local `this`.
 
 
@@ -260,9 +257,10 @@ test('should toggle wide class on click', function(assert) {
   this.set('rentalObj', rental);
 });
 ```
-Agora vamos renderizar nosso componente usando a função `render`.
-A função `render` nos permite passar uma string como template, para que possamos declarar o componente da mesma maneira que fazemos em nossos templates.
-Como estabelecemos a variável `rentalObj` para o nosso escopo local, podemos acessá-la como parte de nossa renderização.
+
+Agora vamos renderizar nosso component usando a função `render`.
+A função `render` nos permite passar uma string como template, para que possamos declarar o component da mesma maneira que fazemos em nossos templates.
+Como declaramos a variável `rentalObj` em nosso escopo local, podemos acessá-la como parte da nossa renderização.
 
 ```tests/integration/components/rental-listing-test.js{+20,+25}
 import { moduleForComponent, test } from 'ember-qunit';
@@ -294,7 +292,7 @@ test('should toggle wide class on click', function(assert) {
 ```
 Finalmente, vamos adicionar nossas ações e `asserts`.
 
-No primeiro teste, queremos verificar o resultado do componente, então vamos verificar se o título e o nome do proprietário são iguais ao do objetivo `rental` fake.
+No primeiro teste, queremos verificar o resultado do component, então vamos verificar se o título e o nome do proprietário são iguais ao do objeto `rental` fake.
 
 ```tests/integration/components/rental-listing-test.js{+4,+5}
 test('should display rental details', function(assert) {
@@ -304,8 +302,8 @@ test('should display rental details', function(assert) {
   assert.equal(this.$('.listing .owner').text().trim(), 'Owner: test-owner', 'Owner: test-owner');
 });
 ```
-No segundo teste, verificamos que ao clicar na imagem mostra uma imagem ampliada.
-Vamos verificar que o componente é inicializado sem o nome da classe `wide`.
+No segundo teste, verificamos que ao clicar na imagem, deve mostrar uma imagem ampliada.
+Vamos verificar se o component é inicializado sem o nome da classe `wide`.
 Clicando na imagem, deve adicionar a classe `wide` ao nosso elemento, e clicando nela pela segunda vez deve remover a classe `wide`.
 Observe que encontraremos o elemento da imagem usando o seletor CSS `.image`.
 
@@ -359,6 +357,6 @@ test('should toggle wide class on click', function(assert) {
 ```
 
 Execute `ember t -s` para verificar se o nosso novo teste está passando.
-Para encontrar o novo teste, localize "Integração | Componente | listagem de aluguel" no campo "Module" da UI do teste.
+Para encontrar o novo teste, localize "Integration | Components | rental-listing" no campo "Module" da UI do teste.
 
 ![simple_component_test](../../images/simple-component/simple-component-test.gif)
