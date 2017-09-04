@@ -28,6 +28,8 @@ Para manter a tradução com o mesmo padrão elevado do original, precisamos de:
 8. Ao terminar sua parte da tradução, faça um `Pull Request`.
 9. Feito o `merge`, seu nome constará [nessa lista](CONTRIBUTORS.md) e seu trabalho estará contribuindo diretamente para nossa briosa comunidade. :star2: 
 
+**Obs**: Caso você seja iniciante e não está 100% confiante ainda, você pode olhar para as Issue que tem a tag **Bom para começar**, são issue mais simples que pode ajuda-lo a se familiarizar.
+
 Obrigado por nos ajudar!
 
 Caso tenha alguma dúvida ou ideia relativas ao projeto, manda um ping no twitter [@aureliosaraiva](https://twitter.com/aureliosaraiva), Slack ou Telegram.
