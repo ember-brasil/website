@@ -11,6 +11,8 @@ module TOC
   end
 
   module Helpers
+    extend self
+
     def toc_header(text, level)
       "<h#{level} class='anchorable-toc' id='toc_#{toc_anchorify(text)}'>#{text}</h#{level}>"
     end

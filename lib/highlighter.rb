@@ -132,6 +132,10 @@ HEADER
   class HighlightedHTML < Redcarpet::Render::HTML
     include Helpers
 
+    def header(text, level)
+      TOC::Helpers.toc_header(text, level)
+    end
+
     def block_code(code, language)
       _highlight(code, language)
     end
