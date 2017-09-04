@@ -9,11 +9,11 @@
   url: 'comecando'
   pages:
     - title: "Começo rápido"
-      url: "comeco-rapido"
+      url: "getting-started"
     - title: "Instalando Ember"
       url: "index"
     - title: "Conceitos fundamentais"
-      url: "conceitos-fundamentais"
+      url: "core-concepts"
 
 - title: "Tutorial"
   url: 'tutorial'
