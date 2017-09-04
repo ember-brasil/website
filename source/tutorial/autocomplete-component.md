@@ -291,7 +291,7 @@ Now that we've created a new component for filtering a list,
 we want to create a test to verify it.
 Let's use a [component integration test](../../testing/testing-components)
 to verify our component behavior,
-similar to [how we tested our rental listing component earlier](../simple-component/#toc_an-integration-test).
+similar to [how we tested our rental listing component earlier](../simple-component/#toc_teste-de-integra-o).
 
 Lets begin by opening the component integration test created when we generated our `list-filter` component, `tests/integration/components/list-filter-test.js`.
 Remove the default test, and create a new test that verifies that by default, the component will list all items.
