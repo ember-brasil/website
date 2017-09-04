@@ -1,7 +1,6 @@
 require "redcarpet"
 require "coderay"
 require "nokogiri"
-require "middleman-toc/toc_helpers/headers"
 
 module Highlighter
   class MissingLanguageError < StandardError; end
@@ -132,10 +131,9 @@ HEADER
 
   class HighlightedHTML < Redcarpet::Render::HTML
     include Helpers
-    include ::TocHelpers::Headers
 
     def header(text, level)
-      toc_header(text, level)
+      TOC::Helpers.toc_header(text, level)
     end
 
     def block_code(code, language)
