@@ -228,6 +228,9 @@ test('it renders', function(assert) {
   assert.equal(this.$().text().trim(), 'template block text');
 });
 ```
+Para o teste, passamos o componente de um objeto falso que possui todas as propriedades que nosso modelo de aluguel tem.
+Daremos à variável o nome `rental`, e em cada teste definiremos` rental` para o nosso escopo local, representado pelo objeto `this`.
+O modelo de renderização pode acessar valores no escopo local.
 
 For the test we'll pass the component a fake object that has all the properties that our rental model has.
 We'll give the variable the name `rental`, and in each test we'll set `rental` to our local scope, represented by the `this` object.
@@ -259,6 +262,9 @@ test('should toggle wide class on click', function(assert) {
   this.set('rentalObj', rental);
 });
 ```
+Agora vamos renderizar nosso componente usando a função `render`.
+A função `render` nos permite passar uma string de modelo, para que possamos declarar o componente da mesma maneira que fazemos em nossos modelos.
+Como estabelecemos a variável `rentalObj` para o nosso escopo local, podemos acessá-lo como parte de nossa cadeia de renderização.
 
 Now let's render our component using the `render` function.
 The `render` function allows us to pass a template string, so that we can declare the component in the same way we do in our templates.
@@ -292,6 +298,9 @@ test('should toggle wide class on click', function(assert) {
   this.render(hbs`{{rental-listing rental=rentalObj}}`);
 });
 ```
+Finalmente, vamos adicionar nossas ações e afirmações.
+
+No primeiro teste, queremos verificar o resultado do componente, então apenas afirmamos que o título e o texto do proprietário combinam o que fornecemos no "aluguel" falso.
 
 Finally, let's add our actions and assertions.
 
@@ -305,6 +314,11 @@ test('should display rental details', function(assert) {
   assert.equal(this.$('.listing .owner').text().trim(), 'Owner: test-owner', 'Owner: test-owner');
 });
 ```
+No segundo teste, verificamos que clicar na imagem alterna o tamanho.
+Afirmaremos que o componente é inicializado sem o nome da classe `wide`.
+Clicando na imagem, adicionará a classe `wide` ao nosso elemento, e clicando nela uma segunda vez levará a classe` wide`.
+Observe que encontramos o elemento da imagem usando o seletor Cs '.image`.
+
 In the second test, we verify that clicking on the image toggles the size.
 We will assert that the component is initially rendered without the `wide` class name.
 Clicking the image will add the class `wide` to our element, and clicking it a second time will take the `wide` class away.
@@ -321,6 +335,8 @@ test('should toggle wide class on click', function(assert) {
   assert.equal(this.$('.image.wide').length, 0, 'rendered small after second click');
 });
 ```
+O teste final deve ser o seguinte:
+
 The final test should look as follows:
 
 ```tests/integration/components/rental-listing-test.js
@@ -358,6 +374,8 @@ test('should toggle wide class on click', function(assert) {
   assert.equal(this.$('.image.wide').length, 0, 'rendered small after second click');
 });
 ```
+Execute `ember t -s` para verificar se o nosso novo teste está passando.
+Para encontrar o novo teste, localize "Integração | Componente | listagem de aluguel" no campo "Módulo" da UI do teste.
 
 Run `ember t -s` to verify that our new test is passing.
 To find the new test, locate "Integration | Component | rental listing" in the "Module" field of the test UI.
