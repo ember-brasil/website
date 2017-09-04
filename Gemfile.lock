@@ -5,14 +5,6 @@ GIT
   specs:
     coderay (1.1.0.rc1)
 
-GIT
-  remote: https://github.com/ember-learn/middleman-toc
-  revision: 7b871a052055d09a3b354dec5b3f5b7eebd97adc
-  branch: master
-  specs:
-    middleman-toc (0.1.0)
-      middleman-core (~> 3.0)
-
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -221,7 +213,6 @@ DEPENDENCIES
   middleman (~> 3.0)
   middleman-alias
   middleman-spellcheck
-  middleman-toc!
   neat
   normalize-scss
   poltergeist
