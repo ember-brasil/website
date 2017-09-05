@@ -36,4 +36,11 @@ Caso tenha alguma dúvida ou ideia relativas ao projeto, manda um ping no twitte
 
 ## Como adicionar uma empresa?
 
-Criar explicação
+Para adicionar uma empresa ou projeto é bem simples.
+
+1. Faça um `fork` deste projeto
+2. Caso necessário, utilize o branch `master`.
+3. Adicione as informações da empresa no final deste arquivo `data/companys.yml`
+4. Adicione o logo tipo da empresa nesta pasta: `source/images/empresas`
+> A imagem precisa ter uma resolução, transparente e com espaçamento nas bordas adequado.
+5. Abra um pull request com o título `[EMPRESA] NOME_DA_EMPRESA`
