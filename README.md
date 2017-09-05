@@ -28,9 +28,9 @@ Se você sabe inglês ou leu alguma parte já traduzida e achou algum erro, nós
 > "Comece de onde você está. Use o que você tiver. Faça o que você puder" – Arthur Ashe
 
 
-## Como executar o projeto em desenvolvimento
+## Executando o site
 
-#### Dependencies
+### Dependências
 
 O site é criado com Middleman e executado em Ruby 1.9.3 or newer (2.0.0 recommended).
 
