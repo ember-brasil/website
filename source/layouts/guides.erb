@@ -33,14 +33,20 @@
     <%= yield_content :outside_wrapper %>
 
     <main class="container">
-
-    <% if current_page.data.title == "404 - Not Found" %>
-      <%= yield %>
-    <% else %>
+      <%= partial "guides/sidebar" %>
       <article class="chapter">
+        <h1>
+          <%= page_title %>
+          <a href="https://github.com/ember-brasil/ember-guides/edit/master/source/<%= current_page.path.gsub('html', 'md') %>"
+             target="_blank" class="edit-page icon-pencil">Melhorar esta página</a>
+        </h1>
+        <hr>
+
         <%= yield %>
+
+
+        <%= chapter_links %>
       </article>
-    <% end %>
     </main>
 
     <%= partial "footer" %>
