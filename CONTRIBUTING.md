@@ -33,3 +33,7 @@ Para manter a tradução com o mesmo padrão elevado do original, precisamos de:
 Obrigado por nos ajudar!
 
 Caso tenha alguma dúvida ou ideia relativas ao projeto, manda um ping no twitter [@aureliosaraiva](https://twitter.com/aureliosaraiva), Slack ou Telegram.
+
+## Como adicionar uma empresa?
+
+Criar explicação
