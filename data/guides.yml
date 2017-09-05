@@ -1,5 +1,5 @@
-- title: "Guides and Tutorials"
-  url: 'index'
+- title: "Documentação e Tutorial"
+  url: "index"
   skip_toc: true
   pages:
     - title: "Ember.js Guides"

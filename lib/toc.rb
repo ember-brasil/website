@@ -146,13 +146,13 @@ module TOC
       text.gsub(/&#?\w+;/, '-').gsub(/\W+/, '-').gsub(/^-|-$/, '').downcase
     end
 
-    def build_toc_for(pages, level=0, base_path="", parent_current=true)
+    def build_toc_for(pages, level=0, base_path="/guides", parent_current=true)
       buffer = "<ol class='toc-level-#{level}#{parent_current ? ' selected' : ''}'>"
       # indentation below is to aid in understanding the HTML structure
         pages.each do |page|
           next if page.skip_toc
 
-          requested_page_url = current_page.path.gsub('.html', '').split('/')[level]
+          requested_page_url = current_page.path.gsub('.html', '').gsub('guides/', '').split('/')[level]
           current = (parent_current && page.url == requested_page_url)
 
           page_path = base_path + "/" + page.url
@@ -216,7 +216,7 @@ module TOC
     end
 
     def current_slugs
-      @current_slugs ||= current_page.path.gsub(".html", "").split("/")
+      @current_slugs ||= current_page.path.gsub(".html", "").gsub("guides/", "").split("/")
     end
 
     def pages_for_slugs(slugs, pages=data.guides)
