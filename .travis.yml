@@ -14,7 +14,7 @@ deploy:
   repo: ember-brasil/ember-brasil.github.io
   target_branch: master
   github_token: $GITHUB_TOKEN
-  fqdn: ember-brasil.com.br
+  # fqdn: ember-brasil.com.br
   local_dir: ./build
   on:
     branch: master
