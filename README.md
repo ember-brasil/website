@@ -28,4 +28,48 @@ Se você sabe inglês ou leu alguma parte já traduzida e achou algum erro, nós
 > "Comece de onde você está. Use o que você tiver. Faça o que você puder" – Arthur Ashe
 
 
-See https://github.com/ember-brasil/ember-brasil.github.io.
+## Executando o site
+
+### Dependências
+
+O site é criado com Middleman e executado em Ruby 1.9.3 or newer (2.0.0 recommended).
+
+Os usuários de Mac devem instalar Ruby usando rbenv:
+
+```
+brew install rbenv
+```
+Siga as [instruções de instalação do rbenv](https://github.com/rbenv/rbenv) para instalar a versão do Ruby especificada [aqui](.Ruby-version).
+
+Depois de instalar o Ruby, você precisará do `bundler` e do Middleman:
+
+```
+gem install bundler middleman
+```
+
+Após a instalação do ambiente, você pode iniciar o projeto:
+
+``` sh
+git clone git://github.com/ember-brasil/website.git
+cd website
+bundle
+bundle exec middleman
+```
+
+Então acesse [http://localhost:4567/](http://localhost:4567/).
+
+## Rodando com Docker
+
+Para rodar com o Docker você precisa ter Docker e Docker Compose instalado na maquina.
+Siga essas instruções para instalar o docker e docker-compose: 
+- https://docs.docker.com/engine/installation/
+- https://docs.docker.com/compose/install/
+
+
+``` sh
+git clone git://github.com/ember-brasil/website.git
+cd website
+docker-compose up
+```
+
+
