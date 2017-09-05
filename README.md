@@ -50,11 +50,26 @@ gem install bundler middleman
 Após a instalação do ambiente, você pode iniciar o projeto:
 
 ``` sh
-git clone git://github.com/emberjs/guides.git
-cd guides
+git clone git://github.com/ember-brasil/website.git
+cd website
 bundle
 bundle exec middleman
 ```
 
 Então acesse [http://localhost:4567/](http://localhost:4567/).
+
+## Rodando com Docker
+
+Para rodar com o Docker você precisa ter Docker e Docker Compose instalado na maquina.
+Siga essas instruções para instalar o docker e docker-compose: 
+- https://docs.docker.com/engine/installation/
+- https://docs.docker.com/compose/install/
+
+
+``` sh
+git clone git://github.com/ember-brasil/website.git
+cd website
+docker-compose up
+```
+
 
