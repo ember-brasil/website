@@ -1,23 +1,14 @@
-Até agora, nosso aplicativo está mostrando diretamente os dados do usuário dos nossos modelos de dados da Ember.
-À medida que nosso aplicativo cresce, queremos manipular dados ainda mais antes de apresentá-lo aos nossos usuários.
-Por esta razão, a Ember oferece ajudantes do modelo Handlebars para decorar os dados em nossos modelos.
-Vamos usar um ajudante de guidão para permitir que nossos usuários vejam rapidamente se uma propriedade é "Autônomo" ou parte de uma "Comunidade".
+Até agora, nossa aplicação está mostrando diretamente para o usuário os dados do Ember Data models.
+À medida que nossa aplicação cresce, precisaremos manipular dados antes de mostrar para nossos usuários.
+Por esta razão, o Ember oferece helper para templates em Handlebars para personalizar os dados em nossos templates.
+Vamos usar um handlebars helper para permitir que nossos usuários vejam rapidamente se um imóvel é "Standalone" ou parte de uma "Community".
 
-Para começar, vamos gerar um ajudante para `rental-property-type`:
-
-So far, our app is directly showing the user data from our Ember Data models.
-As our app grows, we will want to manipulate data further before presenting it to our users.
-For this reason, Ember offers Handlebars template helpers to decorate the data in our templates.
-Let's use a handlebars helper to allow our users to quickly see if a property is "Standalone" or part of a "Community".
-
-To get started, let's generate a helper for `rental-property-type`:
+Para começar, vamos gerar um helper chamado `rental-property-type`:
 
 ```shell
 ember g helper rental-property-type
 ```
-Isso criará dois arquivos, nosso auxiliar e seu teste relacionado:
-
-This will create two files, our helper and its related test:
+Isso vai criar dois arquivos, nosso helper e seu teste relacionado:
 
 ```shell
 installing helper
@@ -25,9 +16,7 @@ installing helper
 installing helper-test
   create tests/integration/helpers/rental-property-type-test.js
 ```
-Nosso novo ajudante começa com algum código de referência do gerador:
-
-Our new helper starts out with some boilerplate code from the generator:
+Nosso novo helper foi criado com um código inicial bem simples pelo nosso gerador:
 
 ```app/helpers/rental-property-type.js
 import Ember from 'ember';
@@ -38,9 +27,7 @@ export function rentalPropertyType(params/*, hash*/) {
 
 export default Ember.Helper.helper(rentalPropertyType);
 ```
-Vamos atualizar o nosso modelo de componente de "listagem de aluguel" para usar nosso novo ajudante e passar em `rental.propertyType`:
-
-Let's update our `rental-listing` component template to use our new helper and pass in `rental.propertyType`:
+Vamos atualizar o nosso template do component de `rental-listing` para usar nosso novo helper e passar `rental.propertyType` como parâmetro:
 
 ```app/templates/components/rental-listing.hbs{-11,+12,+13}
 <article class="listing">
@@ -65,13 +52,9 @@ Let's update our `rental-listing` component template to use our new helper and p
   </div>
 </article>
 ```
-Idealmente, veremos "Tipo: Standalone - Estate" para a nossa primeira propriedade de aluguel.
-Em vez disso, nosso ajudante de modelo padrão está retornando nossos valores de `rental.propertyType`.
-Vamos atualizar o nosso ajudante para verificar se existe uma propriedade em uma matriz de `communityPropertyTypes`. Se assim for, retornaremos 'Community' ou`'Standalone'`:
-
-Ideally we'll see "Type: Standalone - Estate" for our first rental property.
-Instead, our default template helper is returning back our `rental.propertyType` values.
-Let's update our helper to look if a property exists in an array of `communityPropertyTypes`, if so, we'll return either `'Community'` or `'Standalone'`:
+Idealmente, veremos "Type: Standalone - Estate" em nosso primeiro imóvel.
+Em vez disso, nosso template helper padrão está retornando o valor de `rental.propertyType`.
+Vamos atualizar o nosso helper para verificar se existe uma propriedade em uma matriz de `communityPropertyTypes`. Se assim então, retornaremos `'Community'` ou `'Standalone'`:
 
 ```app/helpers/rental-property-type.js
 import Ember from 'ember';
@@ -93,15 +76,14 @@ export function rentalPropertyType([propertyType]) {
 export default Ember.Helper.helper(rentalPropertyType);
 ```
 
-Each [argument](https://guides.emberjs.com/v2.12.0/templates/writing-helpers/#toc_helper-arguments) in the helper will be added to an array and passed to our helper. For example, `{{my-helper "foo" "bar"}}` would result in `myHelper(["foo", "bar"])`. Using array [ES2015 destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) assignment, we can name expected parameters within the array. In the example above, the first argument in the template will be assigned to `propertyType`. This provides a flexible, expressive interface for your helpers, including optional arguments and default values.
+Cada [argument](https://guides.emberjs.com/v2.12.0/templates/writing-helpers/#toc_helper-arguments) no helper será adicionado a uma matriz e passado para o nosso helper. Por exemplo, `{{my-helper "foo" "bar"}}` retornará `myHelper(["foo", "bar"])`. Usando array assignment [ES2015 desestruturação](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment), podemos nomear os parâmetros esperados dentro do array. No exemplo acima, o primeiro argumento no template será atribuído a `propertyType`. Isso fornece uma interface flexível e expressiva para nossos helpers, incluindo argumentos opcionais e valores padrões.
 
-Now in our browser we should see that the first rental property is listed as "Standalone",
-while the other two are listed as "Community".
+Agora, em nosso navegador, devemos ver que o primeiro imóvel para alugar é "Standalone", enquanto as outras duas estão listadas como "Community".
 
 
-### Integration Test
+### Teste de integração
 
-Update the content of the integration test to the following to fix it:
+Atualize o conteúdo do teste de integração dessa forma para corrigi-lo:
 
 ```/tests/integration/helpers/rental-property-type-test.js{-15,+16}
 
