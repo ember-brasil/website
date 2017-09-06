@@ -1,3 +1,15 @@
+Atualmente, nosso aplicativo está usando dados codificados para nossas listagens de aluguel, definidas no manipulador de rotas 'rental'.
+À medida que nossa aplicação cresce, queremos persistir nossos dados de aluguel em um servidor e facilitar a operação avançada nos dados, como a consulta.
+
+A Ember vem com uma biblioteca de gerenciamento de dados chamada [Dados Ember] (https://github.com/emberjs/data) para ajudar a lidar com dados de aplicativos persistentes.
+
+A Ember Data requer que você defina a estrutura dos dados que deseja fornecer ao seu aplicativo estendendo [`DS.Model`] (http://emberjs.com/api/data/classes/DS.Model.html).
+
+Você pode gerar um modelo de dados Ember usando a CLI Ember.
+Chamaremos nosso modelo `rental` e gerá-lo da seguinte forma:
+
+
+
 Currently, our app is using hard-coded data for our rental listings, defined in the `rentals` route handler.
 As our application grows, we will want to persist our rental data on a server, and make it easier to do advanced operations on the data, such as querying.
 
@@ -11,7 +23,7 @@ We'll call our model `rental` and generate it as follows:
 ```shell
 ember g model rental
 ```
-
+Isso resulta na criação de um arquivo modelo e um arquivo de teste:
 This results in the creation of a model file and a test file:
 
 ```shell
@@ -20,6 +32,7 @@ installing model
 installing model-test
   create tests/unit/models/rental-test.js
 ```
+Quando abrimos o arquivo modelo, podemos ver uma classe em branco que se estende [`DS.Model`] (http://emberjs.com/api/data/classes/DS.Model.html):
 
 When we open the model file, we can see a blank class extending [`DS.Model`](http://emberjs.com/api/data/classes/DS.Model.html):
 
@@ -30,9 +43,12 @@ export default DS.Model.extend({
 
 });
 ```
+Vamos definir a estrutura de um objeto de aluguel usando os mesmos atributos para o nosso aluguel que nós [usado anteriormente] (../ model-hook /) em nossa matriz codificada de objetos JavaScript - _title_, _owner_, _city_, _property type_, _image_ , _rooms_ e _description_.
+Defina atributos dando-lhes o resultado da função [`DS.attr ()`] (http://emberjs.com/api/data/classes/DS.html#method_attr).
+Para obter mais informações sobre os Atributos de Dados da Ember, leia a seção chamada [Atributos de Definição] (../../ models / define-models / # toc_defining-attributes) nos guias.
 
-Let's define the structure of a rental object using the same attributes for our rental that we [previously used](../model-hook/) in our hard-coded array of JavaScript objects -
-_title_, _owner_, _city_, _property type_, _image_, _bedrooms_ and _description_.
+
+Let's define the structure of a rental object using the same attributes for our rental that we [previously used](../model-hook/) in our hard-coded array of JavaScript objects - _title_, _owner_, _city_, _property type_, _image_, _bedrooms_ and _description_.
 Define attributes by giving them the result of the function [`DS.attr()`](http://emberjs.com/api/data/classes/DS.html#method_attr).
 For more information on Ember Data Attributes, read the section called [Defining Attributes](../../models/defining-models/#toc_defining-attributes) in the guides.
 
@@ -49,6 +65,7 @@ export default DS.Model.extend({
   description: DS.attr()
 });
 ```
+Agora temos um objeto modelo que podemos usar para a implementação do Ember Data.
 
 We now have a model object that we can use for our Ember Data implementation.
 
