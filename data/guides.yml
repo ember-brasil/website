@@ -134,7 +134,7 @@
 - title: "Controllers"
   url: 'controllers'
   pages:
-    - title: "Introduction"
+    - title: "Introdução"
       url: "index"
 
 - title: "Models"
