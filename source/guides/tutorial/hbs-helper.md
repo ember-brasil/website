@@ -1,7 +1,7 @@
 Até agora, nossa aplicação está mostrando diretamente para o usuário os dados do Ember Data models.
-À medida que nossa aplicação cresce, precisaremos manipular dados antes de mostrar para nossos usuários.
-Por esta razão, o Ember oferece helper para templates em Handlebars para personalizar os dados em nossos templates.
-Vamos usar um handlebars helper para permitir que nossos usuários vejam rapidamente se um imóvel é "Standalone" ou parte de uma "Community".
+À medida que nossa aplicação cresce, precisaremos manipular os dados antes de mostrar para nossos usuários.
+Por esta razão, o Ember oferece templates helpers para personalizar os dados em nossos templates.
+Vamos usar um template helper para permitir que nossos usuários vejam rapidamente se um imóvel é "Standalone" ou parte de uma "Community".
 
 Para começar, vamos gerar um helper chamado `rental-property-type`:
 
@@ -27,7 +27,7 @@ export function rentalPropertyType(params/*, hash*/) {
 
 export default Ember.Helper.helper(rentalPropertyType);
 ```
-Vamos atualizar o nosso template do component de `rental-listing` para usar nosso novo helper e passar `rental.propertyType` como parâmetro:
+Vamos atualizar o template do nosso component `rental-listing` para usar nosso helper e passar `rental.propertyType` como parâmetro:
 
 ```app/templates/components/rental-listing.hbs{-11,+12,+13}
 <article class="listing">
@@ -53,8 +53,8 @@ Vamos atualizar o nosso template do component de `rental-listing` para usar noss
 </article>
 ```
 Idealmente, veremos "Type: Standalone - Estate" em nosso primeiro imóvel.
-Em vez disso, nosso template helper padrão está retornando o valor de `rental.propertyType`.
-Vamos atualizar o nosso helper para verificar se existe uma propriedade em uma matriz de `communityPropertyTypes`. Se assim então, retornaremos `'Community'` ou `'Standalone'`:
+Em vez disso, nosso template helper está retornando o valor de `rental.propertyType`.
+Vamos atualizar o nosso helper para verificar se existe uma propriedade em uma matriz de `communityPropertyTypes`. Se assim então, retornaremos `Community` ou `Standalone`:
 
 ```app/helpers/rental-property-type.js
 import Ember from 'ember';
@@ -76,9 +76,9 @@ export function rentalPropertyType([propertyType]) {
 export default Ember.Helper.helper(rentalPropertyType);
 ```
 
-Cada [argument](https://guides.emberjs.com/v2.12.0/templates/writing-helpers/#toc_helper-arguments) no helper será adicionado a uma matriz e passado para o nosso helper. Por exemplo, `{{my-helper "foo" "bar"}}` retornará `myHelper(["foo", "bar"])`. Usando array assignment [ES2015 desestruturação](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment), podemos nomear os parâmetros esperados dentro do array. No exemplo acima, o primeiro argumento no template será atribuído a `propertyType`. Isso fornece uma interface flexível e expressiva para nossos helpers, incluindo argumentos opcionais e valores padrões.
+Cada [argument](https://guides.emberjs.com/v2.12.0/templates/writing-helpers/#toc_helper-arguments) no helper será adicionado a uma matriz e passado para o nosso helper. Por exemplo, `{{my-helper "foo" "bar"}}` retornará `myHelper(["foo", "bar"])`. Usando array assignment [ES2015 desestruturação](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment), podemos nomear os parâmetros dentro do array. No exemplo acima, o primeiro argumento no template será atribuído a `propertyType`. Isso fornece uma interface flexível e expressiva para nossos helpers, incluindo argumentos opcionais e valores padrões.
 
-Agora, em nosso navegador, devemos ver que o primeiro imóvel para alugar é "Standalone", enquanto as outras duas estão listadas como "Community".
+Agora, em nosso navegador, devemos ver que o primeiro imóvel para alugar é "Standalone", enquanto as outros dois estão listados como "Community".
 
 
 ### Teste de integração
