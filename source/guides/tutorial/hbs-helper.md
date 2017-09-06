@@ -1,3 +1,10 @@
+Até agora, nosso aplicativo está mostrando diretamente os dados do usuário dos nossos modelos de dados da Ember.
+À medida que nosso aplicativo cresce, queremos manipular dados ainda mais antes de apresentá-lo aos nossos usuários.
+Por esta razão, a Ember oferece ajudantes do modelo Handlebars para decorar os dados em nossos modelos.
+Vamos usar um ajudante de guidão para permitir que nossos usuários vejam rapidamente se uma propriedade é "Autônomo" ou parte de uma "Comunidade".
+
+Para começar, vamos gerar um ajudante para `rental-property-type`:
+
 So far, our app is directly showing the user data from our Ember Data models.
 As our app grows, we will want to manipulate data further before presenting it to our users.
 For this reason, Ember offers Handlebars template helpers to decorate the data in our templates.
@@ -8,6 +15,7 @@ To get started, let's generate a helper for `rental-property-type`:
 ```shell
 ember g helper rental-property-type
 ```
+Isso criará dois arquivos, nosso auxiliar e seu teste relacionado:
 
 This will create two files, our helper and its related test:
 
@@ -17,6 +25,7 @@ installing helper
 installing helper-test
   create tests/integration/helpers/rental-property-type-test.js
 ```
+Nosso novo ajudante começa com algum código de referência do gerador:
 
 Our new helper starts out with some boilerplate code from the generator:
 
@@ -29,6 +38,7 @@ export function rentalPropertyType(params/*, hash*/) {
 
 export default Ember.Helper.helper(rentalPropertyType);
 ```
+Vamos atualizar o nosso modelo de componente de "listagem de aluguel" para usar nosso novo ajudante e passar em `rental.propertyType`:
 
 Let's update our `rental-listing` component template to use our new helper and pass in `rental.propertyType`:
 
@@ -55,11 +65,13 @@ Let's update our `rental-listing` component template to use our new helper and p
   </div>
 </article>
 ```
+Idealmente, veremos "Tipo: Standalone - Estate" para a nossa primeira propriedade de aluguel.
+Em vez disso, nosso ajudante de modelo padrão está retornando nossos valores de `rental.propertyType`.
+Vamos atualizar o nosso ajudante para verificar se existe uma propriedade em uma matriz de `communityPropertyTypes`. Se assim for, retornaremos 'Community' ou`'Standalone'`:
 
 Ideally we'll see "Type: Standalone - Estate" for our first rental property.
 Instead, our default template helper is returning back our `rental.propertyType` values.
-Let's update our helper to look if a property exists in an array of `communityPropertyTypes`,
-if so, we'll return either `'Community'` or `'Standalone'`:
+Let's update our helper to look if a property exists in an array of `communityPropertyTypes`, if so, we'll return either `'Community'` or `'Standalone'`:
 
 ```app/helpers/rental-property-type.js
 import Ember from 'ember';
