@@ -1,30 +1,17 @@
-Atualmente, nosso aplicativo está usando dados codificados para nossas listagens de aluguel, definidas no manipulador de rotas 'rental'.
-À medida que nossa aplicação cresce, queremos persistir nossos dados de aluguel em um servidor e facilitar a operação avançada nos dados, como a consulta.
+Atualmente, nossa aplicação está usando dados fake em nossa listagem de imoveis para alugar, que estão definidas no route `rental`.
+À medida que nossa aplicação cresce, queremos persistir nossos imóveis em um servidor e facilitar operações de consulta desses dados.
 
-A Ember vem com uma biblioteca de gerenciamento de dados chamada [Dados Ember] (https://github.com/emberjs/data) para ajudar a lidar com dados de aplicativos persistentes.
+Ember vem com uma biblioteca de gerenciamento de dados chamada [Ember Data](https://github.com/emberjs/data) para ajudar a controlar e persitir os dados da nossa aplicação.
 
-A Ember Data requer que você defina a estrutura dos dados que deseja fornecer ao seu aplicativo estendendo [`DS.Model`] (http://emberjs.com/api/data/classes/DS.Model.html).
+Ember Data requer que nós definimos a estrutura dos dados que vamos utilizar em nossa aplicação estendendo [`DS.Model`](http://emberjs.com/api/data/classes/DS.Model.html).
 
-Você pode gerar um modelo de dados Ember usando a CLI Ember.
-Chamaremos nosso modelo `rental` e gerá-lo da seguinte forma:
-
-
-
-Currently, our app is using hard-coded data for our rental listings, defined in the `rentals` route handler.
-As our application grows, we will want to persist our rental data on a server, and make it easier to do advanced operations on the data, such as querying.
-
-Ember comes with a data management library called [Ember Data](https://github.com/emberjs/data) to help deal with persistent application data.
-
-Ember Data requires you to define the structure of the data you wish to provide to your application by extending [`DS.Model`](http://emberjs.com/api/data/classes/DS.Model.html).
-
-You can generate an Ember Data Model using Ember CLI.
-We'll call our model `rental` and generate it as follows:
+Você pode gerar Ember Data Model usando Ember CLI.
+Chamaremos nosso model de `rental`:
 
 ```shell
 ember g model rental
 ```
-Isso resulta na criação de um arquivo modelo e um arquivo de teste:
-This results in the creation of a model file and a test file:
+O resultado será a criação de dois arquivos, nosso model e um arquivo de teste:
 
 ```shell
 installing model
