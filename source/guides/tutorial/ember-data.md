@@ -19,9 +19,7 @@ installing model
 installing model-test
   create tests/unit/models/rental-test.js
 ```
-Quando abrimos o arquivo modelo, podemos ver uma classe em branco que se estende [`DS.Model`] (http://emberjs.com/api/data/classes/DS.Model.html):
-
-When we open the model file, we can see a blank class extending [`DS.Model`](http://emberjs.com/api/data/classes/DS.Model.html):
+Abrindo o arquivo model, podemos ver uma classe em branco que se estende [`DS.Model`](http://emberjs.com/api/data/classes/DS.Model.html):
 
 ```app/models/rental.js
 import DS from 'ember-data';
@@ -30,6 +28,7 @@ export default DS.Model.extend({
 
 });
 ```
+
 Vamos definir a estrutura de um objeto de aluguel usando os mesmos atributos para o nosso aluguel que nós [usado anteriormente] (../ model-hook /) em nossa matriz codificada de objetos JavaScript - _title_, _owner_, _city_, _property type_, _image_ , _rooms_ e _description_.
 Defina atributos dando-lhes o resultado da função [`DS.attr ()`] (http://emberjs.com/api/data/classes/DS.html#method_attr).
 Para obter mais informações sobre os Atributos de Dados da Ember, leia a seção chamada [Atributos de Definição] (../../ models / define-models / # toc_defining-attributes) nos guias.
