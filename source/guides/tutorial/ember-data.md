@@ -51,11 +51,11 @@ Agora temos um model que podemos usar para a implementação do Ember Data.
 
 ### Updating the Model Hook
 
-To use our new Ember Data Model object, we need to update the `model` function we [previously defined](../model-hook/) in our route handler.
-Delete the hard-coded JavaScript Array, and replace it with the following call to the [Ember Data Store service](../../models/#toc_the-store-and-a-single-source-of-truth).
-The [store service](http://emberjs.com/api/data/classes/DS.Store.html) is injected into all routes and components in Ember.
-It is the main interface you use to interact with Ember Data.
-In this case, call the [`findAll`](http://emberjs.com/api/data/classes/DS.Store.html#method_findAll) function on the store and provide it with the name of your newly created rental model class.
+Para usar nosso objeto Ember Data Model, precisamos atualizar a função `model` que [definimos anteriormente](../model-hook/) em nosso manipulador de rotas.
+Elimine o array que está hard-coded e substitua-a pela seguinte chamada para o [Ember Data Store service](../../models/#toc_the-store-and-a-single-source-of-truth).
+[Store service](http://emberjs.com/api/data/classes/DS.Store.html) é injetado em todas as routes e components no Ember. É a interface principal que você usará para interagir com Ember Data.
+Nesse caso, chame a função [`findAll`](http://emberjs.com/api/data/classes/DS.Store.html#method_findAll) na `store` e passe como parâmetro o nome do model `rental` recêm criado.
+
 
 ```app/routes/rentals.js{+5,-6,-7,-8,-9,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33}
 import Ember from 'ember';
