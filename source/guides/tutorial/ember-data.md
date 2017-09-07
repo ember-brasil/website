@@ -94,6 +94,15 @@ export default Ember.Route.extend({
   }
 });
 ```
+Quando chamamos `findAll`, a Ember Data tentará buscar aluguel de` / api / rentals`.
+Se você lembrar, na seção intitulada [Instalando Addons] (... / install-addons /), configuramos um adaptador para encaminhar pedidos de dados através de `/ api`.
+
+Você pode ler mais sobre o Ember Data na seção [Modelos] (../../ models /).
+
+Uma vez que já criamos o Ember Mirage no nosso ambiente de desenvolvimento, a Mirage retornará os dados que solicitamos sem realmente fazer uma solicitação de rede.
+
+Quando implantamos nosso aplicativo em um servidor de produção, provavelmente queremos substituir a Mirage por um servidor remoto para o Ember Data para se comunicar com o armazenamento e recuperação de dados persistentes.
+Um servidor remoto permitirá que os dados sejam compartilhados e atualizados entre os usuários.
 
 When we call `findAll`, Ember Data will attempt to fetch rentals from `/api/rentals`.
 If you recall, in the section titled [Installing Addons](../installing-addons/) we set up an adapter to route data requests through `/api`.
@@ -102,6 +111,5 @@ You can read more about Ember Data in the [Models section](../../models/).
 
 Since we have already set up Ember Mirage in our development environment, Mirage will return the data we requested without actually making a network request.
 
-When we deploy our app to a production server,
-we will likely want to replace Mirage with a remote server for Ember Data to communicate with for storing and retrieving persisted data.
+When we deploy our app to a production server, we will likely want to replace Mirage with a remote server for Ember Data to communicate with for storing and retrieving persisted data.
 A remote server will allow for data to be shared and updated across users.
