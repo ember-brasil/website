@@ -29,14 +29,10 @@ export default DS.Model.extend({
 });
 ```
 
-Vamos definir a estrutura de um objeto de aluguel usando os mesmos atributos para o nosso aluguel que nós [usado anteriormente] (../ model-hook /) em nossa matriz codificada de objetos JavaScript - _title_, _owner_, _city_, _property type_, _image_ , _rooms_ e _description_.
-Defina atributos dando-lhes o resultado da função [`DS.attr ()`] (http://emberjs.com/api/data/classes/DS.html#method_attr).
-Para obter mais informações sobre os Atributos de Dados da Ember, leia a seção chamada [Atributos de Definição] (../../ models / define-models / # toc_defining-attributes) nos guias.
+Vamos definir a estrutura do objeto `rental` usando os  atributos do nosso imóvel que [usado anteriormente](../model-hook/) em nosso array de imoveis - _title_, _owner_, _city_, _property type_, _image_ , _bedrooms_ e _description_.
+Defina atributos com a  função [`DS.attr()`](http://emberjs.com/api/data/classes/DS.html#method_attr).
+Para obter mais informações sobre os Ember Data Attributes, leia a seção chamada [Definição de atributos](../../models/ define-models/#toc_defining-attributes).
 
-
-Let's define the structure of a rental object using the same attributes for our rental that we [previously used](../model-hook/) in our hard-coded array of JavaScript objects - _title_, _owner_, _city_, _property type_, _image_, _bedrooms_ and _description_.
-Define attributes by giving them the result of the function [`DS.attr()`](http://emberjs.com/api/data/classes/DS.html#method_attr).
-For more information on Ember Data Attributes, read the section called [Defining Attributes](../../models/defining-models/#toc_defining-attributes) in the guides.
 
 ```app/models/rental.js
 import DS from 'ember-data';
@@ -51,9 +47,7 @@ export default DS.Model.extend({
   description: DS.attr()
 });
 ```
-Agora temos um objeto modelo que podemos usar para a implementação do Ember Data.
-
-We now have a model object that we can use for our Ember Data implementation.
+Agora temos um model que podemos usar para a implementação do Ember Data.
 
 ### Updating the Model Hook
 
