@@ -50,7 +50,7 @@ echo -e "$BLUE>> Checking in '$USE_LANGUAGE' too..."
 MISSPELLED=`echo "$MISSPELLED" | aspell --lang=$USE_LANGUAGE --encoding=utf-8 --add-extra-dicts=./scripts/aspell.$USE_LANGUAGE.pws list | sort -u`
 
 
-NB_MISSPELLED=`echo "$MISSPELLED" | wc -l`
+NB_MISSPELLED=`echo "$MISSPELLED" | grep -Ev "^$" | wc -l`
 
 if [ "$NB_MISSPELLED" -gt 0 ]
 then
@@ -68,5 +68,11 @@ then
 else
     COMMENT="No spelling errors, congratulations!"
     echo -e "$GREEN>> $COMMENT $NC"
+
+    echo -e "$BLUE>> Sending results in a comment on the Github pull request #$TRAVIS_PULL_REQUEST:$NC"
+    curl -i -H "Authorization: token $GITHUB_TOKEN" \
+        -H "Content-Type: application/json" \
+        -X POST -d "{\"body\":\"$COMMENT\"}" \
+        https://api.github.com/repos/ember-brasil/website/issues/$TRAVIS_PULL_REQUEST/comments
     exit 0
 fi
