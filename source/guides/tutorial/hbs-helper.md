@@ -54,7 +54,7 @@ Vamos atualizar o template do nosso component `rental-listing` para usar nosso h
 ```
 Idealmente, veremos "Type: Standalone - Estate" em nosso primeiro imóvel.
 Em vez disso, nosso template helper está retornando o valor de `rental.propertyType`.
-Vamos atualizar o nosso helper para verificar se existe uma propriedade em uma matriz de `communityPropertyTypes`. Se assim então, retornaremos `Community` ou `Standalone`:
+Vamos atualizar o nosso helper para verificar se existe uma propriedade em um array de `communityPropertyTypes`. Se assim então, retornaremos `Community` ou `Standalone`:
 
 ```app/helpers/rental-property-type.js
 import Ember from 'ember';
@@ -76,7 +76,7 @@ export function rentalPropertyType([propertyType]) {
 export default Ember.Helper.helper(rentalPropertyType);
 ```
 
-Cada [argument](https://guides.emberjs.com/v2.12.0/templates/writing-helpers/#toc_helper-arguments) no helper será adicionado a uma matriz e passado para o nosso helper. Por exemplo, `{{my-helper "foo" "bar"}}` retornará `myHelper(["foo", "bar"])`. Usando array assignment [ES2015 desestruturação](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment), podemos nomear os parâmetros dentro do array. No exemplo acima, o primeiro argumento no template será atribuído a `propertyType`. Isso fornece uma interface flexível e expressiva para nossos helpers, incluindo argumentos opcionais e valores padrões.
+Cada [argument](https://guides.emberjs.com/v2.12.0/templates/writing-helpers/#toc_helper-arguments) no helper será adicionado a um array e passado para o nosso helper. Por exemplo, `{{my-helper "foo" "bar"}}` retornará `myHelper(["foo", "bar"])`. Usando array [ES2015 destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment), podemos nomear os parâmetros dentro do array. No exemplo acima, o primeiro argumento no template será atribuído a `propertyType`. Isso fornece uma interface flexível e expressiva para nossos helpers, incluindo argumentos opcionais e valores padrões.
 
 Agora, em nosso navegador, devemos ver que o primeiro imóvel para alugar é "Standalone", enquanto as outros dois estão listados como "Community".
 
