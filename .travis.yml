@@ -6,6 +6,7 @@ addons:
   apt:
     packages:
       - aspell
+      - aspell-en
       - aspell-pt-br
 cache: bundler
 before_script: ./check-spelling.sh
