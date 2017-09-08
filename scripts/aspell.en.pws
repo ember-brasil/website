@@ -1,3 +1,4 @@
+personal_ws-1.1 en 314
 accessor
 actionhttp
 activesupport
@@ -169,7 +170,6 @@ mut
 mysql
 namespace
 nav
-naïve
 normalizeresponse
 npm
 onerror
@@ -307,3 +307,6 @@ internet
 plugin
 krisselden
 DependenciesGit
+communityPropertyTypes
+myHelper
+propertyType
