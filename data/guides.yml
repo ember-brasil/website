@@ -257,8 +257,8 @@
     - title: "Repositories"
       url: "repositories"
 
-- title: "Glossary"
+- title: "Glossário"
   url: "glossary"
   pages:
-    - title: "Web Development"
+    - title: "Desenvolvimento WEB"
       url: "web-development"
