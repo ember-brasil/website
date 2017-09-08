@@ -30,7 +30,7 @@ export default DS.Model.extend({
 
 Vamos definir a estrutura do nosso model `rental` usando os atributos [usados anteriormente](../model-hook/) em nosso array de imóveis que está hard-coded em nosso manipulador de route - _title_, _owner_, _city_, _property type_, _image_ , _bedrooms_ e _description_.
 Defina os atributos com a função [`DS.attr()`](http://emberjs.com/api/data/classes/DS.html#method_attr).
-Para obter mais informações sobre os atributos do Ember Data, leia a seção [Definição de atributos](../../models/ define-models/#toc_defining-attributes).
+Para obter mais informações sobre os atributos do Ember Data, leia a seção [Definição de atributos](../../models/defining-models/#toc_defining-attributes).
 
 
 ```app/models/rental.js
