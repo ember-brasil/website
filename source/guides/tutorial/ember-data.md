@@ -54,7 +54,7 @@ Para usar nosso model, precisamos atualizar a função `model` que [definimos an
 Remova o array que está hard-coded e substitua pela chamada de [Ember Data Store](../../models/#toc_the-store-and-a-single-source-of-truth).
 
 [Service Store](http://emberjs.com/api/data/classes/DS.Store.html) é injetado automaticamente em todas as routes e components no Ember. É a principal interface que usaremos para interagir com Ember Data.
-Nesse caso, chame a função [`findAll`](http://emberjs.com/api/data/classes/DS.Store.html#method_findAll) na `store` e passe como parâmetro o nome do model `rental` recêm criado.
+Nesse caso, chame a função [`findAll`](http://emberjs.com/api/data/classes/DS.Store.html#method_findAll) na `store` e passe como parâmetro o nome do model `rental` recém  criado.
 
 
 ```app/routes/rentals.js{+5,-6,-7,-8,-9,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33}
