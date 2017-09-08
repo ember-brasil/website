@@ -44,13 +44,12 @@ echo -e "$BLUE>> Text content that will be checked (without metadata, html, and 
 echo "$TEXT_CONTENT_WITHOUT_METADATA"
 
 echo -e "$BLUE>> Checking in 'en' (many technical words are in English anyway)...$NC"
-MISSPELLED=`echo "$TEXT_CONTENT_WITHOUT_METADATA" | aspell --lang=en --encoding=utf-8 --personal=./spelling-exceptions.txt list | sort -u`
+MISSPELLED=`echo "$TEXT_CONTENT_WITHOUT_METADATA" | aspell --lang=en --encoding=utf-8 --add-extra-dicts=./scripts/aspell.en.pws list | sort -u`
 
 echo -e "$BLUE>> Checking in '$USE_LANGUAGE' too..."
-MISSPELLED=`echo "$MISSPELLED" | aspell --lang=$USE_LANGUAGE --encoding=utf-8 --personal=./spelling-exceptions.txt list | sort -u`
+MISSPELLED=`echo "$MISSPELLED" | aspell --lang=$USE_LANGUAGE --encoding=utf-8 --add-extra-dicts=./scripts/aspell.$USE_LANGUAGE.pws list | sort -u`
 
-
-NB_MISSPELLED=`echo "$MISSPELLED" | wc -l`
+NB_MISSPELLED=`echo "$MISSPELLED" | grep -Ev "^$" | wc -l`
 
 if [ "$NB_MISSPELLED" -gt 0 ]
 then
@@ -58,15 +57,21 @@ then
     MISSPELLED=`echo "$MISSPELLED" | sed -E ':a;N;$!ba;s/\n/, /g'`
     echo "$MISSPELLED"
     COMMENT="$NB_MISSPELLED words might be misspelled, please check them: $MISSPELLED"
+
+    echo -e "$BLUE>> Sending results in a comment on the Github pull request #$TRAVIS_PULL_REQUEST:$NC"
+    curl -i -H "Authorization: token $GITHUB_TOKEN" \
+        -H "Content-Type: application/json" \
+        -X POST -d "{\"body\":\"$COMMENT\"}" \
+        https://api.github.com/repos/ember-brasil/website/issues/$TRAVIS_PULL_REQUEST/comments
+    exit 1
 else
     COMMENT="No spelling errors, congratulations!"
     echo -e "$GREEN>> $COMMENT $NC"
+
+    echo -e "$BLUE>> Sending results in a comment on the Github pull request #$TRAVIS_PULL_REQUEST:$NC"
+    curl -i -H "Authorization: token $GITHUB_TOKEN" \
+        -H "Content-Type: application/json" \
+        -X POST -d "{\"body\":\"$COMMENT\"}" \
+        https://api.github.com/repos/ember-brasil/website/issues/$TRAVIS_PULL_REQUEST/comments
+    exit 0
 fi
-
-echo -e "$BLUE>> Sending results in a comment on the Github pull request #$TRAVIS_PULL_REQUEST:$NC"
-curl -i -H "Authorization: token $GITHUB_TOKEN" \
-    -H "Content-Type: application/json" \
-    -X POST -d "{\"body\":\"$COMMENT\"}" \
-    https://api.github.com/repos/ember-brasil/website/issues/$TRAVIS_PULL_REQUEST/comments
-
-exit 0
