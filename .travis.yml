@@ -9,7 +9,7 @@ addons:
       - aspell-en
       - aspell-pt-br
 cache: bundler
-before_script: ./check-spelling.sh
+before_script: ./scripts/spell-check.sh
 script: bundle exec rspec spec && bundle exec middleman build --verbose
 deploy:
   skip_cleanup: true

@@ -1,4 +1,4 @@
-Joining a web development community can be a challenge within itself, especially when all the resources you visit assume you're familiar with other technologies that you're not familiar with.
+Joiing a web development community can be a challenge within itself, especially when all the resources you visit assume you're familiar with other technologies that you're not familiar with.
 
 Our goal is to help you avoid that mess and come up to speed as fast as possible; you can consider us your internet friend.
 

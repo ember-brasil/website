@@ -1,5 +1,5 @@
 Bem-vindo ao Tutorial do Ember!
-EDTADO. Este tutorial destina-se a apresentar conceitos basicos para criar um aplicativo profissional com Ember.
+Este tutorial destina-se a apresentar conceitos básicos para criar um aplicativo profissional com Ember.
 Se você ficar com dúvida em qualquer ponto durante o tutorial, sinta-se à vontade para baixar [https://github.com/ember-learn/super-rentals](https://github.com/ember-learn/superrentals), esse é o aplicativo completo construído neste tutorial.
 
 Você vai precisar instalar a última versão do `ember-cli` seguindo o [Guia Inicial](../../getting-started/quick-start/#toc_instalando-o-ember) na seção "Instalando Ember".
@@ -7,7 +7,7 @@ Você vai precisar instalar a última versão do `ember-cli` seguindo o [Guia In
 A ferramenta de linha de comando do Ember CLI possui inúmeras opções úteis para criar novos projetos, executar testes e diversos conjuntos ferramentas de desenvolvimento.
 Isso permite que os desenvolvedores Ember se concentrem na construção do aplicativo, em vez de criar estruturas para executa-lo.
 
-No terminal, digite `ember -help` isso motra todos os comandos disponíveis no Ember CLI. Para obter mais informações sobre um comando específico, digite `ember help <command-name>`.
+No terminal, digite `ember -help` isso mostra todos os comandos disponíveis no Ember CLI. Para obter mais informações sobre um comando específico, digite `ember help <command-name>`.
 
 ## Criando um novo aplicativo
 
@@ -16,7 +16,7 @@ Para criar um novo projeto usando o Ember CLI, use o comando `new`. Já pensando
 ```shell
 ember new super-rentals
 ```
-Um novo projeto será criado dentro do seu diretorio atual. Agora você pode ir ao seu diretório do projeto `super-rentals` e começar a trabalhar nele.
+Um novo projeto será criado dentro do seu diretório atual. Agora você pode ir ao seu diretório do projeto `super-rentals` e começar a trabalhar nele.
 
 ```shell
 cd super-rentals
