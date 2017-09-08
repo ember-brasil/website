@@ -1,16 +1,16 @@
-Atualmente, nossa aplicação está usando dados fake em nossa listagem de imoveis para alugar, que estão definidas no manipulador de route `rental`.
+Atualmente, nossa aplicação está usando dados fake em nossa listagem de imóveis para alugar, que estão definidas no manipulador de route `rental`.
 À medida que nossa aplicação cresce, precisaremos persistir nossos imóveis em um servidor remoto para facilitar operações de consulta, criação e edição desses dados.
 
-O Ember vem com uma biblioteca para gerenciamento de dados chamada [Ember Data](https://github.com/emberjs/data), ela nos ajuda a persistir e consultar dados de uma servidor remoto.
+O Ember vem com uma biblioteca para gerenciamento de dados chamada [Ember Data](https://github.com/emberjs/data), ela nos ajuda a persistir e consultar dados de um servidor remoto.
 
-O Ember Data precisa que especiquemos a estrutura dos dados que vamos utilizar em nossa aplicação, estendendo [`DS.Model`](http://emberjs.com/api/data/classes/DS.Model.html).
+O Ember Data precisa que especifiquemos a estrutura dos dados que vamos utilizar em nossa aplicação, estendendo [`DS.Model`](http://emberjs.com/api/data/classes/DS.Model.html).
 
-Vamos usar o Ember ClI para gerar nosso Ember Data Model com o nome `rental`:
+Vamos usar o Ember CLI para gerar nosso Ember Data Model com o nome `rental`:
 
 ```shell
 ember g model rental
 ```
-Será criado dois arquivos, um com nosso model e outro com nosso teste.
+Serão criado dois arquivos, um com nosso model e outro com nosso teste.
 
 ```shell
 installing model
@@ -28,7 +28,7 @@ export default DS.Model.extend({
 });
 ```
 
-Vamos definir a estrutura do nosso model `rental` usando os atributos [usados anteriormente](../model-hook/) em nosso array de imoveis que está hard-coded em nosso manipulador de route - _title_, _owner_, _city_, _property type_, _image_ , _bedrooms_ e _description_.
+Vamos definir a estrutura do nosso model `rental` usando os atributos [usados anteriormente](../model-hook/) em nosso array de imóveis que está hard-coded em nosso manipulador de route - _title_, _owner_, _city_, _property type_, _image_ , _bedrooms_ e _description_.
 Defina os atributos com a função [`DS.attr()`](http://emberjs.com/api/data/classes/DS.html#method_attr).
 Para obter mais informações sobre os atributos do Ember Data, leia a seção [Definição de atributos](../../models/ define-models/#toc_defining-attributes).
 
@@ -95,11 +95,11 @@ export default Ember.Route.extend({
 });
 ```
 
-Quando chamamos `findAll`, o Ember Data tentará buscar os imoveis em `/api/rentals`.
+Quando chamamos `findAll`, o Ember Data tentará buscar os imóveis em `/api/rentals`.
 Se você lembrar, na seção chamada [Instalando Addons](../installing-addons/), configuramos um adapter para nossas routes solicitarem requisições em `/api`.
 
 Você pode ler mais sobre Ember Data na seção [Model](../../models/).
 
 Uma vez que já criamos o Ember Mirage no nosso ambiente de desenvolvimento, o Mirage retornará os dados que solicitamos, sem fazer requisições na rede.
 
-Quando publicarmos nassa aplicação em um servidor de produção, iremos substituir o Mirage por um servidor remoto, para que Ember Data possa manipular dados reais.
+Quando publicarmos nossa aplicação em um servidor de produção, iremos substituir o Mirage por um servidor remoto, para que Ember Data possa manipular dados reais.
