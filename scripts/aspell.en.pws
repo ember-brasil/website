@@ -1,4 +1,4 @@
-personal_ws-1.1 en 314
+personal_ws-1.1 en 315
 accessor
 actionhttp
 activesupport
@@ -313,3 +313,4 @@ propertyType
 attr
 findAll
 findRecord
+hbs
