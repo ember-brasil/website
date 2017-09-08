@@ -307,3 +307,6 @@ internet
 plugin
 krisselden
 DependenciesGit
+communityPropertyTypes
+myHelper
+propertyType
