@@ -5,8 +5,11 @@ rvm:
 addons:
   apt:
     packages:
-    - aspell-pt-br
+      - aspell
+      - aspell-en
+      - aspell-pt-br
 cache: bundler
+before_script: ./scripts/spell-check.sh
 script: bundle exec rspec spec && bundle exec middleman build --verbose
 deploy:
   skip_cleanup: true
