@@ -44,10 +44,10 @@ echo -e "$BLUE>> Text content that will be checked (without metadata, html, and 
 echo "$TEXT_CONTENT_WITHOUT_METADATA"
 
 echo -e "$BLUE>> Checking in 'en' (many technical words are in English anyway)...$NC"
-MISSPELLED=`echo "$TEXT_CONTENT_WITHOUT_METADATA" | aspell --lang=en --encoding=utf-8 --personal=./scripts/spelling-exceptions.txt list | sort -u`
+MISSPELLED=`echo "$TEXT_CONTENT_WITHOUT_METADATA" | aspell --lang=en --encoding=utf-8 --personal=./spelling-exceptions.txt list | sort -u`
 
 echo -e "$BLUE>> Checking in '$USE_LANGUAGE' too..."
-MISSPELLED=`echo "$MISSPELLED" | aspell --lang=$USE_LANGUAGE --encoding=utf-8 --personal=./scripts/spelling-exceptions.txt list | sort -u`
+MISSPELLED=`echo "$MISSPELLED" | aspell --lang=$USE_LANGUAGE --encoding=utf-8 --personal=./spelling-exceptions.txt list | sort -u`
 
 
 NB_MISSPELLED=`echo "$MISSPELLED" | wc -l`
