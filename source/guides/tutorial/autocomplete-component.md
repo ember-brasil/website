@@ -93,32 +93,30 @@ export default Ember.Component.extend({
 });
 ```
 
-#### Filtering Data Based on Input
+#### Filtrando os dados
 
-In the above example we use the `init` hook to seed our initial listings by calling the `filter` action with an empty value.
-Our `handleFilterEntry` action calls a function called `filter` based on the `value` attribute set by the input helper.
+No exemplo acima, usamos o hook `init` para criar nossas lista de imóveis iniciais ao chamar a função `filter` com um valor vazio.
+Nossa action `handleFilterEntry` chama uma função chamada `filter` com base no valor do atributo `value`.
 
-The `filter` function is passed in by the calling object. This is a pattern known as [closure actions](../../components/triggering-changes-with-actions/#toc_passing-the-action-to-the-component).
+A função `filter` foi passada como objeto. Este é um padrão conhecido como [closure actions](../../components/triggering-changes-with-actions/#toc_passing-the-action-to-the-component).
 
-Notice the `then` function called on the result of calling the `filter` function.
-The code expects the `filter` function to return a promise.
-A [promise](http://emberjs.com/api/classes/RSVP.Promise.html) is a JavaScript object that represents the result of an asynchronous function.
-A promise may or may not be executed at the time you receive it.
-To account for this, it provides functions, like `then` that let you give it code it will run when it eventually does receive a result.
+Observe a função `then` chamada no resultado da função `filter`.
+O código espera que a função `filter` responda uma promessa.
+Uma [promise](http://emberjs.com/api/classes/RSVP.Promise.html) é um objeto JavaScript que representa o resultado de uma função assíncrona.
+Uma promise pode ou não ser executada no momento em que você a declara.
+Em nosso exemplo, fornecemos a função `then` que permite que seja executado somente quando na promise finalizar de processar o resultado.
 
+Para implementar a função `filter` para fazer a filtragem dos imóveis de acordo com a cidade, criaremos um controller chamado `rental`.
+[Controllers](../../controllers/) contêm ações e propriedades disponiveis para nosso template.
+Como Ember trabalha por conveção, ele saberá que um controller chamado `rental` coresponde a uma route com o mesmo nome.
 
-To implement the `filter` function to do the actual filter of rentals by city, we'll create a `rentals` controller.
-[Controllers](../../controllers/) contain actions and properties available to the template of its corresponding route.
-In our case we want to generate a controller called `rentals`.
-Ember will know that a controller with the name of `rentals` will apply to the route with the same name.
+Crie um controller para a route `rental` executando o seguinte:
 
-Generate a controller for the `rentals` route by running the following:
 
 ```shell
 ember g controller rentals
 ```
-
-Now, define your new controller like so:
+Agora, podemos adicionar a action `filterByCity` ao controller:
 
 ```app/controllers/rentals.js
 import Ember from 'ember';
@@ -136,9 +134,9 @@ export default Ember.Controller.extend({
 });
 ```
 
-When the user types in the text field in our component, the `filterByCity` action in the controller is called.
-This action takes in the `value` property, and filters the `rental` data for records in data store that match what the user has typed thus far.
-The result of the query is returned to the caller.
+Quando o usuário digitar no campo de texto em nosso component, a action `filterByCity` no controller será chamada.
+Essa action aceita a propriedade `value` e filtra os dados de `rental`  de acordo com a cidade que o usuário digitou.
+O resultado da consulta é retornado para quem o chamou. 
 
 #### Faking Query Results
 
