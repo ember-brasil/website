@@ -50,9 +50,9 @@ Neste caso, estamos passando (`yielding`), o resultado do nosso filtro para dent
 {{/each}}
 ```
 
-#### Accepting Input to a Component
+#### Adicionando um input ao component
 
-We want the component to simply provide an input field and yield the results list to its block, so our template will be simple:
+Queremos que o component simplesmente tenha um campo (input) e envie o resultado para a expressão `{{yield}}`.
 
 ```app/templates/components/list-filter.hbs
 {{input value=value
@@ -61,17 +61,14 @@ We want the component to simply provide an input field and yield the results lis
         placeholder="Filter By City"}}
 {{yield results}}
 ```
+Observer que nosso template agora possui um novo tipo de helper [`{{input}}`](../../templates/input-helpers), ele funciona como um campo de texto, no qual nosso usuário poderá digitar uma cidade e filtrar o resultado de imóveis.
+A propriedade `value` do` input` será sincronizada com a propriedade `value` do component.
 
-The template contains an [`{{input}}`](../../templates/input-helpers) helper that renders as a text field, in which the user can type a pattern to filter the list of cities used in a search.
-The `value` property of the `input` will be kept in sync with the `value` property in the component.
+Outra maneira de dizer isso é que a propriedade `value` do `input` é [**bound**](../../object-model/bindings/) com a propriedade `value` do compenent.
 
-Another way to say this is that the `value` property of `input` is [**bound**](../../object-model/bindings/) to the `value` property of the component.
-If the property changes, either by the user typing in the input field, or by assigning a new value to it in our program,
-the new value of the property is present in both the rendered web page and in the code.
+A propriedade `key-up` será vinculada à ação` handleFilterEntry`.
 
-The `key-up` property will be bound to the `handleFilterEntry` action.
-
-Here is what the component's JavaScript looks like:
+Aqui está como nosso código JavaScript do component deve ficar:
 
 ```app/components/list-filter.js
 import Ember from 'ember';
