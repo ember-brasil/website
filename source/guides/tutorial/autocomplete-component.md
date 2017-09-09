@@ -136,7 +136,7 @@ export default Ember.Controller.extend({
 
 Quando o usuário digitar no campo de texto em nosso component, a action `filterByCity` no controller será chamada.
 Essa action aceita a propriedade `value` e filtra os dados de `rental`  de acordo com a cidade que o usuário digitou.
-O resultado da consulta é retornado para quem o chamou. 
+O resultado da consulta é retornado para quem o chamou.
 
 #### Simulando um resultado
 
@@ -203,21 +203,13 @@ Depois de atualizar as configurações do Mirage, devemos conseguir ver o result
 
 #### Manipulação de resultados que retornam em tempos diferentes
 
-No nosso exemplo, você pode notar que, se você digitar rapidamente que os resultados podem ficar fora de sincronia com o texto de filtro atual inserido.
-Isso ocorre porque nossa função de filtragem de dados é _synchronous_, o que significa que o código na função é agendado para mais tarde, enquanto o código que chama a função continua a ser executado.
-Muitas vezes, o código que pode fazer pedidos de rede está configurado para ser assíncrono porque o servidor pode retornar suas respostas em horários variáveis.
+Se você digitar rapidamente no campo de texto, você verá que o resultado apresentado é mostrado de forma confusa em tempo diferente.
+Isso ocorre porque nossa função que faz a filtragem é _synchronous_, o que significa que o código na função é agendado para mais tarde, enquanto o código que chama a função continua a ser executado.
+Muitas vezes, o código que faz solicitações na rede está configurado para ser assíncrono porque o servidor pode retornar as respostas em horários variáveis.
 
-Permite adicionar algum código de proteção para garantir que nossos resultados não sejam sincronizados com a entrada do filtro.
+Vamos adicionar um código simples para garantir que nossos resultados sejam sincronizados de acordo com o valor do filtro.
 Para fazer isso, simplesmente forneceremos o texto do filtro para a função de filtro, de modo que, quando os resultados retornarem, podemos comparar o valor do filtro original com o valor do filtro atual.
-Vamos atualizar os resultados na tela somente se o valor do filtro original e o valor do filtro atual forem iguais.
-
-In our example, you might notice that if you type quickly that the results might get out of sync with the current filter text entered.
-This is because our data filtering function is _asynchronous_, meaning that the code in the function gets scheduled for later, while the code that calls the function continues to execute.
-Often code that may make network requests is set up to be asynchronous because the server may return its responses at varying times.
-
-Lets add some protective code to ensure our results do not get out of sync with our filter input.
-To do this we'll simply provide the filter text to the filter function, so that when the results come back we can compare the original filter value with the current filter value.
-We will update the results on screen only if the original filter value and the current filter value are the same.
+Vamos atualizar o resultado na tela somente se o valor do filtro original e o valor do filtro atual forem iguais.
 
 ```app/controllers/rentals.js{-7,+8,+9,+10,+11,-13,+14,+15,+16,+17}
 import Ember from 'ember';
@@ -243,9 +235,7 @@ export default Ember.Controller.extend({
 });
 ```
 
-Na função `filterByCity` no controlador de aluguel acima, adicionamos uma nova propriedade chamada` query` aos resultados do filtro em vez de apenas retornar uma matriz de aluguéis como antes.
-
-In the `filterByCity` function in the rental controller above, we've added a new property called `query` to the filter results instead of just returning an array of rentals as before.
+A action `filterByCity` no controller rental acima, adicionamos uma nova propriedade chamada` query` aos resultados do filtro em vez de apenas retornar um array de imóveis como antes.
 
 ```app/components/list-filter.js{+9,+10,+11,+19,+20,+21}
 import Ember from 'ember';
@@ -275,39 +265,23 @@ export default Ember.Component.extend({
 
 });
 ```
-No nosso componente de filtro de lista JavaScript, usamos a propriedade `query` para comparar a propriedade` value` do componente.
-A propriedade `value` representa o estado mais recente do campo de entrada.
-Portanto, verificamos se os resultados correspondem ao campo de entrada, garantindo que os resultados permanecerão em sincronia com a última coisa que o usuário digitou.
 
-Embora esta abordagem mantenha nossa ordem de resultados consistente, há outras coisas a considerar ao lidar com várias tarefas simultâneas, como [limitar o número de solicitações feitas ao servidor] (https://emberjs.com/api/classes/Ember .run.html # method_debounce).
-Para criar um comportamento de autocompletar eficaz e robusto para seus aplicativos, recomendamos considerar o projeto de adição [`ember-concurrency`] (http://ember-concurrency.com/#/docs/introduction).
+No nosso component `list-filter`, usamos a propriedade `query` para comparar com a propriedade `value` do component.
+A propriedade `value` representa o estado mais recente do filtro.
+Portanto, verificamos se os resultados correspondem ao valor do filtro, garantindo que os resultados permanecerão em sincronia com a última coisa que o usuário digitou.
 
-Agora você pode continuar a implementar o [próximo recurso] (../ service /), ou continuar para testar nosso componente de filtro recém-criado.
+Embora esta abordagem mantenha nossa ordem de resultados consistente, há outras coisas a considerar ao lidar com várias tarefas simultâneas, como [limitar o número de solicitações feitas ao servidor](https://emberjs.com/api/classes/Ember.run.html#method_debounce).
+Para criar um comportamento de autocomplete eficaz e robusto para seus aplicativos, recomendamos considerar utilizar o addon [`ember-concurrency`](http://ember-concurrency.com/#/docs/introduction).
 
-In our list filter component JavaScript, we use the `query` property to compare to the `value` property of the component.
-The `value` property represents the latest state of the input field.
-Therefore we now check that results match the input field, ensuring that results will stay in sync with the last thing the user has typed.
-
-
-While this approach will keep our results order consistent, there are other things to consider when dealing with multiple concurrent tasks, such as [limiting the number of requests made to the server](https://emberjs.com/api/classes/Ember.run.html#method_debounce).
-To create effective and robust autocomplete behavior for your applications, we recommend considering the [`ember-concurrency`](http://ember-concurrency.com/#/docs/introduction) addon project.
-
-
-You can now proceed on to implement the [next feature](../service/), or continue on to test our newly created filter component.
+Agora você pode avançar para [próxima página](../service/) ou continuar nesta página e fazer os teste de integração e aceitação.
 
 ### Teste de integração
 
-Agora que criamos um novo componente para filtrar uma lista, queremos criar uma prova para verificá-la.
-Vamos usar um [teste de integração de componentes] (../../ testing / testing-components) para verificar o nosso comportamento de componentes, semelhante a [como testamos o nosso componente de listagem de aluguel mais cedo] (../ componente simples / # toc_teste- de-integra-o).
+Agora que criamos um novo component `list-filter`, precisamos criar testes para verificar que tudo funcione corretamente no futuro.
+Vamos usar um [component integration test](../../testing/testing-components) para verificar o comportamento do component, semelhante ao teste criado para a [listagem de ímoveis](../simple-component/#toc_teste-de-integra-o).
 
-Comece por abrir o teste de integração de componentes criado quando geramos nosso componente `list-filter`,` tests / integration / components / list-filter-test.js`.
-Remova o teste padrão e crie um novo teste que verifique isso por padrão, o componente listará todos os itens.
-
-Now that we've created a new component for filtering a list, we want to create a test to verify it.
-Let's use a [component integration test](../../testing/testing-components) to verify our component behavior, similar to [how we tested our rental listing component earlier](../simple-component/#toc_teste-de-integra-o).
-
-Lets begin by opening the component integration test created when we generated our `list-filter` component, `tests/integration/components/list-filter-test.js`.
-Remove the default test, and create a new test that verifies that by default, the component will list all items.
+Comece abrindo o arquivo de teste do component `list-filter` criado anteriormente `tests/integration/components/list-filter-test.js`.
+Remova o teste padrão e crie um novo teste que verifique se o component irá listar todos os ímoveis.
 
 ```tests/integration/components/list-filter-test.js
 import { moduleForComponent, test } from 'ember-qunit';
@@ -321,11 +295,9 @@ test('should initially load all listings', function (assert) {
 });
 ```
 
-Nosso componente de filtro de lista toma uma função como um argumento, usado para encontrar a lista de aluguel de correspondência com base na string de filtro fornecida pelo usuário.
-Nós fornecemos uma função de ação configurando-a para o escopo local do nosso teste, chamando `this.on`.
+Nosso component `list-filter` recebe como argumento uma função, usado para retornar a lista de imóveis que corresponde a string digitada pelo usuário.
 
-Our list-filter component takes a function as an argument, used to find the list of matching rentals based on the filter string provided by the user.
-We provide an action function by setting it to the local scope of our test by calling `this.on`.
+Para simular o comportamento da action `filterByCity` definida no controller `rental`, vamos criar uma action no escopo local usando `this.on`.
 
 ```tests/integration/components/list-filter-test.js{+3,+5,+6,+13,+14,+15,+16,+17}
 import { moduleForComponent, test } from 'ember-qunit';
