@@ -14,15 +14,15 @@ Assim como o component [`rental-listing` component](../simple-component), o coma
 * um arquivo JavaScript (`app/templates/components/list-filter.hbs`),
 * and um arquivo contendo o teste de integração (`tests/integration/components/list-filter-test.js`).
 
-#### Providing Markup to a Component
+#### Atualizando as declarações de componente
 
-In our `app/templates/rentals.hbs` template file, we'll add a reference to our new `list-filter` component.
+Vamos adicionar nosso component `list-filter` em nosso arquivo `app/templates/rentals.hbs`.
 
-Notice that below we "wrap" our rentals markup inside the open and closing mentions of `list-filter` on lines 12 and 20.
-This is an example of the [**block form**](../../components/wrapping-content-in-a-component) of a component,
-which allows a Handlebars template to be rendered _inside_ the component's template wherever the `{{yield}}` expression appears.
+Observe que vamos envolver nossa listagem de imóveis dentro do component `list-filter`, nas linhas 12 e 20.
+Esse é um exemplo de [**block form**](../../components/wrapping-content-in-a-component), que permite que os template Handlebars seja renderizado _inside_, dentro do component `list-filter` na expressão `{{yield}}`.
 
-In this case we are passing, or "yielding", our filter data to the inner markup as a variable called `rentals` (line 14).
+Neste caso, estamos passando (`yielding`), o resultado do nosso filtro para dentro da marcação interna, através da variável `rentals` (linha 14).
+
 
 ```app/templates/rentals.hbs{+12,+13,+14,+15,+16,+17,+18,+19,+20,-21,-22,-23}
 <div class="jumbo">
