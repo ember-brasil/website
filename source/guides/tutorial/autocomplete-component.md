@@ -201,7 +201,15 @@ Depois de atualizar as configurações do Mirage, devemos conseguir ver o result
 
 ![home screen with filter component](../../images/autocomplete-component/styled-super-rentals-filter.png)
 
-#### Handling Results Coming Back at Different Times
+#### Manipulação de resultados que retornam em tempos diferentes
+
+No nosso exemplo, você pode notar que, se você digitar rapidamente que os resultados podem ficar fora de sincronia com o texto de filtro atual inserido.
+Isso ocorre porque nossa função de filtragem de dados é _synchronous_, o que significa que o código na função é agendado para mais tarde, enquanto o código que chama a função continua a ser executado.
+Muitas vezes, o código que pode fazer pedidos de rede está configurado para ser assíncrono porque o servidor pode retornar suas respostas em horários variáveis.
+
+Permite adicionar algum código de proteção para garantir que nossos resultados não sejam sincronizados com a entrada do filtro.
+Para fazer isso, simplesmente forneceremos o texto do filtro para a função de filtro, de modo que, quando os resultados retornarem, podemos comparar o valor do filtro original com o valor do filtro atual.
+Vamos atualizar os resultados na tela somente se o valor do filtro original e o valor do filtro atual forem iguais.
 
 In our example, you might notice that if you type quickly that the results might get out of sync with the current filter text entered.
 This is because our data filtering function is _asynchronous_, meaning that the code in the function gets scheduled for later, while the code that calls the function continues to execute.
@@ -235,8 +243,9 @@ export default Ember.Controller.extend({
 });
 ```
 
-In the `filterByCity` function in the rental controller above,
-we've added a new property called `query` to the filter results instead of just returning an array of rentals as before.
+Na função `filterByCity` no controlador de aluguel acima, adicionamos uma nova propriedade chamada` query` aos resultados do filtro em vez de apenas retornar uma matriz de aluguéis como antes.
+
+In the `filterByCity` function in the rental controller above, we've added a new property called `query` to the filter results instead of just returning an array of rentals as before.
 
 ```app/components/list-filter.js{+9,+10,+11,+19,+20,+21}
 import Ember from 'ember';
@@ -266,26 +275,36 @@ export default Ember.Component.extend({
 
 });
 ```
+No nosso componente de filtro de lista JavaScript, usamos a propriedade `query` para comparar a propriedade` value` do componente.
+A propriedade `value` representa o estado mais recente do campo de entrada.
+Portanto, verificamos se os resultados correspondem ao campo de entrada, garantindo que os resultados permanecerão em sincronia com a última coisa que o usuário digitou.
+
+Embora esta abordagem mantenha nossa ordem de resultados consistente, há outras coisas a considerar ao lidar com várias tarefas simultâneas, como [limitar o número de solicitações feitas ao servidor] (https://emberjs.com/api/classes/Ember .run.html # method_debounce).
+Para criar um comportamento de autocompletar eficaz e robusto para seus aplicativos, recomendamos considerar o projeto de adição [`ember-concurrency`] (http://ember-concurrency.com/#/docs/introduction).
+
+Agora você pode continuar a implementar o [próximo recurso] (../ service /), ou continuar para testar nosso componente de filtro recém-criado.
 
 In our list filter component JavaScript, we use the `query` property to compare to the `value` property of the component.
 The `value` property represents the latest state of the input field.
 Therefore we now check that results match the input field, ensuring that results will stay in sync with the last thing the user has typed.
 
-While this approach will keep our results order consistent, there are other things to consider when dealing with multiple concurrent tasks,
-such as [limiting the number of requests made to the server](https://emberjs.com/api/classes/Ember.run.html#method_debounce).
-To create effective and robust autocomplete behavior for your applications,
-we recommend considering the [`ember-concurrency`](http://ember-concurrency.com/#/docs/introduction) addon project.
+
+While this approach will keep our results order consistent, there are other things to consider when dealing with multiple concurrent tasks, such as [limiting the number of requests made to the server](https://emberjs.com/api/classes/Ember.run.html#method_debounce).
+To create effective and robust autocomplete behavior for your applications, we recommend considering the [`ember-concurrency`](http://ember-concurrency.com/#/docs/introduction) addon project.
 
 
 You can now proceed on to implement the [next feature](../service/), or continue on to test our newly created filter component.
 
-### An Integration Test
+### Teste de integração
 
-Now that we've created a new component for filtering a list,
-we want to create a test to verify it.
-Let's use a [component integration test](../../testing/testing-components)
-to verify our component behavior,
-similar to [how we tested our rental listing component earlier](../simple-component/#toc_teste-de-integra-o).
+Agora que criamos um novo componente para filtrar uma lista, queremos criar uma prova para verificá-la.
+Vamos usar um [teste de integração de componentes] (../../ testing / testing-components) para verificar o nosso comportamento de componentes, semelhante a [como testamos o nosso componente de listagem de aluguel mais cedo] (../ componente simples / # toc_teste- de-integra-o).
+
+Comece por abrir o teste de integração de componentes criado quando geramos nosso componente `list-filter`,` tests / integration / components / list-filter-test.js`.
+Remova o teste padrão e crie um novo teste que verifique isso por padrão, o componente listará todos os itens.
+
+Now that we've created a new component for filtering a list, we want to create a test to verify it.
+Let's use a [component integration test](../../testing/testing-components) to verify our component behavior, similar to [how we tested our rental listing component earlier](../simple-component/#toc_teste-de-integra-o).
 
 Lets begin by opening the component integration test created when we generated our `list-filter` component, `tests/integration/components/list-filter-test.js`.
 Remove the default test, and create a new test that verifies that by default, the component will list all items.
@@ -301,6 +320,9 @@ moduleForComponent('list-filter', 'Integration | Component | filter listing', {
 test('should initially load all listings', function (assert) {
 });
 ```
+
+Nosso componente de filtro de lista toma uma função como um argumento, usado para encontrar a lista de aluguel de correspondência com base na string de filtro fornecida pelo usuário.
+Nós fornecemos uma função de ação configurando-a para o escopo local do nosso teste, chamando `this.on`.
 
 Our list-filter component takes a function as an argument, used to find the list of matching rentals based on the filter string provided by the user.
 We provide an action function by setting it to the local scope of our test by calling `this.on`.
@@ -325,6 +347,18 @@ test('should initially load all listings', function (assert) {
   });
 });
 ```
+
+`this.on` irá adicionar a função fornecida ao escopo local de teste como` filterByCity`, que podemos usar para fornecer ao componente.
+
+Nossa função `filterByCity` vai pretender ser a função de ação de nosso componente, que faz a filtragem real da lista de aluguel.
+
+Não estamos testando a filtragem real dos aluguéis neste teste, pois está focada apenas na capacidade do componente.
+Vamos testar a lógica completa de filtragem em testes de aceitação, descritos na próxima seção.
+
+Uma vez que nosso componente está esperando que o processo do filtro seja assíncrono, retornamos as promessas do nosso filtro, usando a [Biblioteca RSVP da Ember] (http://emberjs.com/api/classes/RSVP.html).
+
+Em seguida, adicionaremos a chamada para renderizar o componente para mostrar as cidades que fornecemos acima.
+
 
 `this.on` will add the provided function to the test local scope as `filterByCity`, which we can use to provide to the component.
 
@@ -373,16 +407,21 @@ test('should initially load all listings', function (assert) {
 
 });
 ```
+Finalmente, adicionamos uma chamada de "espera" no final do nosso teste para afirmar os resultados.
+
+Ember's [wait helper] (../../ testing / testing-components / # toc_waiting-on-asynchronous-behavior) aguarda que todas as tarefas assíncronas sejam concluídas antes de executar o retorno da função dada.
+Ele retorna uma promessa de que também retornamos do teste.
+
+Se você retornar uma promessa de um teste QUnit, o teste aguardará até terminar até que essa promessa seja resolvida.
+Nesse caso, nosso teste é concluído quando o ajudante `wait` decide que o processamento está concluído, e a função que fornecemos que afirma que o estado resultante está concluído.
 
 Finally we add a `wait` call at the end of our test to assert the results.
 
-Ember's [wait helper](../../testing/testing-components/#toc_waiting-on-asynchronous-behavior)
-waits for all asynchronous tasks to complete before running the given function callback.
+Ember's [wait helper](../../testing/testing-components/#toc_waiting-on-asynchronous-behavior) waits for all asynchronous tasks to complete before running the given function callback.
 It returns a promise that we also return from the test.
 
 If you return a promise from a QUnit test, the test will wait to finish until that promise is resolved.
-In this case our test completes when the `wait` helper decides that processing is finished,
-and the function we provide that asserts the resulting state is completed.
+In this case our test completes when the `wait` helper decides that processing is finished, and the function we provide that asserts the resulting state is completed.
 
 ```tests/integration/components/list-filter-test.js{+3,+33,+34,+35,+36}
 import { moduleForComponent, test } from 'ember-qunit';
@@ -424,10 +463,15 @@ test('should initially load all listings', function (assert) {
 });
 ```
 
+Para o nosso segundo teste, verificaremos que o texto de digitação no filtro realmente chamará adequadamente a ação do filtro e atualizará as listagens mostradas.
+
+Nós adicionaremos algumas funcionalidades adicionais à nossa ação `filterByCity` para retornar um único aluguel, representado pela variável `FILTERED_ITEMS` quando qualquer valor estiver definido.
+
+Forçamos a ação gerando um evento `keyUp` em nosso campo de entrada, e depois afirmamos que apenas um item é renderizado.
+
 For our second test, we'll check that typing text in the filter will actually appropriately call the filter action and update the listings shown.
 
-We'll add some additional functionality to our `filterByCity` action to additionally return a single rental,
-represented by the variable `FILTERED_ITEMS` when any value is set.
+We'll add some additional functionality to our `filterByCity` action to additionally return a single rental, represented by the variable `FILTERED_ITEMS` when any value is set.
 
 We force the action by generating a `keyUp` event on our input field, and then assert that only one item is rendered.
 
@@ -467,10 +511,18 @@ test('should update with matching listings', function (assert) {
 });
 
 ```
+Agora, ambos os cenários de teste de integração devem ser aprovados.
+Você pode verificar isso iniciando nosso conjunto de testes digitando `ember t -s` na linha de comando.
+
 Now both integration test scenarios should pass.
 You can verify this by starting up our test suite by typing `ember t -s` at the command line.
 
-### Acceptance Tests
+### Teste de aceitação
+
+Agora que testámos que o componente `list-filter` se comporta como esperado, vamos testar que a própria página também se comporta adequadamente com um teste de aceitação.
+Verificaremos que um usuário que visite a página de aluguel pode inserir texto no campo de pesquisa e restringir a lista de aluguéis por cidade.
+
+Abra nosso teste de aceitação existente, `tests / acceptance / list-rentals-test.js` e implemente o teste rotulado" deve filtrar a lista de aluguéis por cidade ".
 
 Now that we've tested that the `list-filter` component behaves as expected, let's test that the page itself also behaves properly with an acceptance test.
 We'll verify that a user visiting the rentals page can enter text into the search field and narrow the list of rentals by city.
@@ -489,6 +541,23 @@ test('should filter the list of rentals by city.', function (assert) {
   });
 });
 ```
+Apresentamos dois novos ajudantes neste teste, `fillIn` e` keyEvent`.
+
+* O [`fillIn`] (http://emberjs.com/api/classes/Ember.Test.html#method_fillIn) helper" preenche "o texto fornecido em um campo de entrada correspondente ao seletor fornecido.
+* O auxiliar [`keyEvent`] (http://emberjs.com/api/classes/Ember.Test.html#method_keyEvent) envia um evento de traçado de tecla para a interface do usuário, simulando o usuário digitando uma chave.
+
+Em `app / components / list-filter.js`, temos como elemento de nível superior representado pelo componente uma classe chamada` list-filter`.
+Localizamos a entrada de pesquisa dentro do componente usando o seletor `.list-filter input`, pois sabemos que existe apenas um elemento de entrada localizado no componente de filtro de lista.
+
+Nosso teste preenche "Seattle" como o critério de pesquisa no campo de pesquisa e, em seguida, envia um evento `keyup` para o mesmo campo com um código de` 69` (a chave `e`) para simular a digitação de um usuário.
+
+O teste localiza os resultados da pesquisa encontrando elementos com uma classe de 'listagem', que nós demos ao nosso componente 'lista de aluguel' na seção ["Construindo um Componente Simples"] (../ componente simples) o tutorial.
+
+Uma vez que nossos dados estão codificados em Mirage, sabemos que existe apenas um aluguel com um nome da cidade de "Seattle", por isso afirmamos que o número de listagens é um e que a localização exibida é chamada "Seattle".
+
+O teste verifica que depois de preencher a entrada de pesquisa com "Seattle", a lista de aluguel diminui de 3 para 1 e o item exibido mostra "Seattle" como a localização.
+
+Você deve fazer apenas 2 testes com falha: uma falha de teste de aceitação remanescente; e nosso teste ESLint que falha em um assertivo não utilizado para o nosso teste não implementado.
 
 We introduce two new helpers into this test, `fillIn` and `keyEvent`.
 
@@ -496,20 +565,15 @@ We introduce two new helpers into this test, `fillIn` and `keyEvent`.
 * The [`keyEvent`](http://emberjs.com/api/classes/Ember.Test.html#method_keyEvent) helper sends a key stroke event to the UI, simulating the user typing a key.
 
 In `app/components/list-filter.js`, we have as the top-level element rendered by the component a class called `list-filter`.
-We locate the search input within the component using the selector `.list-filter input`,
-since we know that there is only one input element located in the list-filter component.
+We locate the search input within the component using the selector `.list-filter input`, since we know that there is only one input element located in the list-filter component.
 
-Our test fills out "Seattle" as the search criteria in the search field,
-and then sends a `keyup` event to the same field with a code of `69` (the `e` key) to simulate a user typing.
+Our test fills out "Seattle" as the search criteria in the search field, and then sends a `keyup` event to the same field with a code of `69` (the `e` key) to simulate a user typing.
 
-The test locates the results of the search by finding elements with a class of `listing`,
-which we gave to our `rental-listing` component in the ["Building a Simple Component"](../simple-component) section of the tutorial.
+The test locates the results of the search by finding elements with a class of `listing`, which we gave to our `rental-listing` component in the ["Building a Simple Component"](../simple-component) section of the tutorial.
 
-Since our data is hard-coded in Mirage, we know that there is only one rental with a city name of "Seattle",
-so we assert that the number of listings is one and that the location it displays is named, "Seattle".
+Since our data is hard-coded in Mirage, we know that there is only one rental with a city name of "Seattle", so we assert that the number of listings is one and that the location it displays is named, "Seattle".
 
-The test verifies that after filling in the search input with "Seattle", the rental list reduces from 3 to 1,
-and the item displayed shows "Seattle" as the location.
+The test verifies that after filling in the search input with "Seattle", the rental list reduces from 3 to 1, and the item displayed shows "Seattle" as the location.
 
 You should be down to only 2 failing tests: One remaining acceptance test failure; and our ESLint test that fails on an unused assert for our unimplemented test.
 
