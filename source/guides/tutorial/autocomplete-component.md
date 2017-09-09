@@ -1,3 +1,11 @@
+
+Enquanto eles procuram um aluguel, os usuários também podem querer restringir sua busca para uma cidade específica.
+Enquanto nosso componente de listagem de aluguel [inicial] (... / componente simples /) apenas exibiu informações de aluguel, esse novo componente de filtro também permitirá ao usuário fornecer informações sob a forma de critérios de filtragem.
+
+Para começar, vamos gerar o nosso novo componente.
+Chamaremos esse componente `list-filter`, já que tudo o que queremos que nosso componente faça é filtrar a lista de aluguel com base na entrada.
+
+
 As they search for a rental, users might also want to narrow their search to a specific city.
 While our [initial](../simple-component/) rental listing component only displayed rental information, this new filter component will also allow the user to provide input in the form of filter criteria.
 
