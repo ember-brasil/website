@@ -1,4 +1,3 @@
-
 Quando nossos usuários estão procurando um imóvel, eles precisam filtrar a pesquisa por uma cidade especifica, por exemplo.
 Nosso [primeiro component](../simple-component/) `rental-listing` apenas mostrava informações sobre o o imóvel, esse novo componente vai permitir que nosso usuário consiga filtrar os imóveis por critérios.
 
