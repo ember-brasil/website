@@ -138,10 +138,10 @@ Quando o usuário digitar no campo de texto em nosso component, a action `filter
 Essa action aceita a propriedade `value` e filtra os dados de `rental`  de acordo com a cidade que o usuário digitou.
 O resultado da consulta é retornado para quem o chamou. 
 
-#### Faking Query Results
+#### Simulando um resultado
 
-For this action to work, we need to replace our Mirage `config.js` file with the following, so that it can respond to our queries.
-Instead of simply returning the list of rentals, our Mirage HTTP GET handler for `rentals` will return rentals matching the string provided in the URL query parameter called `city`.
+Para que esta action funcione, precisamos substituir no arquivo `config.js` no Mirage com o seguinte, para que ele possa devolver o resultado de acordo com nossa consulta.
+Em vez de simplesmente retornar a lista de imóveis, nosso manipulador Mirage HTTP GET `rentals` retornará os imóveis correspondente à string fornecida no parâmetro `city` na URL.
 
 ```mirage/config.js
 export default function() {
@@ -197,8 +197,7 @@ export default function() {
   });
 }
 ```
-
-After updating our mirage configuration, we should see a simple filter on the home screen that will update the rental list as you type:
+Depois de atualizar as configurações do Mirage, devemos conseguir ver o resultado sendo filtrado a medida que vamos digitando no campo de texto.
 
 ![home screen with filter component](../../images/autocomplete-component/styled-super-rentals-filter.png)
 
