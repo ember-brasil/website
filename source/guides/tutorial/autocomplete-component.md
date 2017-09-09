@@ -1,26 +1,19 @@
 
-Enquanto eles procuram um aluguel, os usuários também podem querer restringir sua busca para uma cidade específica.
-Enquanto nosso componente de listagem de aluguel [inicial] (... / componente simples /) apenas exibiu informações de aluguel, esse novo componente de filtro também permitirá ao usuário fornecer informações sob a forma de critérios de filtragem.
+Quando nossos usuários estão procurando um imóvel, eles precisam filtrar a pesquisa por uma cidade especifica, por exemplo.
+Nosso [primeiro component](../simple-component/) `rental-listing` apenas mostrava informações sobre o o imóvel, esse novo componente vai permitir que nosso usuário consiga filtrar os imóveis por critérios.
 
-Para começar, vamos gerar o nosso novo componente.
-Chamaremos esse componente `list-filter`, já que tudo o que queremos que nosso componente faça é filtrar a lista de aluguel com base na entrada.
-
-
-As they search for a rental, users might also want to narrow their search to a specific city.
-While our [initial](../simple-component/) rental listing component only displayed rental information, this new filter component will also allow the user to provide input in the form of filter criteria.
-
-To begin, let's generate our new component.
-We'll call this component `list-filter`, since all we want our component to do is filter the list of rentals based on input.
+Para começar, vamos gerar o nosso novo component.
+Chamaremos esse component de `list-filter`, já que tudo o que precisamos é que ele filtre os imóveis disponivel.
 
 ```shell
 ember g component list-filter
 ```
 
-As before when we created the [`rental-listing` component](../simple-component), the "generate component" CLI command creates
+Assim como o component [`rental-listing` component](../simple-component), o comando "generate component" vai criar:
 
-* a Handlebars template (`app/templates/components/list-filter.hbs`),
-* a JavaScript file (`app/components/list-filter.js`),
-* and a component integration test (`tests/integration/components/list-filter-test.js`).
+* um arquivo de template (`app/templates/components/list-filter.hbs`),
+* um arquivo JavaScript (`app/templates/components/list-filter.hbs`),
+* and um arquivo contendo o teste de integração (`tests/integration/components/list-filter-test.js`).
 
 #### Providing Markup to a Component
 
