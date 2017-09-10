@@ -1,6 +1,6 @@
-O Ember CLI é fornecido com suporte para gerenciar o ambiente da sua aplicaçãp. O Ember CLI configurará um arquivo de configuração de ambiente padrão no `config / environment`. Neste arquivo, você pode definir um objeto `ENV` para cada ambiente, atualmente é limitado a três: desenvolvimento, teste e produção.
+O Ember CLI é fornecido com suporte para gerenciar o ambiente da sua aplicação. O Ember CLI configurará um arquivo de configuração de ambiente padrão no `config/environment`. Neste arquivo, você pode definir um objeto `ENV` para cada ambiente, atualmente é limitado a três: desenvolvimento, teste e produção.
 
-O objecto ENV contém três chaves importantes:
+O objeto ENV contém três chaves importantes:
 
   - `EmberENV` pode ser usado para definir o Ember feature flags (see the [Feature Flags guide](../feature-flags/)).
   - `APP` pode ser usado para as flags/opções para sua instância de aplicação.
