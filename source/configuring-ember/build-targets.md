@@ -2,11 +2,11 @@
 O Ember CLI por padrão utiliza o [Babel.js](https://babeljs.io/) para permitir que você use o JavaScript de amanhã, hoje!
 
 Isso permitirá que você use os recursos mais recentes da linguagem e que eles sejam transformados para JavaScript podendo ser executados em todos os navegadores suportados.
-Isso significa, gerar código compatível com ES5 que irá funcionar em qualquer navegador moderno, de volta ao Internet Explorer 9.
+Isso significa, gerar código compatível com ES5 que irá funcionar em qualquer navegador moderno, até o Internet Explorer 9.
 
-Mas, o código do ES5 normalmente é mais verboso do que o JavaScript original, e ao longo do tempo, como os navegadores ganham a habilidade de executar os novos recursos em Javascript e os navegadores mais antigos perdem usuários, muitos usuários realmente não querem esse código detalhado, pois aumenta o tamanho do aplicativo e o tempo de carregamento.
+Mas, o código do ES5 normalmente é mais verboso do que o JavaScript original, e ao longo do tempo, como os navegadores ganham a habilidade de executar os novos recursos em Javascript e os navegadores mais antigos perdem usuários, muitos usuários realmente não querem esse código verboso, pois aumenta o tamanho do aplicação e o tempo de carregamento.
 
-É por isso que o Ember CLI expõe uma maneira de configurar quais navegadores o seu aplicativo pode suportar.
+É por isso que o Ember CLI expõe uma maneira de configurar quais navegadores o seu aplicação pode suportar.
 Assim, é possível descobrir automaticamente quais recursos são suportados pelos navegadores que você está utilizando, e aplica o conjunto mínimo de transformações possíveis para o seu código.
 
 Se você abrir o `config/targets.js`, você encontrará o seguinte código:
@@ -23,7 +23,7 @@ module.exports = {
 ```
 
 Essa configuração padrão corresponde ao conjunto mais amplo de navegadores que o próprio Ember.js suporta.
-No entanto, se o seu aplicativo não precisa mais suportar o IE, você pode alterá-lo para:
+No entanto, se o seu aplicação não precisa mais suportar o IE, você pode alterá-lo para:
 
 ```config/targets.js
 module.exports = {
