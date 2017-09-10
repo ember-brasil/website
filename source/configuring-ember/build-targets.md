@@ -36,7 +36,7 @@ module.exports = {
 };
 ```
 
-Desta forma, você fica com os navegadores que possuem suporte total para o ES2015 e ES2016.
+Desta forma, você fica com navegadores que possuem suporte total para o ES2015 e ES2016.
 Se você inspecionar o código compilado, verá que alguns recursos não são compilados no código ES5, como as arrow functions.
 
 Este recurso é suportado por [Browserlist](https://github.com/ai/browserslist) e [Can I Use](http://caniuse.com/).
