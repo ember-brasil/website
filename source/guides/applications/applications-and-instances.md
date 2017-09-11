@@ -1,21 +1,21 @@
-Every Ember application is represented by a class that extends [`Ember.Application`][1].
-This class is used to declare and configure the many objects that make up your app.
+Toda aplicação Ember é representada por uma classe que estende [`Ember.Application`][1].
+Essa classe é usada para declarar e configurar os muitos objetos que compõem sua aplicação.
 
-As your application boots,
-it creates an [`Ember.ApplicationInstance`][2] that is used to manage its stateful aspects.
-This instance acts as the "owner" of objects instantiated for your app.
+A medida que sua aplicação é carregada, 
+ele cria uma [`Ember.ApplicationInstance`][2] que é utilizada para gerenciar o seus aspectos stateful. 
+Essa instância atua como o "dono" dos objetos instanciados por sua aplicação.
 
-Essentially, the `Application` *defines your application*
-while the `ApplicationInstance` *manages its state*.
+Essencialmente, a `Application` *define sua aplicação*
+enquanto a `ApplicationInstance` *gerencia os seus estados*.
 
 [1]: http://emberjs.com/api/classes/Ember.Application.html
-[2]: http://emberjs.com/api/classes/Ember.ApplicationInstance.html
+[2]: http://emberjs.com/api/classes/Ember.ApplicationInstance.html 
 
-This separation of concerns not only clarifies the architecture of your app,
-it can also improve its efficiency.
-This is particularly true when your app needs to be booted repeatedly during testing
-and / or server-rendering (e.g. via [FastBoot](https://github.com/tildeio/ember-cli-fastboot)).
-The configuration of a single `Application` can be done once
-and shared among multiple stateful `ApplicationInstance` instances.
-These instances can be discarded once they're no longer needed
-(e.g. when a test has run or FastBoot request has finished).
+Essa separação de conceitos não apenas clarifica a arquitetura de sua aplicação,
+como pode inclusive melhorar sua eficiência.
+Isso é particularmente verdadeiro quando sua aplicação precisa ser iniciada repetidamente durante testes 
+e/ou em server-rendering (ex.: através do [FastBoot](https://github.com/tildeio/ember-cli-fastboot)).
+A configuração de um `Application` pode ser feito uma vez 
+e compartilhado através de múltiplas instâncias `ApplicationInstance` statefuls.
+Essas instâncias podem ser descartadas uma vez que não sejam mais necessárias 
+(ex.: quando um teste tiver rodado ou quando um request do FastBoot foi finalizado).
