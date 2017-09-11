@@ -4,13 +4,13 @@ Cada aplicação Ember tem um container que mantem as intancias de objetos para 
 
 Clique na tab Container, e você verá a lista de instancias . Clique em um tipo para ver a lista de todas as instancias mantidas pelo containter.
 
-### Inspecting Instances
+### Inspecionando Instâncias
 
 Clique em uma linha para inspecionar uma determinada instância usando o Inspetor de Objetos.
 
 <img src="../../images/guides/ember-inspector/container-object-inspector.png" width="680"/>
 
-### Filter and Reload
+### Filtros e Recarregamento
 
 Você pode recarregar a tab container clicando no icone reload. Para procurar por instancias, pesquise pela caixa de pesquisa.
 
