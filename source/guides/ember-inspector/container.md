@@ -1,11 +1,8 @@
-Cada aplicação Ember tem um container que mantem as intancias de objetos para você. Você pode
-inpecionar essas instancias usando a Container tab. Isso é útil para objetos que não estão no menu didicado, como os serviço
+Cada aplicação Ember tem um container que mantem as intancias de objetos para você. Você pode inpecionar essas instancias usando a Container tab. Isso é útil para objetos que não estão no menu didicado, como os serviço
 
 <img src="../../images/guides/ember-inspector/container-screenshot.png" width="680"/>
 
-Click on the Container tab, and you will see a list of instances the container is holding. Click on a type to see the list of all instances of that type maintained by the container.
-
-Clique na tab Container, e você verá a lista de instancias . Clique em um tipo para ver a lista de todas as instancias 
+Clique na tab Container, e você verá a lista de instancias . Clique em um tipo para ver a lista de todas as instancias mantidas pelo containter.
 
 ### Inspecting Instances
 
