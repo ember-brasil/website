@@ -1,4 +1,4 @@
-Toda aplicação Ember é representada por uma classe que extende [`Ember.Application`][1].
+Toda aplicação Ember é representada por uma classe que estende [`Ember.Application`][1].
 Essa classe é usada para declarar e configurar os muitos objetos que compõem sua aplicação.
 
 A medida que sua aplicação é carregada, 
@@ -14,7 +14,7 @@ enquanto a `ApplicationInstance` *gerencia os seus estados*.
 Essa separação de conceitos não apenas clarifica a arquitetura de sua aplicação,
 como pode inclusive melhorar sua eficiência.
 Isso é particularmente verdadeiro quando sua aplicação precisa ser iniciada repetidamente durante testes 
-e/ou em server-rendering (ex.: atráves do [FastBoot](https://github.com/tildeio/ember-cli-fastboot)).
+e/ou em server-rendering (ex.: através do [FastBoot](https://github.com/tildeio/ember-cli-fastboot)).
 A configuração de um `Application` pode ser feito uma vez 
 e compartilhado através de múltiplas instâncias `ApplicationInstance` statefuls.
 Essas instâncias podem ser descartadas uma vez que não sejam mais necessárias 
