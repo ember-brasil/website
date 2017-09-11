@@ -11,7 +11,7 @@ enquanto a `ApplicationInstance` *gerencia os seus estados*.
 [1]: http://emberjs.com/api/classes/Ember.Application.html
 [2]: http://emberjs.com/api/classes/Ember.ApplicationInstance.html 
 
-Essa separação de preocupação não apenas clarifica a arquitetura de sua aplicação,
+Essa separação de conceitos não apenas clarifica a arquitetura de sua aplicação,
 como pode inclusive melhorar sua eficiência.
 Isso é particularmente verdadeiro quando sua aplicação precisa ser iniciada repetidamente durante testes 
 e/ou em server-rendering (ex.: atráves do [FastBoot](https://github.com/tildeio/ember-cli-fastboot)).
