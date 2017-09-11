@@ -27,6 +27,9 @@ Se você sabe inglês ou leu alguma parte já traduzida e achou algum erro, nós
 
 > "Comece de onde você está. Use o que você tiver. Faça o que você puder" – Arthur Ashe
 
+## Sincronizando seu fork
+Para sincronizar seu repositório (fork), siga essas instruções: 
+https://help.github.com/articles/syncing-a-fork/
 
 ## Executando o site
 
