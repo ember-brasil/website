@@ -1,4 +1,4 @@
-Cada aplicação Ember tem um container que mantem as intancias de objetos para você. Você pode inpecionar essas instancias usando a Container tab. Isso é útil para objetos que não estão no menu didicado, como os serviço
+Cada aplicação Ember tem um container que mantem as instancias de objetos para você. Você pode inspecionar essas instancias usando a tab chamada Container. Isso é útil para objetos que não estão no menu didicado, como os services.
 
 <img src="../../images/guides/ember-inspector/container-screenshot.png" width="680"/>
 
@@ -12,6 +12,6 @@ Clique em uma linha para inspecionar uma determinada instância usando o Inspeto
 
 ### Filtros e Recarregamento
 
-Você pode recarregar a tab container clicando no icone reload. Para procurar por instancias, pesquise pela caixa de pesquisa.
+Você pode recarregar a tab container clicando no icone de recarregamento. Para procurar por instancias, pesquise pela caixa de pesquisa.
 
 <img src="../../images/guides/ember-inspector/container-toolbar.png" width="300"/>
