@@ -320,28 +320,17 @@ test('should initially load all listings', function (assert) {
 });
 ```
 
-`this.on` irá adicionar a função fornecida ao escopo local de teste como` filterByCity`, que podemos usar para fornecer ao componente.
+`this.on` irá adicionar a função fornecida ao escopo local de teste como` filterByCity`, que podemos usar no component.
 
-Nossa função `filterByCity` vai pretender ser a função de ação de nosso componente, que faz a filtragem real da lista de aluguel.
+Nossa função `filterByCity` será a action que nosso compoente irá chamar para retornar a lista de imóveis filtrada.
 
-Não estamos testando a filtragem real dos aluguéis neste teste, pois está focada apenas na capacidade do componente.
-Vamos testar a lógica completa de filtragem em testes de aceitação, descritos na próxima seção.
+Não estamos testando a filtragem real dos imóveis neste teste, pois estamos focando apenas no comportamento do component.
+Vamos testar a lógica completa de filtragem nos testes de aceitação, descritos na próxima seção.
 
-Uma vez que nosso componente está esperando que o processo do filtro seja assíncrono, retornamos as promessas do nosso filtro, usando a [Biblioteca RSVP da Ember] (http://emberjs.com/api/classes/RSVP.html).
+Uma vez que nosso component está esperando que a filtragem seja assíncrona, retornaremos uma Promise com o filtro de imóveis, usando a [Ember RSVP library](http://emberjs.com/api/classes/RSVP.html).
 
-Em seguida, adicionaremos a chamada para renderizar o componente para mostrar as cidades que fornecemos acima.
+Em seguida, adicionaremos a chamada para renderizar o component e mostrar as cidades que fornecemos acima.
 
-
-`this.on` will add the provided function to the test local scope as `filterByCity`, which we can use to provide to the component.
-
-Our `filterByCity` function is going to pretend to be the action function for our component, that does the actual filtering of the rental list.
-
-We are not testing the actual filtering of rentals in this test, since it is focused on only the capability of the component.
-We will test the full logic of filtering in acceptance tests, described in the next section.
-
-Since our component is expecting the filter process to be asynchronous, we return promises from our filter, using [Ember's RSVP library](http://emberjs.com/api/classes/RSVP.html).
-
-Next, we'll add the call to render the component to show the cities we've provided above.
 
 ```tests/integration/components/list-filter-test.js{+19,+20,+21,+22,+23,+24,+25,+26,+27,+28,+29,+30,+31,+32}
 import { moduleForComponent, test } from 'ember-qunit';
@@ -379,21 +368,13 @@ test('should initially load all listings', function (assert) {
 
 });
 ```
-Finalmente, adicionamos uma chamada de "espera" no final do nosso teste para afirmar os resultados.
+Finalmente, adicionamos uma chamada de `wait` no final do nosso teste para verificar os resultados.
 
-Ember's [wait helper] (../../ testing / testing-components / # toc_waiting-on-asynchronous-behavior) aguarda que todas as tarefas assíncronas sejam concluídas antes de executar o retorno da função dada.
-Ele retorna uma promessa de que também retornamos do teste.
+Ember [wait helper](../../testing/testing-components/#toc_waiting-on-asynchronous-behavior) aguarda que todas as tarefas assíncronas sejam concluídas antes de executar o retorno da função.
+Ele retorna uma promise igual a que utilizamos no teste.
 
-Se você retornar uma promessa de um teste QUnit, o teste aguardará até terminar até que essa promessa seja resolvida.
-Nesse caso, nosso teste é concluído quando o ajudante `wait` decide que o processamento está concluído, e a função que fornecemos que afirma que o estado resultante está concluído.
-
-Finally we add a `wait` call at the end of our test to assert the results.
-
-Ember's [wait helper](../../testing/testing-components/#toc_waiting-on-asynchronous-behavior) waits for all asynchronous tasks to complete before running the given function callback.
-It returns a promise that we also return from the test.
-
-If you return a promise from a QUnit test, the test will wait to finish until that promise is resolved.
-In this case our test completes when the `wait` helper decides that processing is finished, and the function we provide that asserts the resulting state is completed.
+Se você retornar uma promise de um teste QUnit, o teste aguardará até que a promise finalize.
+Nesse caso, nosso teste é concluído quando o helper `wait` decide que o processamento está concluído, e a função que fornecemos que afirma que o estado resultante está concluído.
 
 ```tests/integration/components/list-filter-test.js{+3,+33,+34,+35,+36}
 import { moduleForComponent, test } from 'ember-qunit';
@@ -435,17 +416,11 @@ test('should initially load all listings', function (assert) {
 });
 ```
 
-Para o nosso segundo teste, verificaremos que o texto de digitação no filtro realmente chamará adequadamente a ação do filtro e atualizará as listagens mostradas.
+Para o nosso segundo teste, verificaremos que o texto digitado no filtro realmente chamará adequadamente a action de filtragem e atualizará as listagens corretamente.
 
-Nós adicionaremos algumas funcionalidades adicionais à nossa ação `filterByCity` para retornar um único aluguel, representado pela variável `FILTERED_ITEMS` quando qualquer valor estiver definido.
+Nós adicionaremos algumas funcionalidades adicionais à nossa action `filterByCity` para retornar um único imóvel, representado pela variável `FILTERED_ITEMS` quando qualquer valor estiver definido.
 
-Forçamos a ação gerando um evento `keyUp` em nosso campo de entrada, e depois afirmamos que apenas um item é renderizado.
-
-For our second test, we'll check that typing text in the filter will actually appropriately call the filter action and update the listings shown.
-
-We'll add some additional functionality to our `filterByCity` action to additionally return a single rental, represented by the variable `FILTERED_ITEMS` when any value is set.
-
-We force the action by generating a `keyUp` event on our input field, and then assert that only one item is rendered.
+Forçamos a action gerando um evento `keyUp` em nosso campo de pesquisa, e depois verificamos que apenas um item é renderizado.
 
 ```tests/integration/components/list-filter-test.js
 test('should update with matching listings', function (assert) {
@@ -483,11 +458,8 @@ test('should update with matching listings', function (assert) {
 });
 
 ```
-Agora, ambos os cenários de teste de integração devem ser aprovados.
-Você pode verificar isso iniciando nosso conjunto de testes digitando `ember t -s` na linha de comando.
-
-Now both integration test scenarios should pass.
-You can verify this by starting up our test suite by typing `ember t -s` at the command line.
+Agora, ambos os cenários de teste de integração devem está aprovados.
+Você pode verificar isso iniciando exeutando `ember t -s` no terminal.
 
 ### Teste de aceitação
 
