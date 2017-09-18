@@ -2,7 +2,7 @@ Quando nossos usuários estão procurando um imóvel, eles precisam filtrar a pe
 Nosso component [`rental-listing`](../simple-component/) apenas mostrava informações sobre o imóvel, esse novo component vai permitir que nosso usuário consiga filtrar imóveis por cidade.
 
 Para começar, vamos gerar o novo component.
-Chamaremos esse component de `list-filter`, já que tudo o que precisamos é que ele filtre os imóveis disponivel.
+Chamaremos esse component de `list-filter`, já que tudo o que precisamos é que ele filtre os imóveis disponível.
 
 ```shell
 ember g component list-filter
@@ -65,7 +65,7 @@ Queremos que o component simplesmente tenha um campo (input) e envie o resultado
 Observer que nosso template agora possui um novo tipo de helper [`{{input}}`](../../templates/input-helpers), ele funciona como um campo de texto, no qual nosso usuário poderá digitar uma cidade e filtrar o resultado de imóveis.
 A propriedade `value` do` input` será sincronizada com a propriedade `value` do component.
 
-Outra maneira de dizer isso é que a propriedade `value` do `input` é [**bound**](../../object-model/bindings/) com a propriedade `value` do compenent.
+Outra maneira de dizer isso é que a propriedade `value` do `input` é [**bound**](../../object-model/bindings/) com a propriedade `value` do component.
 
 A propriedade `key-up` será vinculada à action `handleFilterEntry`.
 
@@ -108,8 +108,8 @@ Uma promise pode ou não ser executada no momento em que você a declara.
 Em nosso exemplo, fornecemos a função `then` que permite que seja executado somente quando na promise finalizar de processar o resultado.
 
 Para implementar a função `filter` para fazer a filtragem dos imóveis de acordo com a cidade, criaremos um controller chamado `rental`.
-[Controllers](../../controllers/) contêm ações e propriedades disponiveis para nosso template.
-Como Ember trabalha por conveção, ele saberá que um controller chamado `rental` coresponde a uma route com o mesmo nome.
+[Controllers](../../controllers/) contêm ações e propriedades disponíveis para nosso template.
+Como Ember trabalha por convenções, ele saberá que um controller chamado `rental` pertence a uma route com o mesmo nome.
 
 Crie um controller para a route `rental` executando o seguinte:
 
@@ -279,10 +279,10 @@ Agora você pode avançar para [próxima página](../service/) ou continuar nest
 ### Teste de integração
 
 Agora que criamos um novo component `list-filter`, precisamos criar testes para verificar que tudo funcione corretamente no futuro.
-Vamos usar um [component integration test](../../testing/testing-components) para verificar o comportamento do component, semelhante ao teste criado para a [listagem de ímoveis](../simple-component/#toc_teste-de-integra-o).
+Vamos usar um [component integration test](../../testing/testing-components) para verificar o comportamento do component, semelhante ao teste criado para a [listagem de imóveis](../simple-component/#toc_teste-de-integra-o).
 
 Comece abrindo o arquivo de teste do component `list-filter` criado anteriormente `tests/integration/components/list-filter-test.js`.
-Remova o teste padrão e crie um novo teste que verifique se o component irá listar todos os ímoveis.
+Remova o teste padrão e crie um novo teste que verifique se o component irá listar todos os imóveis.
 
 ```tests/integration/components/list-filter-test.js
 import { moduleForComponent, test } from 'ember-qunit';
@@ -323,7 +323,7 @@ test('should initially load all listings', function (assert) {
 
 `this.on` irá adicionar a função fornecida ao escopo local de teste como` filterByCity`, que podemos usar no component.
 
-Nossa função `filterByCity` será a action que nosso compoente irá chamar para retornar a lista de imóveis filtrada.
+Nossa função `filterByCity` será a action que nosso component irá chamar para retornar a lista de imóveis filtrada.
 
 Não estamos testando a filtragem real dos imóveis neste teste, pois estamos focando apenas no comportamento do component.
 Vamos testar a lógica completa de filtragem nos testes de aceitação, descritos na próxima seção.
@@ -460,11 +460,11 @@ test('should update with matching listings', function (assert) {
 
 ```
 Agora, ambos os cenários de teste de integração devem está aprovados.
-Você pode verificar isso iniciando exeutando `ember t -s` no terminal.
+Você pode verificar isso iniciando executando `ember t -s` no terminal.
 
 ### Teste de aceitação
 
-Agora que testámos que o componente `list-filter` se comporta como esperado, vamos testar que a própria página também se comporta adequadamente com um teste de aceitação.
+Agora que testamos que o componente `list-filter` se comporta como esperado, vamos testar que a própria página também se comporta adequadamente com um teste de aceitação.
 Verificaremos que um usuário que visite a página de imóveis pode digitar no campo de pesquisa e filtrar a lista de imóveis por cidade.
 
 Abra nosso teste de aceitação existente, `tests/acceptance/list-rentals-test.js` e implemente o teste chamado "should filter the list of rentals by city".
@@ -482,7 +482,7 @@ test('should filter the list of rentals by city.', function (assert) {
 ```
 Apresentamos dois novos helper neste teste, `fillIn` e` keyEvent`.
 
-* [`fillIn`](http://emberjs.com/api/classes/Ember.Test.html#method_fillIn) `prenche` o campo de texto correspondente ao seletor fornecido.
+* [`fillIn`](http://emberjs.com/api/classes/Ember.Test.html#method_fillIn) `preenche` o campo de texto correspondente ao seletor fornecido.
 * [`keyEvent`](http://emberjs.com/api/classes/Ember.Test.html#method_keyEvent) envia um evento de tecla para a interface do usuário, simulando o usuário digitando o valor.
 
 Em `app/components/list-filter.js`, temos como elemento de nível superior representado pelo component uma classe chamada `list-filter`.
