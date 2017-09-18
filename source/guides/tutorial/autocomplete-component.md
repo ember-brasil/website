@@ -96,23 +96,22 @@ export default Ember.Component.extend({
 
 #### Filtrando os dados
 
-No exemplo acima, usamos o hook `init` para criar nossas lista de imóveis iniciais ao chamar a função `filter` com um valor vazio.
+No exemplo acima, usamos o metodo hook `init` para criar nossas lista de imóveis iniciais chamando a função `filter` com um valor vazio.
 Nossa action `handleFilterEntry` chama uma função chamada `filter` com base no valor do atributo `value`.
 
 A função `filter` foi passada como objeto. Este é um padrão conhecido como [closure actions](../../components/triggering-changes-with-actions/#toc_passing-the-action-to-the-component).
 
 Observe a função `then` chamada no resultado da função `filter`.
-O código espera que a função `filter` responda uma promessa.
-Uma [promise](http://emberjs.com/api/classes/RSVP.Promise.html) é um objeto JavaScript que representa o resultado de uma função assíncrona.
+O código espera que a função `filter` responda uma Promise.
+Uma [Promise](http://emberjs.com/api/classes/RSVP.Promise.html) é um objeto JavaScript que representa o resultado de uma função assíncrona.
 Uma promise pode ou não ser executada no momento em que você a declara.
-Em nosso exemplo, fornecemos a função `then` que permite que seja executado somente quando na promise finalizar de processar o resultado.
+Em nosso exemplo, fornecemos a função `then` que permite que seja executado somente quando a promise finalizar e devolver o resultado.
 
-Para implementar a função `filter` para fazer a filtragem dos imóveis de acordo com a cidade, criaremos um controller chamado `rental`.
-[Controllers](../../controllers/) contêm ações e propriedades disponíveis para nosso template.
+Para que a função `filter` faça a filtragem dos imóveis de acordo com a cidade, criaremos um controller chamado `rental`.
+[Controllers](../../controllers/) contêm actions e propriedades disponíveis para nosso template.
 Como Ember trabalha por convenções, ele saberá que um controller chamado `rental` pertence a uma route com o mesmo nome.
 
 Crie um controller para a route `rental` executando o seguinte:
-
 
 ```shell
 ember g controller rentals
@@ -136,12 +135,12 @@ export default Ember.Controller.extend({
 ```
 
 Quando o usuário digitar no campo de texto em nosso component, a action `filterByCity` no controller será chamada.
-Essa action aceita a propriedade `value` e filtra os dados de `rental`  de acordo com a cidade que o usuário digitou.
+Essa action aceita a propriedade `value` e filtra os dados de `rental` de acordo com a cidade que o usuário digitou.
 O resultado da consulta é retornado para quem o chamou.
 
 #### Simulando um resultado
 
-Para que esta action funcione, precisamos substituir no arquivo `config.js` no Mirage com o seguinte, para que ele possa devolver o resultado de acordo com nossa consulta.
+Para que esta action funcione, precisamos substituir no arquivo `mirage/config.js` no Mirage com o seguinte, para que ele possa devolver o resultado de acordo com nossa consulta.
 Em vez de simplesmente retornar a lista de imóveis, nosso manipulador Mirage HTTP GET `rentals` retornará os imóveis correspondente à string fornecida no parâmetro `city` na URL.
 
 ```mirage/config.js
