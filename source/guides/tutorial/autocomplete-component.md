@@ -464,15 +464,9 @@ Você pode verificar isso iniciando exeutando `ember t -s` no terminal.
 ### Teste de aceitação
 
 Agora que testámos que o componente `list-filter` se comporta como esperado, vamos testar que a própria página também se comporta adequadamente com um teste de aceitação.
-Verificaremos que um usuário que visite a página de aluguel pode inserir texto no campo de pesquisa e restringir a lista de aluguéis por cidade.
+Verificaremos que um usuário que visite a página de imóveis pode digitar no campo de pesquisa e filtrar a lista de imóveis por cidade.
 
-Abra nosso teste de aceitação existente, `tests / acceptance / list-rentals-test.js` e implemente o teste rotulado" deve filtrar a lista de aluguéis por cidade ".
-
-Now that we've tested that the `list-filter` component behaves as expected, let's test that the page itself also behaves properly with an acceptance test.
-We'll verify that a user visiting the rentals page can enter text into the search field and narrow the list of rentals by city.
-
-Open our existing acceptance test, `tests/acceptance/list-rentals-test.js`, and implement the test labeled "should filter the list of rentals by city".
-
+Abra nosso teste de aceitação existente, `tests/acceptance/list-rentals-test.js` e implemente o teste chamado "should filter the list of rentals by city".
 
 ```/tests/acceptance/list-rentals-test.js
 test('should filter the list of rentals by city.', function (assert) {
@@ -485,40 +479,23 @@ test('should filter the list of rentals by city.', function (assert) {
   });
 });
 ```
-Apresentamos dois novos ajudantes neste teste, `fillIn` e` keyEvent`.
+Apresentamos dois novos helper neste teste, `fillIn` e` keyEvent`.
 
-* O [`fillIn`] (http://emberjs.com/api/classes/Ember.Test.html#method_fillIn) helper" preenche "o texto fornecido em um campo de entrada correspondente ao seletor fornecido.
-* O auxiliar [`keyEvent`] (http://emberjs.com/api/classes/Ember.Test.html#method_keyEvent) envia um evento de traçado de tecla para a interface do usuário, simulando o usuário digitando uma chave.
+* [`fillIn`](http://emberjs.com/api/classes/Ember.Test.html#method_fillIn) `prenche` o campo de texto correspondente ao seletor fornecido.
+* [`keyEvent`](http://emberjs.com/api/classes/Ember.Test.html#method_keyEvent) envia um evento de tecla para a interface do usuário, simulando o usuário digitando o valor.
 
-Em `app / components / list-filter.js`, temos como elemento de nível superior representado pelo componente uma classe chamada` list-filter`.
+Em `app/components/list-filter.js`, temos como elemento de nível superior representado pelo component uma classe chamada `list-filter`.
 Localizamos a entrada de pesquisa dentro do componente usando o seletor `.list-filter input`, pois sabemos que existe apenas um elemento de entrada localizado no componente de filtro de lista.
 
-Nosso teste preenche "Seattle" como o critério de pesquisa no campo de pesquisa e, em seguida, envia um evento `keyup` para o mesmo campo com um código de` 69` (a chave `e`) para simular a digitação de um usuário.
+Nosso teste preenche "Seattle" como o critério de pesquisa no campo de pesquisa e, em seguida, envia um evento `keyup` para o mesmo campo com um código `69` (key `e`) para simular a digitação de um usuário.
 
-O teste localiza os resultados da pesquisa encontrando elementos com uma classe de 'listagem', que nós demos ao nosso componente 'lista de aluguel' na seção ["Construindo um Componente Simples"] (../ componente simples) o tutorial.
+O teste localiza os resultados da pesquisa encontrando elementos com uma classe de `listing`, que nós demos ao nosso component `rental-listing` na seção ["Construindo um Componente Simples"](../simple-component).
 
-Uma vez que nossos dados estão codificados em Mirage, sabemos que existe apenas um aluguel com um nome da cidade de "Seattle", por isso afirmamos que o número de listagens é um e que a localização exibida é chamada "Seattle".
+Uma vez que nossos dados estão codificados em Mirage, sabemos que existe apenas um imóvel na cidade de "Seattle", por isso afirmamos que o número de listagens é um e que a localização exibida é chamada "Seattle".
 
 O teste verifica que depois de preencher a entrada de pesquisa com "Seattle", a lista de aluguel diminui de 3 para 1 e o item exibido mostra "Seattle" como a localização.
 
 Você deve fazer apenas 2 testes com falha: uma falha de teste de aceitação remanescente; e nosso teste ESLint que falha em um assertivo não utilizado para o nosso teste não implementado.
 
-We introduce two new helpers into this test, `fillIn` and `keyEvent`.
-
-* The [`fillIn`](http://emberjs.com/api/classes/Ember.Test.html#method_fillIn) helper "fills in" the given text into an input field matching the given selector.
-* The [`keyEvent`](http://emberjs.com/api/classes/Ember.Test.html#method_keyEvent) helper sends a key stroke event to the UI, simulating the user typing a key.
-
-In `app/components/list-filter.js`, we have as the top-level element rendered by the component a class called `list-filter`.
-We locate the search input within the component using the selector `.list-filter input`, since we know that there is only one input element located in the list-filter component.
-
-Our test fills out "Seattle" as the search criteria in the search field, and then sends a `keyup` event to the same field with a code of `69` (the `e` key) to simulate a user typing.
-
-The test locates the results of the search by finding elements with a class of `listing`, which we gave to our `rental-listing` component in the ["Building a Simple Component"](../simple-component) section of the tutorial.
-
-Since our data is hard-coded in Mirage, we know that there is only one rental with a city name of "Seattle", so we assert that the number of listings is one and that the location it displays is named, "Seattle".
-
-The test verifies that after filling in the search input with "Seattle", the rental list reduces from 3 to 1, and the item displayed shows "Seattle" as the location.
-
-You should be down to only 2 failing tests: One remaining acceptance test failure; and our ESLint test that fails on an unused assert for our unimplemented test.
 
 ![passing acceptance tests](../../images/autocomplete-component/passing-acceptance-tests.png)
