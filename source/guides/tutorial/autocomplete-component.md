@@ -1,27 +1,27 @@
 Quando nossos usuários estão procurando um imóvel, eles precisam filtrar a pesquisa por uma cidade especifica, por exemplo.
-Nosso [primeiro component](../simple-component/) `rental-listing` apenas mostrava informações sobre o o imóvel, esse novo componente vai permitir que nosso usuário consiga filtrar os imóveis por critérios.
+Nosso component [`rental-listing`](../simple-component/) apenas mostrava informações sobre o imóvel, esse novo component vai permitir que nosso usuário consiga filtrar imóveis por cidade.
 
-Para começar, vamos gerar o nosso novo component.
+Para começar, vamos gerar o novo component.
 Chamaremos esse component de `list-filter`, já que tudo o que precisamos é que ele filtre os imóveis disponivel.
 
 ```shell
 ember g component list-filter
 ```
 
-Assim como o component [`rental-listing` component](../simple-component), o comando "generate component" vai criar:
+Assim como o component [`rental-listing`](../simple-component), o comando `ember generate component` vai criar:
 
 * um arquivo de template (`app/templates/components/list-filter.hbs`),
 * um arquivo JavaScript (`app/templates/components/list-filter.hbs`),
-* and um arquivo contendo o teste de integração (`tests/integration/components/list-filter-test.js`).
+* e um arquivo de teste de integração (`tests/integration/components/list-filter-test.js`).
 
-#### Atualizando as declarações de componente
+#### Atualizando as Marcações do Component
 
 Vamos adicionar nosso component `list-filter` em nosso arquivo `app/templates/rentals.hbs`.
 
-Observe que vamos envolver nossa listagem de imóveis dentro do component `list-filter`, nas linhas 12 e 20.
-Esse é um exemplo de [**block form**](../../components/wrapping-content-in-a-component), que permite que os template Handlebars seja renderizado _inside_, dentro do component `list-filter` na expressão `{{yield}}`.
+Observe que vamos envolver nossa listagem de imóveis dentro do component `list-filter`, nas linhas **12** e **20**.
+Esse é um exemplo de [**block form**](../../components/wrapping-content-in-a-component), que permite que o template Handlebars seja renderizado _inside_, dentro do component `list-filter` na expressão `{{yield}}`.
 
-Neste caso, estamos passando (`yielding`), o resultado do nosso filtro para dentro da marcação interna, através da variável `rentals` (linha 14).
+Neste caso, estamos passando `yielding`, o resultado do nosso filtro para dentro da marcação interna, através da variável `rentals` (linha 14).
 
 
 ```app/templates/rentals.hbs{+12,+13,+14,+15,+16,+17,+18,+19,+20,-21,-22,-23}
@@ -61,12 +61,13 @@ Queremos que o component simplesmente tenha um campo (input) e envie o resultado
         placeholder="Filter By City"}}
 {{yield results}}
 ```
+
 Observer que nosso template agora possui um novo tipo de helper [`{{input}}`](../../templates/input-helpers), ele funciona como um campo de texto, no qual nosso usuário poderá digitar uma cidade e filtrar o resultado de imóveis.
 A propriedade `value` do` input` será sincronizada com a propriedade `value` do component.
 
 Outra maneira de dizer isso é que a propriedade `value` do `input` é [**bound**](../../object-model/bindings/) com a propriedade `value` do compenent.
 
-A propriedade `key-up` será vinculada à ação` handleFilterEntry`.
+A propriedade `key-up` será vinculada à action `handleFilterEntry`.
 
 Aqui está como nosso código JavaScript do component deve ficar:
 
