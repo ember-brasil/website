@@ -491,7 +491,7 @@ Localizamos a entrada de pesquisa dentro do component usando o seletor `.list-fi
 
 Nosso teste preenche "Seattle" como o critério no campo de pesquisa e, em seguida, envia um evento `keyup` para o mesmo campo com um código `69` para simular a digitação de um usuário.
 
-O teste localiza os resultados da pesquisa encontrando elementos com uma classe de `listing`, que nós demos ao nosso component `rental-listing` na seção ["Construindo um Componente Simples"](../simple-component).
+O teste localiza os resultados da pesquisa encontrando elementos com uma classe de `listing`, que nós demos ao nosso component `rental-listing` na seção ["Construindo um Component Simples"](../simple-component).
 
 Uma vez que nossos dados estão codificados em Mirage, sabemos que existe apenas um imóvel na cidade de "Seattle", por isso afirmamos que o número de imóvel é um e que a localização exibida é chamada "Seattle".
 
