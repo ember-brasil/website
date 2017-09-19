@@ -96,7 +96,7 @@ export default Ember.Component.extend({
 
 #### Filtrando os dados
 
-No exemplo acima, usamos o metodo hook `init` para criar nossas lista de imóveis iniciais chamando a função `filter` com um valor vazio.
+No exemplo acima, usamos o método hook `init` para criar nossas lista de imóveis iniciais chamando a função `filter` com um valor vazio.
 Nossa action `handleFilterEntry` chama uma função chamada `filter` com base no valor do atributo `value`.
 
 A função `filter` foi passada como objeto. Este é um padrão conhecido como [closure actions](../../components/triggering-changes-with-actions/#toc_passing-the-action-to-the-component).
