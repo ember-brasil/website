@@ -1,4 +1,4 @@
-- title: "Guides and Tutorials"
+- title: "Documentação e tutorial"
   url: 'index'
   skip_toc: true
   pages:
@@ -134,7 +134,7 @@
 - title: "Controllers"
   url: 'controllers'
   pages:
-    - title: "Introduction"
+    - title: "Introdução"
       url: "index"
 
 - title: "Models"
@@ -257,8 +257,8 @@
     - title: "Repositories"
       url: "repositories"
 
-- title: "Glossary"
+- title: "Glossário"
   url: "glossary"
   pages:
-    - title: "Web Development"
+    - title: "Desenvolvimento WEB"
       url: "web-development"
