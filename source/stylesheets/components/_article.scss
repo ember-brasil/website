@@ -1,6 +1,10 @@
 article {
   padding: $large-spacing 0;
 
+  &.fluid {
+    width: 100%;
+  }
+
   @include media($large-screen) {
     @include span-columns(8.5);
   }

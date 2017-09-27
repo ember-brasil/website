@@ -1,0 +1,9 @@
+- url: http://www.creditas.com.br/
+  image: creditas.jpg
+  alt: Creditas
+  use: "Ember é usado em todas os serviços internos da Creditas"
+
+- url: https://mlabs.com.br/
+  image: mlabs.png
+  alt: mLabs
+  use: "Ember é utilizado no produto principal da mLabs"
