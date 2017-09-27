@@ -1,0 +1,47 @@
+---
+title: "Contribuidores"
+responsive: true
+---
+
+<h1>
+  Contribuidores
+</h1>
+
+<p class="lead">
+  Ember é um projeto Open Source e conta com a contribuição individual de diversos desenvolvedores.<br />
+  Esses são os desenvolvedores que trabalham para fortalecer a <b>Comunidade Brasileira Ember</b>, seja criando conteúdo, traduzindo ou revisando nosso material.
+</p>
+
+<div class="team section">
+
+<ul class="headshots">
+  <% data.contribuidores.each do |user| %>
+    <li>
+      <a href="<%= user.github %>" rel="nofollow" class="avatar">
+        <img src="/images/contribuidores/<%= user.image %>">
+      </a>
+
+      <p class="name">
+        <%= user.name %>
+      </p>
+
+      <ul class="social">
+        <li>
+          <a class="twitter" href="<%= user.twitter %>">
+            <i class="icon-twitter"></i>
+          </a>
+        </li>
+
+        <li>
+          <a class="github" href="<%= user.github %>">
+            <i class="icon-github"></i>
+          </a>
+        </li>
+      </ul>
+  </li>
+  <% end %>
+</ul>
+
+<hr />
+<a class="ember-button ember-button--centered ember-button--community" target="_blank" href="https://emberjs.com/team/" style="width: 350px">Membros oficiais do core-team</a>
+</div>

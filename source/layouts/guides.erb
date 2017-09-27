@@ -7,7 +7,7 @@
     <title>Ember.js - <%= current_page.data.title || full_page_title %></title>
     <meta property="st:title" content="<%= current_page.data.title || full_page_title %>" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= favicon_tag '/images/favicon.png' %>
+    <%= favicon_tag 'images/favicon.png' %>
     <!--[if lte IE 7 ]><%= stylesheet_link_tag "fonts/fontello-ie7" %><![endif]-->
     <%= stylesheet_link_tag "application" %>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
@@ -33,14 +33,19 @@
     <%= yield_content :outside_wrapper %>
 
     <main class="container">
+      <%= partial "guides/sidebar" %>
+      <article class="chapter">
+        <h1>
+          <%= page_title %>
+          <a href="https://github.com/ember-brasil/website/edit/master/source/<%= current_page.path.gsub('html', 'md') %>"
+             target="_blank" class="edit-page icon-pencil">Melhorar esta página</a>
+        </h1>
+        <hr>
 
-    <% if current_page.data.title == "404 - Not Found" %>
-      <%= yield %>
-    <% else %>
-      <article class="fluid">
         <%= yield %>
+
+        <%= chapter_links %>
       </article>
-    <% end %>
     </main>
 
     <%= partial "footer" %>
@@ -48,6 +53,5 @@
     <%= yield_content :foot %>
 
     <%= partial "google-analytics" %>
-
   </body>
 </html>

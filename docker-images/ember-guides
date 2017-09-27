@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -qq -y libpq-dev ruby-all-dev build-essent
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 
+RUN apt-get install -y aspell aspell-pt-br
+
 RUN rm -rf /var/lib/apt/lists/*
 
 #keeps bundler update

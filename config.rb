@@ -25,10 +25,10 @@ activate :highlighter
 activate :alias
 
 def current_guide(mm_instance, current_page)
-  path = current_page.path.gsub('.html', '')
+  path = current_page.path.gsub('.html', '').gsub("guides/", "")
   guide_path = path.split("/")[0]
 
-  current_guide = mm_instance.data.pages.find do |guide|
+  current_guide = mm_instance.data.guides.find do |guide|
     guide.url == guide_path
   end
 
@@ -39,7 +39,7 @@ def current_chapter(mm_instance, current_page)
   guide = current_guide(mm_instance, current_page)
   return unless guide
 
-  path = current_page.path.gsub('.html', '')
+  path = current_page.path.gsub('.html', '').gsub("guides/", "")
   chapter_path = path.split('/')[1..-1].join('/')
 
   current_chapter = guide.pages.find do |chapter|
@@ -53,8 +53,6 @@ end
 # Build
 ###
 configure :build do
-  set :spellcheck_allow_file, "./data/spelling-exceptions.txt"
-  #activate :spellcheck, lang: "pt-br", ignore_selector: '.CodeRay', page: /^(?!.*stylesheets|.*javascript|.*fonts|.*images|.*analytics).*$/
   activate :minify_css
   activate :minify_javascript, ignore: /.*examples.*js/
   activate :html_proofer
@@ -64,6 +62,8 @@ end
 # Pages
 ###
 page '404.html', directory_index: false
+
+page 'guides*', layout: :guides
 
 # Don't build layouts standalone
 ignore '*_layout.erb'
