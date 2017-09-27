@@ -4,12 +4,27 @@ body {
 }
 
 main {
+  position: relative;
+  width: calc(100% - 6em);
+  max-width: 1400px;
+  margin: 3em auto;
+  overflow: hidden;
+  -webkit-border-radius: .3em;
+  border-radius: .3em;
+  -webkit-box-shadow: 0 0 10px #222;
+  box-shadow: 0 0 10px #222;
+  background-color: #FFF;
   @include media($large-screen) {
     display: flex;
+    flex-direction: column;
   }
 }
 
 .container {
   @include outer-container;
   padding: 0 1em;
+}
+
+.content {
+  padding: 2em 1em;
 }
