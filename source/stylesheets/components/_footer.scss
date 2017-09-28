@@ -3,13 +3,14 @@
   border-top: 1px solid $linen;
   text-align: center;
   font-family: $footer-font-family;
+  width: 100%;
+  display: block;
 
   .container {
     @include padding(2em 1em);
 
     @include media($large-screen) {
       align-items: center;
-      display: flex;
     }
   }
 
@@ -19,8 +20,17 @@
 
   .info {
     text-align: center;
-    font-size: 12px;
+    font-size: 13px;
     width: 100%;
+    color: $medium-gray;
+    line-height: 2;
+
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+    }
   }
 
   .footer-info {
@@ -28,7 +38,6 @@
     font-size: $small-font-size;
     font-weight: 600;
     line-height: 2;
-    margin: 1em 0;
     text-transform: uppercase;
 
     @include media($large-screen) {
@@ -43,18 +52,19 @@
 
   .footer-statement {
     color: $medium-gray;
-    flex: 1;
+    width: 100%;
     font-size: 1.1rem;
     margin: 1em 0;
+
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+    }
   }
 
   .footer-social {
-    margin: 1em 0;
-
-    @include media($large-screen) {
-      flex: 0 0 10em;
-      text-align: right;
-    }
 
     a {
       @include transition(opacity $duration, color $duration);

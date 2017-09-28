@@ -76,20 +76,3 @@
 .button-hero {
   margin: 30px auto;
 }
-
-a.edit-page {
-  font-size: 18px;
-  color: #444;
-  margin: 0;
-  width: 24px;
-  height: 18px;
-  display: inline-block;
-  float: right;
-  overflow: hidden;
-  opacity: 0.4;
-
-  &:hover {
-    opacity: 1;
-    border-bottom: 0;
-  }
-}

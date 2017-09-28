@@ -1,6 +1,5 @@
 .sidebar {
   padding-top: $small-spacing;
-  background-color: $sidebar-background-color;
   position: relative;
   z-index: 1;
 
@@ -14,7 +13,6 @@
       @include position(absolute, 0 0 0 -100vw);
       content: "";
       display: block;
-      background-color: $sidebar-background-color;
       z-index: -1;
     }
   }

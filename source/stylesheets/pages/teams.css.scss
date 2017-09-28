@@ -8,9 +8,14 @@
     padding: 0px;
   }
 
-  h1,
   .lead {
+    font-size: 1em;
+    font-weight: 700;
+    color: #888;
+    max-width: 90%;
+    margin: 0 auto;
     text-align: center;
+    line-height: 1.8em;
   }
 
   hr {

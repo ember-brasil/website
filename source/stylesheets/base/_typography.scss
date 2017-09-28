@@ -35,7 +35,21 @@ h6 {
 }
 
 h1 {
-  color: $ember-orange;
+  color: $near-black;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+h1:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 150px;
+  height: 2px;
+  left: 50%;
+  margin-top: .2em;
+  background: $ember-orange;
+  margin-left: -75px;
 }
 
 h2 {
