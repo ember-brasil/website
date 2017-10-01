@@ -1,18 +1,17 @@
-Ember applications utilize the [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection)
-("DI") design pattern to declare and instantiate classes of objects and dependencies between them.
-Applications and application instances each serve a role in Ember's DI implementation.
+Aplicações Ember utilizam o padrão de projeto [injeção de dependência](https://en.wikipedia.org/wiki/Dependency_injection)
+("DI") para declarar e instanciar classes de objetos e as dependências entre eles. Aplicações e instâncias de aplicação, possuem cada uma funções na implementação DI do Ember.  
 
-An [`Ember.Application`][1] serves as a "registry" for dependency declarations.
-Factories (i.e. classes) are registered with an application,
-as well as rules about "injecting" dependencies that are applied when objects are instantiated.
+Uma [`Ember.Application`][1] serve como um "registro" para declarações de dependência.
+Fabricas (ex.: classes) são registradas com uma aplicação, 
+assim como as regras sobre "injetamento" de dependências que são aplicadas quando os objetos são instânciados.
 
-An [`Ember.ApplicationInstance`][2] serves as the "owner" for objects that are instantiated from registered factories.
-Application instances provide a means to "look up" (i.e. instantiate and / or retrieve) objects.
+Uma [`Ember.ApplicationInstance`][2] serve como o "dono" para objetos que são instânciados apartir de fabricas registradas.
+Instâncias de aplicação fornecem uma forma de "pesquisar" (ou seja, instânciar e/ou recuperar) objetos.
 
-> _Note: Although an `Application` serves as the primary registry for an app,
-each `ApplicationInstance` can also serve as a registry.
-Instance-level registrations are useful for providing instance-level customizations,
-such as A/B testing of a feature._
+> _Nota: Apesar de uma `Application` servir como um registro principal em  uma aplicação, 
+cada `ApplicationInstance` pode servir também como um registro. 
+Os registros em nível de instância são úteis para fornecer customizações em nível de instância, 
+como o teste A/B de um recurso._ 
 
 [1]: http://emberjs.com/api/classes/Ember.Application.html
 [2]: http://emberjs.com/api/classes/Ember.ApplicationInstance.html
