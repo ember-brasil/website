@@ -1,107 +1,61 @@
-Welcome to the Ember.js Guides! This documentation will take you from
-total beginner to Ember expert.
+Bem-vindo ao guia do Ember.js! Esse documento irá levá-lo de um completo iniciante para um expert em Ember.js.
 
-## What is Ember?
+## O que é Ember?
+Ember é um framework front-end JavaScript estruturado, que visa à ajudá-lo na construção de websites ricos e com interações complexos com o usuário. Ele vai fornecer aos desenvolvedores todos os recursos que são essenciais para gerenciar a complexidade de suas aplicações web modernas, bem como um kit de ferramentas de desenvolvimento integrado que permite uma interação rápida.
 
-Ember is a JavaScript front-end framework designed to help you build websites with rich and complex user interactions.
-It does so by providing developers both with many features that are essential to manage complexity in modern web applications,
-as well as an integrated development toolkit that enables rapid iteration.
+Essas são algumas das características que você irá conhece nesse guia:
 
-Some of these features that you'll learn about in the guides are:
+* [Ember CLI](./configuring-ember/configuring-ember-cli/) - Um robusto kit de ferramentas de criação, desenvolvimento e build para aplicações Ember. Por todo esse guia você irá vê a seguinte instrução do Ember CLI ```$ ember <comando>```.
+* [Rotas](./routing) - Essa é a parte central de uma aplicação Ember. Permite aos desenvolvedores verificar o estado da sua aplicação a partir de uma URL.
+* [Template Engine](./templates/handlebars-basics/) - Utilize a sintaxe do Handlebars para escreve os templates da sua aplicação.
+* [Data Layer](./models/) - O Ember Data provê uma comunicação consistente com APIs externas e com o gerenciamento dos estados da sua aplicação.
+* [Ember Inspector](./models/) - Uma extensão para o navegador, um bookmarklet, para inspecionar sua aplicação em tempo de desenvolvimento. Também é útil para detectar aplicações feita com Ember, tente instalá-lo e abrir o site da [NASA website](https://www.nasa.gov/)!
 
-* [Ember CLI](./configuring-ember/configuring-ember-cli/) - A robust development toolkit to create, develop, and build Ember applications. When you see an `$ ember <command>` instruction throughout the guides, that's Ember CLI!
-* [Routing](./routing) - The central part of an Ember application. Enables developers to drive the application state from the URL.
-* [Templating engine](./templates/handlebars-basics/) - Use Handlebars syntax to write your application's templates
-* [Data layer](./models/) - Ember Data provides a consistent way to communicate with external APIs and manage application state
-* [Ember Inspector](./ember-inspector/) - A browser extension, or bookmarklet, to inspect your application live. It's also useful for spotting Ember applications in the wild, try to install it and open up the [NASA website](https://www.nasa.gov/)!
+## Organização
+No lado esquerdo de cada página desse guia é um índice, ele é organizado em seções que podem ser expandidas para mostra outros tópicos. As seções e os tópicos de cada seção são ordenados com o seguinte conceito do básico ao avançado.
 
-## Organization
+Esse guia contém uma explicação prática de como contruir uma aplicação com Ember, concentrado-se nos recursos mas utilizados do Ember.js. Para uma melhor compreensão da documentação, caracteríticas e da API do Ember utilize [Ember.js API documentation](http://emberjs.com/api/).
 
-On the left side of each Guides page is a table of contents,
-organized into sections that can be expanded to show the topics
-they cover. Both the sections and the topics within each section are
-ordered from basic to advanced concepts.
+Esse guia inícia com uma explicação inicial do Ember, seguindo o tutorial você terá sua primeira aplicação feita com Ember. Ser você esta começando agora com Ember, recomendamos que você siga com essas duas primeiras seções do guia.
 
-The Guides are intended to contain practical explanations of how to
-build Ember apps, focusing on the most widely-used features of Ember.js.
-For comprehensive documentation of every Ember feature and API, see the
-[Ember.js API documentation](http://emberjs.com/api/).
+## Suposições
+Enquanto tentamos deixar esse guia o mas iniciante possível, nós devemos estabelecer uma base para que o guia possa ser manter focado nas funcionalidades do Ember.js. Sempre que for introduzido um novo conceito iremos vincular sua documentação para uma melhor compreensão do que esta sendo feito.
 
-The Guides begin with an explanation of how to get started with Ember,
-followed by a tutorial on how to build your first Ember app.
-If you're brand new to Ember,
-we recommend you start off by following along with these first two sections of the Guides.
+Para um melhor aproveitamento desse guia você deverá ter um conhecimento razoável de:
 
-## Assumptions
+* **HTML, CSS, JavaScript** - Para construção dos elementos das suas páginas webs. Você irá encontrar a documentação de cada dessas tecnologia em [Mozilla Developer Network][mdn].
+* **Promises** - É a maneira nativa que você irá trabalhar com códigos assíncronos em códigos JavaScript. Para uma melhor compreensão utiliza a seguinte seção [Mozilla Developer Network][promises].
+* **ES2015 Modules** - Para uma melhor compreensão da estrutura de projeto é importação de arquivos, se você estive confortável com [Ember CLI's][ember-cli].
+* **ES2015 Sintaxe** - O Ember CLI utiliza o Babel.js por padrão para tira vantagem das novas especificações do JavaScript como Arrow Functions, template string, destructuring e muito mais. Você pode verificar em [Babel.js][babeljs] ou lê [Compreendendo ECMAScript 6][es6] online.
 
-While we try to make the Guides as beginner-friendly as we can,
-we must establish a baseline so that the guides can keep focused on Ember.js functionality.
-We will try to link to appropriate documentation whenever a concept is introduced.
+## Notas sobre performance em dispositivos movéis
+Ember vai te ajudar a escreve mas rapidamente seu aplicativos, mas ele não irá impedir você de escreve um aplicativo lento. Isso é verdadeiro especialmente em dispositivos movéis. Para uma melhor experiência, é importante você medir o desempenho da sua aplicação o mas cedo possível e várias vezes durante o desenvolvimento em diferentes dispositivos movéis.
 
-To make the most out of the guides, you should have a working knowledge of:
+Sempre verifique ser você esta testando em um dispositivo movél real. Pois os simuladores de um computador oferecem um representação otimista do desempenho do seu aplicativo, o melhor é fazer os testes em dispositivos reais. Quanto mas dispositivos diferentes você utilizar para realizar os testes melhor será o resultado da sua aplicação.
 
-* **HTML, CSS, JavaScript** - the building blocks of web pages. You can find documentation of each of these technologies at the [Mozilla Developer Network][mdn].
-* **Promises** - the native way to deal with asynchrony in your JavaScript code. See the relevant [Mozilla Developer Network][promises] section.
-* **ES2015 modules** - you will better understand [Ember CLI's][ember-cli] project structure and import paths if you are comfortable with [JavaScript Modules][js-modules].
-* **ES2015 syntax** - Ember CLI comes with Babel.js by default so you can
-take advantage of newer language features such as arrow functions, template
-strings, destructuring, and more. You can check the
-[Babel.js documentation][babeljs] or read [Understanding ECMAScript 6][es6]
-online.
+Devido as limitações que os dispositivos movéis possuem como a conectividade de rede e á sua potência, o desempenho em dispositivos movéis raramente irá vim de graça. Você terá que integra o teste de desempenho no seu fluxo de desenvolvimento desde o início. Isso irá te ajudar a evitar erros na arquitetura do seu projeto que podem custa caro mas para frente é que são difíceis de consertar ser você nota apenas uma vez no seu aplicativo quando ele estive quase completo.
 
-## A Note on Mobile Performance
+Em resumo:
 
-Ember will do a lot to help you write fast apps, but it can't prevent you from
-writing a slow one. This is especially true on mobile devices. To deliver a great
-experience, it's important to measure performance early and often, and with a diverse
-set of devices.
+1. Sempre teste em dispositivos reais.
+2. Faça testes de performance desde o início e continue testado seu aplicativo durante todo o desenvolvimento dele.
 
-Make sure you are testing performance on real devices. Simulated mobile
-environments on a desktop computer give an optimistic-at-best representation of
-what your real world performance will be like. The more operating systems and
-hardware configurations you test, the more confident you can be.
+## Para reporta um problema
 
-Due to their limited network connectivity and CPU power, great performance on
-mobile devices rarely comes for free. You should integrate performance testing
-into your development workflow from the beginning. This will help you avoid
-making costly architectural mistakes that are much harder to fix if you only
-notice them once your app is nearly complete.
+Tipos, palavras que estão faltado, exemplo de códigos com erros são considerados erros de documentação. Ser você detectar qualquer um desses erros, ou quiser melhorar o guia existente, estamos felizes em ajudar você a nos ajudar!
 
-In short:
+Essas são algumas das maneira comuns de relatar um problema com o guia:
 
-1. Always test on real, representative mobile devices.
-2. Measure performance from the beginning, and keep testing as your app
-   develops.
+* Usando o ícone do lápis na parte superior direita de cada página do guia.
+* Abrindo um pull request no [repósitório do projeto][gh-guides].
 
-These tips will help you identify problems early so they can be addressed systematically, rather than
-in a last-minute scramble.
+Ao clicar no ícone de lápis, você será levando para o editor do GitHub para a página do guia que você possa editá-lo imediatamente, usando a linguagem de marcação Markdown. Está é a maneira mas rápida de corrigir um erro de digitação, uma palavra que falta ou um erro em qualquer amostrar de código.
 
-## Reporting a problem
+Ser você deseja fazer uma contribuição mas significativa, certifique-se de verificar a nossa lista de [issues][gh-guides-issues] para verificar ser o problema já esta sendo resolvido. Ser você não encontra um problema ativo, abra um novo.
 
-Typos, missing words, and code samples with errors are all considered
-documentation bugs. If you spot one of them, or want to otherwise improve
-the existing guides, we are happy to help you help us!
+Ser você tiver mas dúvidas ou perguntas sobre o processo de contribuição, verifique o nosso [guia de contribuição][gh-guides-contributing]. Ser ainda sim a sua dúvida persistir entre em com contato com ```#-team-learning``` no [grupo do Slack][slackin]
 
-Some of the more common ways to report a problem with the guides are:
-
-* Using the pencil icon on the top-right of each guide page
-* Opening an issue or pull request to [the GitHub repository][gh-guides]
-
-Clicking the pencil icon will bring you to GitHub's editor for that
-guide so you can edit right away, using the Markdown markup language.
-This is the fastest way to correct a typo, a missing word, or an error in
-a code sample.
-
-If you wish to make a more significant contribution be sure to check our
-[issue tracker][gh-guides-issues] to see if your issue is already being
-addressed. If you don't find an active issue, open a new one.
-
-If you have any questions about styling or the contributing process, you
-can check out our [contributing guide][gh-guides-contributing]. If your
-question persists, reach us at `#-team-learning` on the [Slack
-group][slackin].
-
-Good luck!
+Boa sorte!
 
 [ember-cli]: https://ember-cli.com/
 
