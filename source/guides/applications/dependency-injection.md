@@ -2,10 +2,10 @@ Aplicações Ember utilizam o padrão de projeto [injeção de dependência](htt
 ("DI") para declarar e instanciar classes de objetos e as dependências entre eles. Aplicações e instâncias de aplicação, possuem cada uma funções na implementação DI do Ember.  
 
 Uma [`Ember.Application`][1] serve como um "registro" para declarações de dependência.
-Fabricas (ex.: classes) são registradas com uma aplicação, 
+Factories (ex.: classes) são registradas com uma aplicação, 
 assim como as regras sobre "injetamento" de dependências que são aplicadas quando os objetos são instânciados.
 
-Uma [`Ember.ApplicationInstance`][2] serve como o "dono" para objetos que são instânciados apartir de fabricas registradas.
+Uma [`Ember.ApplicationInstance`][2] serve como o "dono" para objetos que são instânciados apartir de factories registradas.
 Instâncias de aplicação fornecem uma forma de "pesquisar" (ou seja, instânciar e/ou recuperar) objetos.
 
 > _Nota: Apesar de uma `Application` servir como um registro principal em  uma aplicação, 
@@ -16,26 +16,25 @@ como o teste A/B de um recurso._
 [1]: http://emberjs.com/api/classes/Ember.Application.html
 [2]: http://emberjs.com/api/classes/Ember.ApplicationInstance.html
 
-## Factory Registrations
+## Registros de Factory
 
-A factory can represent any part of your application, like a _route_, _template_, or custom class.
-Every factory is registered with a particular key.
-For example, the index template is registered with the key `template:index`,
-and the application route is registered with the key `route:application`.
+Uma factory pode representar qualquer parte da sua aplicação, como uma _route_, _template_, ou uma classe personalizada.
+Toda factory está registrada com um chave específica.
+Por exemplo, o template index é registrado com a chave `template:index`,
+e a rota application registrada com a chave `route:application`.
 
-Registration keys have two segments split by a colon (`:`).
-The first segment is the framework factory type, and the second is the name of the particular factory.
-Hence, the `index` template has the key `template:index`.
-Ember has several built-in factory types, such as `service`, `route`, `template`, and `component`.
+Chaves de registro tem dois segmentos divididos por dois pontos (`:`).
+O primeiro segmento é o tipo da factory do framework e o segundo o nome da factory em  particular.
+Portanto, o template `index` tem a chave `template:index`.
+Ember tem vários tipos de factory embutidos, como `service`, `route`, `template` e  `component`.
 
-You can create your own factory type by simply registering a factory with the new type.
-For example, to create a `user` type,
-you'd simply register your factory with `application.register('user:user-to-register')`.
+Você pode criar seu próprio tipo de factory simplesmente registrando uma factory com o novo tipo.
+Por exemplo, para cria um tipo `user`,
+você simplesmente registraria sua factory com `application.register('user:user-to-register')`.
 
-Factory registrations must be performed either in application
-or application instance initializers (with the former being much more common).
+Registros de factory deve ser realizadas tanto em aplicação ou em inicializadores de  instância de aplicação (sendo o primeiro o mais comum).
 
-For example, an application initializer could register a `Logger` factory with the key `logger:main`:
+Por exemplo, um inicializador de aplicação pode registrar uma factory `Logger` com a chave `logger:main`:
 
 ```app/initializers/logger.js
 import Ember from 'ember';
@@ -56,14 +55,13 @@ export default {
 };
 ```
 
-### Registering Already Instantiated Objects
+### Registrando objetos já registrados
 
-By default, Ember will attempt to instantiate a registered factory when it is looked up.
-When registering an already instantiated object instead of a class,
-use the `instantiate: false` option to avoid attempts to re-instantiate it during lookups.
+Por padrão, Ember tentará instanciar um factory registrada quando for pesquisada (lookup).
+Quando registrar uma objeto já instanciado ao invés de uma classe,
+utilize a opção `instantiate: false` para evitar tentativas de re-instanciamento durante a pesquisa (lookups).
 
-In the following example, the `logger` is a plain JavaScript object that should
-be returned "as is" when it's looked up:
+No exemplo a seguir, o `logger` é um objeto Javascript simples que deve ser retornado "como ele é" quando for pesquisado.
 
 ```app/initializers/logger.js
 export function initialize(application) {
