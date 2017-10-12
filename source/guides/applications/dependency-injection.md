@@ -80,16 +80,16 @@ export default {
 };
 ```
 
-### Registering Singletons vs. Non-Singletons
+### Registro de Singletons vs. Non-Singletons
 
-By default, registrations are treated as "singletons".
-This simply means that an instance will be created when it is first looked up,
-and this same instance will be cached and returned from subsequent lookups.
+Por padrão, registramentos são tratados como "singletons".
+Isso simplesmente significa que uma instância será criada quando for pesquisada pela primeira vez,
+e esta mesma instância será armazenada e retornada nas pesquisas subseqüentes.
 
-When you want fresh objects to be created for every lookup,
-register your factories as non-singletons using the `singleton: false` option.
+Quando você precisa que objetos novos sejam criados em cada pesquisa,
+registre sua factory como um non-singleton usando a opção `singleton: false`.
 
-In the following example, the `Message` class is registered as a non-singleton:
+No exemplo a seguir, a classe `Message` é registrada como um non-singleton:
 
 ```app/initializers/notification.js
 import Ember from 'ember';
