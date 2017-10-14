@@ -108,11 +108,11 @@ export default {
 };
 ```
 
-## Factory Injections
+## Injeção de Factory
 
-Once a factory is registered, it can be "injected" where it is needed.
+Uma vez a factory estando registrada, ela pode ser "injetada" onde for necessário.
 
-Factories can be injected into whole "types" of factories with *type injections*. For example:
+Factories pode ser injetadas em vários "tipos" de factories com *tipo de injeções*. Por exemplo:
 
 ```app/initializers/logger.js
 import Ember from 'ember';
@@ -134,33 +134,32 @@ export default {
 };
 ```
 
-As a result of this type injection,
-all factories of the type `route` will be instantiated with the property `logger` injected.
-The value of `logger` will come from the factory named `logger:main`.
+Como resultado desse tipo de injeção,
+todas as factoires do tipo `route` serão instanciadas com a propriedade `logger` injetada.
+O valor de `logger` virá da factory chamada `logger:main`.
 
-Routes in this example application can now access the injected logger:
+Routes nessa applicação exemplo podem apartir de agora acessar o logger injetado:
 
 ```app/routes/index.js
 import Ember from 'ember';
 
 export default Ember.Route.extend({
   activate() {
-    // The logger property is injected into all routes
+    // A propriedade logger é injetada em todas as rotas
     this.get('logger').log('Entered the index route!');
   }
 });
 ```
-
-Injections can also be made on a specific factory by using its full key:
+Injeções também podem serem feitas em uma factory especifica usando sua chave completa:
 
 ```js
 application.inject('route:index', 'logger', 'logger:main');
 ```
 
-In this case, the logger will only be injected on the index route.
+Nesse caso, o logger será injetado somente na rota index.
 
-Injections can be made into any class that requires instantiation.
-This includes all of Ember's major framework classes, such as components, helpers, routes, and the router.
+As injeções podem ser feitas em qualquer classe que exija instânciamento.
+Isso inclui todas as principais classes do framework Ember, como components, helper, routes e o router.
 
 ### Ad Hoc Injections
 
