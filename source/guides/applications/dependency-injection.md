@@ -187,24 +187,22 @@ export default Ember.Component.extend({
 });
 ```
 
-## Factory Instance Lookups
+## Pesquisas de Instância de Factory
 
-To fetch an instantiated factory from the running application you can call the
-[`lookup`][3] method on an application instance. This method takes a string
-to identify a factory and returns the appropriate object.
+Para buscar uma factory instânciada em uma aplicação em execução você pode chamar o método [`lookup`][3] em uma instância de aplicação. Esse método pega uma string para identificar uma factory e retorna o objeto apropriado.
 
 ```javascript
 applicationInstance.lookup('factory-type:factory-name');
 ```
 
-The application instance is passed to Ember's instance initializer hooks and it
-is added as the "owner" of each object that was instantiated by the application
-instance.
+A instância da aplicação é passada para os hooks inicializadores de instância do Ember e
+adicionado como "dono" de cada objeto que foi instânciado pela instância da
+aplicação.
 
-### Using an Application Instance Within an Instance Initializer
+### Usando uma Instância de Aplicação dentro de um Inicializador de Instância
 
-Instance initializers receive an application instance as an argument, providing
-an opportunity to look up an instance of a registered factory.
+Os inicializadores de instâncias recebem uma instância de aplicação como um argumento, provendo
+uma oportunidade para pesquisar uma instância em uma factory registrada.
 
 ```app/instance-initializers/logger.js
 export function initialize(applicationInstance) {
@@ -219,15 +217,13 @@ export default {
 };
 ```
 
-### Getting an Application Instance from a Factory Instance
+### Obtendo uma Instância de Aplicação de uma Instância de Factory
 
-[`Ember.getOwner`][4] will retrieve the application instance that "owns" an
-object. This means that framework objects like components, helpers, and routes
-can use [`Ember.getOwner`][4] to perform lookups through their application
-instance at runtime.
+[`Ember.getOwner`][4] irá recuperar a instância da aplicação que "possui" um 
+objeto. Isso significa que objetos do framework como components, helpers e routes podem usar [`Ember.getOwner`][4] para realizar pesquisas através de sua instância de aplicação em tempo de execução.
 
-For example, this component plays songs with different audio services based
-on a song's `audioType`.
+Por exemplo, esse componente reproduz músicas com diferentes serviços de áudio baseados
+no `audioType` da música.
 
 ```app/components/play-audio.js
 import Ember from 'ember';
