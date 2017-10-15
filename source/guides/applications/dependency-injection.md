@@ -161,13 +161,13 @@ Nesse caso, o logger será injetado somente na rota index.
 As injeções podem ser feitas em qualquer classe que exija instânciamento.
 Isso inclui todas as principais classes do framework Ember, como components, helper, routes e o router.
 
-### Ad Hoc Injections
+### Injeções Ad Hoc
 
-Dependency injections can also be declared directly on Ember classes using `Ember.inject`.
-Currently, `Ember.inject` supports injecting controllers (via `Ember.inject.controller`)
-and services (via `Ember.inject.service`).
+As injeções de dependências também podem ser declaradas diretamente em classes Ember usando `Ember.inject`.
+Atualmente, `Ember.inject` suporta injeção de controllers (via `Ember.inject.controller`)
+e services (via `Ember.inject.service`).
 
-The following code injects the `shopping-cart` service on the `cart-contents` component as the property `cart`:
+O código a seguir injeta o service `shopping-cart` no componente `cart-contents` como propriedade `cart`:
 
 ```app/components/cart-contents.js
 import Ember from 'ember';
@@ -176,9 +176,8 @@ export default Ember.Component.extend({
   cart: Ember.inject.service('shopping-cart')
 });
 ```
-
-If you'd like to inject a service with the same name as the property,
-simply leave off the service name (the dasherized version of the name will be used):
+Se você gostaria de injetar um service com o mesmo nome da propriedade, 
+simplesmente deixe sem o nome do service (a versão dasherizada do nome será usada):
 
 ```app/components/cart-contents.js
 import Ember from 'ember';
