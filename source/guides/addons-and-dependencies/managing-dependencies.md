@@ -1,47 +1,48 @@
-As you're developing your Ember app, you'll likely run into common scenarios that aren't addressed by Ember itself,
-such as authentication or using SASS for your stylesheets.
-Ember CLI provides a common format called [Ember Addons](#toc_addons) for distributing reusable libraries
-to solve these problems.
-Additionally, you may want to make use of front-end dependencies like a CSS framework
-or a JavaScript datepicker that aren't specific to Ember apps.
+Enquanto estiver desenvolvendo sua aplicação Ember, você provavelmente encontrará cenários comuns que não são resolvidos pelo próprio Ember,
+como autenticação ou a utilização de SASS nas suas folhas de estilo.
+Ember CLI provê uma forma comum chamada [Ember Addons](#toc_addons) para a distribuição de bibliotecas reutilizáveis
+para resolver estes problemas.
+Adicionalmente você pode querer utilizar dependências de front-end como um framework CSS ou um datepicker Javascript que não são específicos de aplicações Ember.
 
 ## Addons
 
-Ember Addons can be installed using [Ember CLI](http://ember-cli.com/extending/#developing-addons-and-blueprints)
+Ember Addons podem ser instalados usando [Ember CLI](http://ember-cli.com/extending/#developing-addons-and-blueprints)
 (e.g. `ember install ember-cli-sass`).
-Addons may bring in other dependencies by modifying your project's `bower.json` file automatically.
+Addons podem incluir outras dependências modificando o arquivo `bower.json` do seu projeto automaticamente.
 
-You can find listings of addons on [Ember Observer](http://emberobserver.com).
+Você pode encontrar listas de addons em [Ember Observer](http://emberobserver.com).
 
-## Other assets
+## Outros assets
 
-Third-party JavaScript not available as an addon or Bower package should be placed in the `vendor/` folder in your project.
+Javascript de terceiros não disponível como um addon ou um pacote Bower devem ser colocados na pasta
+`vendor/` do seu projeto.
 
-Your own assets (such as `robots.txt`, `favicon`, custom fonts, etc) should be placed in the `public/` folder in your project.
+Seus próprios assets (tais como `robots.txt`, `favicon`, fontes customizadas etc.) devem ser colocados na pasta
+`public/` do seu projeto.
 
-## Compiling Assets
+## Compilando Assets
 
-When you're using dependencies that are not included in an addon,
-you will have to instruct Ember CLI to include your assets in the build.
-This is done using the asset manifest file `ember-cli-build.js`.
-You should only try to import assets located in the `bower_components` and `vendor` folders.
+Quanto você está usando dependências que não estão incluídas em um addon
+você precisará instruir o Ember CLI para incluir seus assets na build.
+Isto é feito usando o arquivo asset manifest `ember-cli-build.js`.
+Você deve tentar importar apenas assets localizados nas pastas `bower_components` and `vendor`.
 
-### Globals provided by JavaScript assets
+### Globais fornecidas por assets Javascript
 
-The globals provided by some assets (like `moment` in the below example) can be used in your application
-without the need to `import` them.
-Provide the asset path as the first and only argument.
+As globais fornecidas por alguns assets (como `moment` no exemplo abaixo) podem ser usadas na sua aplicação
+sem a necessidade de importá-las.
+Forneça o caminho do asset como o primeiro e único argumento.
 
 ```ember-cli-build.js
 app.import('bower_components/moment/moment.js');
 ```
 
-You will need to add `"moment"` to the `globals` section in `.eslintrc.js` to prevent ESLint errors
-about using an undefined variable.
+Você precisará adicionar `"moment"` à seção `globals` em `.eslintrc.js` para prevenir erros de ESLint sobre
+utilizar uma variável indefinida.
 
-### AMD JavaScript modules
+### Módulos JavaScript AMD
 
-Provide the asset path as the first argument, and the list of modules and exports as the second.
+Forneça o caminho do asset como o primeiro argumento e a lista de módulos e exports como o segundo.
 
 ```ember-cli-build.js
 app.import('bower_components/ic-ajax/dist/named-amd/main.js', {
@@ -57,12 +58,12 @@ app.import('bower_components/ic-ajax/dist/named-amd/main.js', {
 });
 ```
 
-You can now `import` them in your app. (e.g. `import { raw as icAjaxRaw } from 'ic-ajax';`)
+Agora você pode importá-los na sua aplicação. (ex. `import { raw as icAjaxRaw } from 'ic-ajax';`)
 
-### Environment-Specific Assets
+### Assets específicos de ambiente
 
-If you need to use different assets in different environments, specify an object as the first parameter.
-That object's key should be the environment name, and the value should be the asset to use in that environment.
+Se você precisa utilizar assets diferentes em ambientes diferentes, especifique um objeto como o primeiro parâmetro.
+A chave desse objeto deve ser o nome do ambiente e o nome deve ser o asset utilizado naquele ambiente.
 
 ```ember-cli-build.js
 app.import({
@@ -71,9 +72,9 @@ app.import({
 });
 ```
 
-If you need to import an asset in only one environment you can wrap `app.import` in an `if` statement.
-For assets needed during testing, you should also use the `{type: 'test'}` option to make sure they
-are available in test mode.
+Se você precisa importar um asset em apenas um ambiente você pode colocar `app.import` em uma declaração `if`.
+Para assets necessários durante testes, você deve usar também a opção `{type: 'test'}` para ter certeza de que
+eles estão disponíveis em modo de teste.
 
 ```ember-cli-build.js
 if (app.env === 'development') {
@@ -89,34 +90,34 @@ if (app.env === 'test') {
 
 ### CSS
 
-Provide the asset path as the first argument:
+Forneça o caminho do asset como o primeiro argumento:
 
 ```ember-cli-build.js
 app.import('bower_components/foundation/css/foundation.css');
 ```
 
-All style assets added this way will be concatenated and output as `/assets/vendor.css`.
+Todos os assets de estilo adicionados desta forma serão concatenados e sairão como `/assets/vendor.css`.
 
-### Other Assets
+### Outros assets
 
-All assets located in the `public/` folder will be copied as is to the final output directory, `dist/`.
+Todos os assets localizados na pasta `public/` serão copiados sem modificações para o diretório final de saída `dist/`.
 
-For example, a `favicon` located at `public/images/favicon.ico` will be copied to `dist/images/favicon.ico`.
+Por exemplo, um `favicon` localizado em `public/images/favicon.ico` será copiado para `dist/images/favicon.ico`.
 
-All third-party assets, included either manually in `vendor/` or via a package manager like Bower, must be added via `import()`.
+Todos os assets de terceiros, incluídos ou manualmente em `vendor/` ou via gerenciador de pacotes como Bower, devem ser adicionados via `import()`.
 
-Third-party assets that are not added via `import()` will not be present in the final build.
+Assets de terceiros que não forem adicionados via `import()` não estarão presentes na build final.
 
-By default, `import`ed assets will be copied to `dist/` as they are, with the existing directory structure maintained.
+Por padrão, assets `import`ados serão copiados para `dist/` como são, com a estrutura do diretório existente mantida.
 
 ```ember-cli-build.js
 app.import('bower_components/font-awesome/fonts/fontawesome-webfont.ttf');
 ```
 
-This example would create the font file in `dist/font-awesome/fonts/fontawesome-webfont.ttf`.
+Este exemplo criaria o arquivo da fonte em `dist/font-awesome/fonts/fontawesome-webfont.ttf`.
 
-You can also optionally tell `import()` to place the file at a different path.
-The following example will copy the file to `dist/assets/fontawesome-webfont.ttf`.
+Você pode também informar opcionalmente ao `import()` para colocar o arquivo em um caminho diferente.
+O exemplo seguinte copiará o arquivo para `dist/assets/fontawesome-webfont.ttf`.
 
 ```ember-cli-build.js
 app.import('bower_components/font-awesome/fonts/fontawesome-webfont.ttf', {
@@ -124,9 +125,9 @@ app.import('bower_components/font-awesome/fonts/fontawesome-webfont.ttf', {
 });
 ```
 
-If you need to load certain dependencies before others,
-you can set the `prepend` property equal to `true` on the second argument of `import()`.
-This will prepend the dependency to the vendor file instead of appending it, which is the default behavior.
+Se você precisa carregar certas dependências antes de outras, você pode setar a propriedade `prepend`
+igual a `true` no segundo argumento de `import()`.
+Isto vai adicionar a dependência no início do arquivo vendor em vez de no final, que é o comportamento padrão.
 
 ```ember-cli-build.js
 app.import('bower_components/es5-shim/es5-shim.js', {
