@@ -10,7 +10,7 @@
     <%= favicon_tag '/images/favicon.png' %>
     <!--[if lte IE 7 ]><%= stylesheet_link_tag "fonts/fontello-ie7" %><![endif]-->
     <%= stylesheet_link_tag "application" %>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
     <!-- This TypeKit account is managed by @wifelette. Contact her with any issues. -->
     <script src="https://use.typekit.net/stz3kpn.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
@@ -28,25 +28,25 @@
       <%= javascript_include_tag 'common-modern' %>
     <!--<![endif]-->
 
-    <%= partial "header" %>
+    <main>
+      <%= partial "header" %>
 
-    <%= yield_content :outside_wrapper %>
+      <%= yield_content :outside_wrapper %>
 
-    <main class="container">
 
-    <% if current_page.data.title == "404 - Not Found" %>
-      <%= yield %>
-    <% else %>
-      <article class="fluid">
+      <% if current_page.data.title == "404 - Not Found" %>
         <%= yield %>
-      </article>
-    <% end %>
+      <% else %>
+        <div class="content">
+          <%= yield %>
+        </div>
+      <% end %>
+
+      <%= partial "footer" %>
+
+      <%= yield_content :foot %>
+
     </main>
-
-    <%= partial "footer" %>
-
-    <%= yield_content :foot %>
-
     <%= partial "google-analytics" %>
 
   </body>

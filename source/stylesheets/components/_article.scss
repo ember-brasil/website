@@ -1,28 +1,41 @@
 article {
   padding: $large-spacing 0;
 
-  &.fluid {
-    width: 100%;
-  }
-
   @include media($large-screen) {
     @include span-columns(8.5);
+    margin: 0;
   }
 
   .edit-page {
     color: $brown;
     display: inline-block;
-    float: right;
-    font-size: .8rem;
+    font-size: 1rem;
     margin: 0.5em 0 0 0;
     opacity: 0.4;
     text-decoration: none;
     font-weight: normal;
+    cursor: pointer;
+    width: 23px;
+    overflow: hidden;
+    height: 22px;
 
     &:hover {
       opacity: 1;
       border-bottom: 0;
     }
+  }
+
+  h1 {
+    text-align: left;
+    font-size: 1.8em;
+    &:after {
+      background: none;
+      width: 0;
+      height: 0;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   h2,

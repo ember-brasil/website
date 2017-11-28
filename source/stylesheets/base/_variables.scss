@@ -1,8 +1,8 @@
 // Typography
-$base-font-family: $helvetica;
+$base-font-family: 'Nunito', Arial, sans-serif;
 $heading-font-family: $base-font-family;
 $monospace-font-family: Menlo, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", Courier, monospace;
-$footer-font-family: proxima-nova, sans-serif;
+$footer-font-family: $base-font-family;
 
 // Font Sizes
 $base-font-size: 1rem;
@@ -31,7 +31,7 @@ $creme: #FFFBF5;
 $linen: #f9e7e4;
 $near-black: #444;
 
-$base-background-color: #FDFDFD;
+$base-background-color: #333;
 $sidebar-background-color: #FFFDF9;
 
 // Code Highlighting

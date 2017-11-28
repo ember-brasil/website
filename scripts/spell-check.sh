@@ -53,25 +53,6 @@ NB_MISSPELLED=`echo "$MISSPELLED" | grep -Ev "^$" | wc -l`
 
 if [ "$NB_MISSPELLED" -gt 0 ]
 then
-    echo -e "$RED>> Words that might be misspelled, please check:$NC"
-    MISSPELLED=`echo "$MISSPELLED" | sed -E ':a;N;$!ba;s/\n/, /g'`
     echo "$MISSPELLED"
-    COMMENT="$NB_MISSPELLED words might be misspelled, please check them: $MISSPELLED"
-
-    echo -e "$BLUE>> Sending results in a comment on the Github pull request #$TRAVIS_PULL_REQUEST:$NC"
-    curl -i -H "Authorization: token $GITHUB_TOKEN" \
-        -H "Content-Type: application/json" \
-        -X POST -d "{\"body\":\"$COMMENT\"}" \
-        https://api.github.com/repos/ember-brasil/website/issues/$TRAVIS_PULL_REQUEST/comments
-    exit 1
-else
-    COMMENT="No spelling errors, congratulations!"
-    echo -e "$GREEN>> $COMMENT $NC"
-
-    echo -e "$BLUE>> Sending results in a comment on the Github pull request #$TRAVIS_PULL_REQUEST:$NC"
-    curl -i -H "Authorization: token $GITHUB_TOKEN" \
-        -H "Content-Type: application/json" \
-        -X POST -d "{\"body\":\"$COMMENT\"}" \
-        https://api.github.com/repos/ember-brasil/website/issues/$TRAVIS_PULL_REQUEST/comments
     exit 0
 fi
