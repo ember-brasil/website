@@ -329,10 +329,10 @@ test('should append map element to container element', function(assert) {
 });
 ```
 
-In the `beforeEach` function that runs before each test, we use the built-in function `this.register` to [register](../../applications/dependency-injection/#toc_#registros-de-factory) our stub service in place of the maps service.
+In the `beforeEach` function that runs before each test, we use the built-in function `this.register` to [register](../../applications/dependency-injection#toc_registros-de-factory) our stub service in place of the maps service.
 Registration makes an object available to your Ember application for things like loading components from templates and injecting services in this case.
 
-The call to the function `this.inject.service` [injects](../../applications/dependency-injection/#toc_injeções-ad-hoc) the service we just registered into the context of the tests, so each test may access it through `this.get('mapsService')`.
+The call to the function `this.inject.service` [injects](../../applications/dependency-injection#toc_injeções-ad-hoc) the service we just registered into the context of the tests, so each test may access it through `this.get('mapsService')`.
 In the example we assert that `calledWithLocation` in our stub is set to the location we passed to the component.
 
 
