@@ -2,6 +2,7 @@
 
 ## Projeto de tradução da documentação do Ember
 > Projeto não oficial
+This is an amazing project! :-)
 
 Quer falar sobre o projeto? Estamos no Telegram. [Aqui](https://t.me/EmberBR).
 <hr>
