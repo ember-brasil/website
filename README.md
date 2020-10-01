@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/ember-brasil/website.svg?branch=master)](https://travis-ci.org/ember-brasil/website)
 
 ## Projeto de tradução da documentação do Ember
-> Projeto não oficial
+> Projeto não oficial-(professional work's)
 
 Quer falar sobre o projeto? Estamos no Telegram. [Aqui](https://t.me/EmberBR).
 <hr>
